@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://containers-us-west-111.railway.app:5542/railway?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 6pY5tRcEwgpWPErp8Qs6
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
