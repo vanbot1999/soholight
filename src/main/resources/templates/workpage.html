@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Image Details</title>
+</head>
+<body>
+<div>
+    <h1>Image Details</h1>
+    <div>
+        <img th:src="${kidsImage.url}" alt="Image" />
+        <p>ID: <span th:text="${kidsImage.id}"></span></p>
+        <p>Name: <span th:text="${kidsImage.name}"></span></p>
+        <p>Age: <span th:text="${kidsImage.age}"></span></p>
+
+    </div>
+    <button id="addCommentBtn" class="btn btn-primary">Add Comments</button>
+
+<div>
+    <form id="commentForm" style="display:none;" th:action="@{/addcomment}" method="post">
+        <input type="hidden" name="imageId" th:value="${kidsImage.id}" />
+        <textarea name="commentText" placeholder="Enter your comment here..."></textarea>
+        <button type="submit">Submit Comment</button>
+    </form>
+</div>
+    <div id="commentsSection">
+        <!-- Comments will be loaded here -->
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function() {
+        $('#addCommentBtn').click(function() {
+
+            $('#commentForm').show();
+        });
+
+        $('#submitCommentBtn').click(function() {
+
+            var comment = $('#commentText').val();
+            console.log(comment);
+
+            $('#commentText').val('');
+            $('#commentForm').hide();
+        });
+    });
+    function loadComments(imageId) {
+        $.ajax({
+            url: '/getcomments?imageId=' + imageId,
+            type: 'GET',
+            success: function(comments) {
+                let commentsSection = $('#commentsSection');
+                commentsSection.empty(); // 清空评论部分
+
+                if (comments.length === 0) {
+                    commentsSection.append('<p>NO comments, to catch the sofa</p>');
+                } else {
+                    $.each(comments, function(index, comment) {
+                        commentsSection.append('<div><p>' + comment.commentText + '</p><p>UserID: ' + comment.userId + '</p><p>Time: ' + comment.createdAt + '</p></div>');
+                    });
+                }
+            },
+            error: function(xhr, status, error) {
+                // 处理错误
+                alert('Error loading comments: ' + error);
+            }
+        });
+    }
+
+    // 页面加载时获取并显示评论
+    var initialImageId = $('input[name="imageId"]').val();
+    loadComments(initialImageId);
+
+</script>
+</body>
+</html>
