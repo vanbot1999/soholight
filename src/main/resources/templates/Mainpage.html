@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Students</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2 >Kids light show</h2>
+            <h3>Kids of 2021</h3>
+            <div id="kids-2021" class="row border p-3 mb-4">
+
+                <!-- Items for 2021 will go here -->
+            </div>
+            <h3>Kids of 2022</h3>
+            <div id="kids-2022" class="row border p-3 mb-4">
+
+                <!-- Items for 2022 will go here -->
+            </div>
+            <h3>Kids of 2023</h3>
+            <div id="kids-2023" class="row border p-3 mb-4">
+
+                <!-- Items for 2023 will go here -->
+            </div>
+
+            <button>view all</button>
+</div>
+        </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+    function fetchAndDisplayKids() {
+        ['2021', '2022', '2023'].forEach(year => {
+            $.ajax({
+                url: '/random-kids/' + year,
+                type: 'GET',
+                dataType: 'json',
+                success: function(kids) {
+                    var kidsList = $('#kids-' + year);
+                    kidsList.empty();
+                    kids.forEach(function(kid) {
+                        var imageElement = $('<img />', {
+                            src: kid.url,
+                            alt: "Kid Image",
+                            class: "img-fluid",
+                            style: "width:100px; height:auto;",
+                            'data-id': kid.id
+                        }).on('load', function() {
+                            $(this).addClass('loaded');
+                        });
+
+                        var kidElement = $('<div />', {
+                            class: "col-md-4 text-center mb-3 kid",
+                            html: imageElement,
+                            click: function() {
+                                window.location.href = '/workpage?imageId=' + kid.id;
+                            }
+                        });
+
+                        kidElement.append('<p class="mt-auto"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>');
+
+                        kidsList.append(kidElement);
+                    });
+                },
+                error: function(error) {
+                    console.error('Error fetching kids for year ' + year + ':', error);
+                }
+            });
+        });
+    }
+
+
+    $(document).ready(function() {
+        fetchAndDisplayKids();
+        setInterval(fetchAndDisplayKids, 2000);
+    });
+
+</script>
+
+
+</body>
+</html>
