@@ -35,6 +35,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+
     function fetchAndDisplayKids() {
         ['2021', '2022', '2023'].forEach(year => {
             $.ajax({
@@ -43,14 +44,29 @@
                 dataType: 'json',
                 success: function(kids) {
                     var kidsList = $('#kids-' + year);
-                    kidsList.empty(); // 清空当前内容
+                    kidsList.empty();
                     kids.forEach(function(kid) {
-                        kidsList.append(
-                            '<div class="col-md-4 text-center mb-3">' +
-                            '<img src="' + kid.url + '" alt="Kid Image" class="img-fluid" style="width:100px; height:auto;">' +
-                            '<p class="mt-auto"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>' +
-                            '</div>'
-                        );
+                        var imageElement = $('<img />', {
+                            src: kid.url,
+                            alt: "Kid Image",
+                            class: "img-fluid",
+                            style: "width:100px; height:auto;",
+                            'data-id': kid.id
+                        }).on('load', function() {
+                            $(this).addClass('loaded');
+                        });
+
+                        var kidElement = $('<div />', {
+                            class: "col-md-4 text-center mb-3 kid",
+                            html: imageElement,
+                            click: function() {
+                                window.location.href = '/workpage?imageId=' + kid.id;
+                            }
+                        });
+
+                        kidElement.append('<p class="mt-auto"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>');
+
+                        kidsList.append(kidElement);
                     });
                 },
                 error: function(error) {
@@ -60,10 +76,10 @@
         });
     }
 
-    // 调用函数，并设置定时器
+
     $(document).ready(function() {
         fetchAndDisplayKids();
-        setInterval(fetchAndDisplayKids, 2000); // 每2秒更新一次
+        setInterval(fetchAndDisplayKids, 2000);
     });
 
 </script>

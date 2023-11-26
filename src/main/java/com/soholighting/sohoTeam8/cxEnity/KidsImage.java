@@ -1,21 +1,21 @@
 package com.soholighting.sohoTeam8.cxEnity;
 
 public class KidsImage {
-    private int id;
+    private int img_id;
     private String name;
     private int age;
     private String description;
-    private  String awards;
+
     private  String url;
     private  String sourceUrl;
     private  String issueDate;
 
-    public KidsImage(int id, String name, int age, String description, String awards, String url, String sourceUrl, String issueDate) {
-        this.id = id;
+    public KidsImage(int id, String name, int age, String description, String url, String sourceUrl, String issueDate) {
+        this.img_id = id;
         this.name = name;
         this.age = age;
         this.description = description;
-        this.awards = awards;
+
         this.url = url;
         this.sourceUrl = sourceUrl;
         this.issueDate = issueDate;
@@ -39,11 +39,11 @@ public class KidsImage {
     }
 
     public int getId() {
-        return id;
+        return img_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.img_id = id;
     }
 
     public String getName() {
@@ -70,13 +70,6 @@ public class KidsImage {
         this.description = description;
     }
 
-    public String getAwards() {
-        return awards;
-    }
-
-    public void setAwards(String awards) {
-        this.awards = awards;
-    }
 
     public String getUrl() {
         return url;

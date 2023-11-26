@@ -18,15 +18,18 @@ public class KidsImageService {
         return kidsimageMapper.findAll();
     }
     public List<KidsImage> getRandomKidsImages() {
-        List<KidsImage> images =  kidsimageMapper.findAll(); // 获取所有图片
-        Collections.shuffle(images); // 打乱顺序
-        return images.subList(0, Math.min(images.size(), 2)); // 返回前两张图片
+        List<KidsImage> images =  kidsimageMapper.findAll();
+        Collections.shuffle(images);
+        return images.subList(0, Math.min(images.size(), 2));
     }
     public List<KidsImage> getRandomKidsImagesByYear(String year) {
-        // 假设你有一个获取所有图片的方法，并且KidsImage实体包含一个表示年份的字段
+
         List<KidsImage> allKidsByYear = kidsimageMapper.findAllByYear(year);
         Collections.shuffle(allKidsByYear);
         return allKidsByYear.stream().limit(3).collect(Collectors.toList());
     }
+    public KidsImage getImageById(int imageId) {
 
+        return kidsimageMapper.selectImageById(imageId);
+    }
 }
