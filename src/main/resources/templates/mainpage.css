@@ -1,26 +1,8 @@
-.vision_purpose {
-    display: flex;
-    justify-content: center;
-
-}
-
 .vision {
-    width: 18rem;
-    /* 可以添加其他样式，以适应你的设计需求 */
-    margin: 10px;
-    background-color:deepskyblue;
-
+    height: 100%;
 }
 
 .vision img {
-    width: 100%;
-    height:50%;
-}
-
-/* 如果希望卡片在小屏幕上堆叠而不是并列显示，可以添加媒体查询 */
-@media (max-width: 768px) {
-    .vision_purpose {
-        flex-direction: column; /* 在小屏幕上垂直堆叠 */
-        align-items: center; /* 居中对齐 */
-    }
+    object-fit: cover;
+    height: 50%;
 }
