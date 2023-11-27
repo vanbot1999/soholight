@@ -43,5 +43,8 @@ public class MainPageController {
         model.addAttribute("kidsImage", kidsImage);
         return "workpage";
     }
-
+    @GetMapping("/painting")
+    public String showPaintingPage() {
+        return "painting_show";
+    }
 }
