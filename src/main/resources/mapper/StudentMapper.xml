@@ -12,7 +12,7 @@
     </select>
     <insert id="insertComment" parameterType="com.soholighting.sohoTeam8.cxEnity.Comments">
         INSERT INTO Comments (image_id, content, create_time, UserId)
-        VALUES (#{comment.imageId}, #{comment.commentText}, #{comment.createdAt}, #{comment.userid})
+        VALUES (#{comment.imageId}, #{comment.commentText}, #{comment.createdAt}, #{comment.userId})
     </insert>
     <select id="findCommentsByImageId" parameterType="java.lang.Integer" resultType="com.soholighting.sohoTeam8.cxEnity.Comments">
         SELECT * FROM Comments WHERE image_id = #{imageId}
