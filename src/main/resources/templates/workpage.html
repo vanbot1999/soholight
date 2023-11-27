@@ -2,8 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Image Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" type="text/css" href="mainpage.css">
 </head>
 <body>
+<div th:replace="~{fragments/header :: headerBlock}"/></div>
+
 <div>
     <h1>Image Details</h1>
     <div>
@@ -13,6 +20,10 @@
         <p>Age: <span th:text="${kidsImage.age}"></span></p>
 
     </div>
+    <div>
+        <button id="likeBtn" class="btn btn-success">Like</button>
+        <span id="likeCount">0</span> Likes
+    </div>
     <button id="addCommentBtn" class="btn btn-primary">Add Comments</button>
 
 <div>
@@ -21,6 +32,7 @@
         <textarea name="commentText" placeholder="Enter your comment here..."></textarea>
         <button type="submit">Submit Comment</button>
     </form>
+
 </div>
     <div id="commentsSection">
         <!-- Comments will be loaded here -->
@@ -44,6 +56,17 @@
             $('#commentForm').hide();
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var likeButton = document.getElementById('likeBtn');
+    var likeCountDisplay = document.getElementById('likeCount');
+
+    likeButton.addEventListener('click', function() {
+        var currentCount = parseInt(likeCountDisplay.textContent);
+        likeCountDisplay.textContent = currentCount + 1;
+    });
+});
+
     function loadComments(imageId) {
         $.ajax({
             url: '/getcomments?imageId=' + imageId,
