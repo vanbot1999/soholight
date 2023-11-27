@@ -23,6 +23,11 @@
         <textarea name="commentText" placeholder="Enter your comment here..."></textarea>
         <button type="submit">Submit Comment</button>
     </form>
+    <div>
+        <button id="likeBtn" class="btn btn-success">Like</button>
+        <span id="likeCount">0</span> Likes
+    </div>
+
 </div>
     <div id="commentsSection">
         <!-- Comments will be loaded here -->
@@ -46,6 +51,17 @@
             $('#commentForm').hide();
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var likeButton = document.getElementById('likeBtn');
+    var likeCountDisplay = document.getElementById('likeCount');
+
+    likeButton.addEventListener('click', function() {
+        var currentCount = parseInt(likeCountDisplay.textContent);
+        likeCountDisplay.textContent = currentCount + 1;
+    });
+});
+
     function loadComments(imageId) {
         $.ajax({
             url: '/getcomments?imageId=' + imageId,
