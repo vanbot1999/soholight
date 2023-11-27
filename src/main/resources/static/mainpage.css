@@ -1,0 +1,8 @@
+.vision {
+    height: 100%;
+}
+
+.vision img {
+    object-fit: cover;
+    height: 50%;
+}
