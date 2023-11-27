@@ -1,7 +1,6 @@
 package com.soholighting.sohoTeam8.cxEnity;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 
 public class Comments {
     private Integer id;
@@ -13,9 +12,9 @@ public class Comments {
     private String commentText;
 
 
-    private LocalDateTime createdAt;
+    private String createdAt;
 
-    private int userid=12138;
+    private int userId=12138;
 
     public Comments() {
 
@@ -27,22 +26,25 @@ public class Comments {
 
 
 
-    // Since UserID is default, you may not need a setter, but it's here if you want to change it later
+
     public int getUserID() {
-        return userid;
+        return userId;
     }
 
-    // Since UserID is default, you may not need a setter, but it's here if you want to change it later
+
     public void setUserID(int UserID) {
-        this.userid = UserID;
+        this.userId = UserID;
     }
 
     public Integer getImageId() {
+
         return imageId;
     }
 
     public void setImageId(Integer imageId) {
+
         this.imageId = imageId;
+
     }
 
     public String getCommentText() {
@@ -54,11 +56,22 @@ public class Comments {
     }
 
 
-    public LocalDateTime getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
+    @Override
+    public String toString() {
+        return "Comments{" +
+                "id=" + id +
+                ", imageId=" + imageId +
+                ", commentText='" + commentText + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
+
 }
