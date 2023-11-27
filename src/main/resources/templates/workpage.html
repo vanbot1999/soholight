@@ -15,6 +15,10 @@
         <p>Age: <span th:text="${kidsImage.age}"></span></p>
 
     </div>
+    <div>
+        <button id="likeBtn" class="btn btn-success">Like</button>
+        <span id="likeCount">0</span> Likes
+    </div>
     <button id="addCommentBtn" class="btn btn-primary">Add Comments</button>
 
 <div>
@@ -23,10 +27,6 @@
         <textarea name="commentText" placeholder="Enter your comment here..."></textarea>
         <button type="submit">Submit Comment</button>
     </form>
-    <div>
-        <button id="likeBtn" class="btn btn-success">Like</button>
-        <span id="likeCount">0</span> Likes
-    </div>
 
 </div>
     <div id="commentsSection">
