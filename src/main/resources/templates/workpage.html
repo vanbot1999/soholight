@@ -18,13 +18,22 @@
         <p>ID: <span th:text="${kidsImage.id}"></span></p>
         <p>Name: <span th:text="${kidsImage.name}"></span></p>
         <p>Age: <span th:text="${kidsImage.age}"></span></p>
-
     </div>
     <div>
         <button id="likeBtn" class="btn btn-success">Like</button>
         <span id="likeCount">0</span> Likes
     </div>
     <button id="addCommentBtn" class="btn btn-primary">Add Comments</button>
+
+
+    <div>
+        <form id="commentForm" style="display:none;" th:action="@{/addcomment}" method="post">
+            <input type="hidden" name="imageId" th:value="${kidsImage.id}" />
+            <textarea id="commentText" name="commentText" placeholder="Enter your comment here..."></textarea>
+            <button type="submit" id="submitCommentBtn">Submit Comment</button>
+        </form>
+    </div>
+
 
 <div>
     <form id="commentForm" style="display:none;" th:action="@{/addcomment}" method="post">
@@ -34,26 +43,42 @@
     </form>
 
 </div>
+
     <div id="commentsSection">
-        <!-- Comments will be loaded here -->
+
     </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
     $(document).ready(function() {
         $('#addCommentBtn').click(function() {
-
             $('#commentForm').show();
         });
 
-        $('#submitCommentBtn').click(function() {
+        $('#commentForm').submit(function(e) {
+            e.preventDefault();
 
-            var comment = $('#commentText').val();
-            console.log(comment);
+            let imageId = $('input[name="imageId"]').val();
+            let commentText = $('#commentText').val();
 
-            $('#commentText').val('');
-            $('#commentForm').hide();
+            $.ajax({
+                url: $(this).attr('action'),
+                type: 'POST',
+                data: {
+                    imageId: imageId,
+                    commentText: commentText
+                },
+                success: function(response) {
+                    console.log('Comment added:', response);
+                    $('#commentText').val('');
+                    $('#commentForm').hide();
+                    loadComments(imageId);
+                },
+                error: function(xhr, status, error) {
+                    alert('Error adding comment: ' + error);
+                }
+            });
         });
     });
 
@@ -67,33 +92,37 @@
     });
 });
 
+
     function loadComments(imageId) {
+        console.log(imageId);
         $.ajax({
             url: '/getcomments?imageId=' + imageId,
             type: 'GET',
             success: function(comments) {
+                console.log(comments);
                 let commentsSection = $('#commentsSection');
-                commentsSection.empty(); // 清空评论部分
+                commentsSection.empty();
 
                 if (comments.length === 0) {
-                    commentsSection.append('<p>NO comments, to catch the sofa</p>');
+                    commentsSection.append('<p>No comments yet.</p>');
                 } else {
                     $.each(comments, function(index, comment) {
-                        commentsSection.append('<div><p>' + comment.commentText + '</p><p>UserID: ' + comment.userId + '</p><p>Time: ' + comment.createdAt + '</p></div>');
+                        commentsSection.append('<div><p>'
+                            + comment.commentText +
+                            '</p><p>UserID: ' + comment.userID +
+                            '</p><p>Time: ' +
+                            comment.createdAt + '</p></div>');
                     });
                 }
             },
             error: function(xhr, status, error) {
-                // 处理错误
                 alert('Error loading comments: ' + error);
             }
         });
     }
 
-    // 页面加载时获取并显示评论
     var initialImageId = $('input[name="imageId"]').val();
     loadComments(initialImageId);
-
 </script>
 </body>
 </html>
