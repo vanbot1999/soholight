@@ -1,7 +1,7 @@
-package com.soholighting.sohoTeam8.cxMapper;
+package com.soholighting.sohoTeam8.mapper;
 
-import com.soholighting.sohoTeam8.cxEnity.Comments;
-import com.soholighting.sohoTeam8.cxEnity.KidsImage;
+import com.soholighting.sohoTeam8.model.Comments;
+import com.soholighting.sohoTeam8.model.KidsImage;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
