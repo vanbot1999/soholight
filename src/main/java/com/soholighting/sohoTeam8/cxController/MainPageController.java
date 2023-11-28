@@ -22,7 +22,11 @@ public class MainPageController {
         List<KidsImage> kids = studentService.getRandomKidsImages();
         return ResponseEntity.ok(kids);
     }
+    @GetMapping("/aboutus")
+    public String Aboutus(Model model) {
 
+        return "Aboutus";
+    }
     @GetMapping("/home")
     public String Basket(Model model) {
         List<com.soholighting.sohoTeam8.cxEnity.KidsImage> kids = studentService.findAll();
