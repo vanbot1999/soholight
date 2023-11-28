@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.soholighting.sohoTeam8.cxMapper.KidsImageMapper">
-    <select id="findAll" resultType="com.soholighting.sohoTeam8.cxEnity.KidsImage">
+<mapper namespace="com.soholighting.sohoTeam8.mapper.KidsImageMapper">
+    <select id="findAll" resultType="com.soholighting.sohoTeam8.model.KidsImage">
         SELECT * FROM KidsImage
     </select>
-    <select id="findAllByYear" parameterType="java.lang.String" resultType="com.soholighting.sohoTeam8.cxEnity.KidsImage">
+    <select id="findAllByYear" parameterType="java.lang.String" resultType="com.soholighting.sohoTeam8.model.KidsImage">
         SELECT * FROM KidsImage WHERE issueDate LIKE CONCAT(#{year}, '%')
     </select>
-    <select id="selectImageById" resultType="com.soholighting.sohoTeam8.cxEnity.KidsImage">
+    <select id="selectImageById" resultType="com.soholighting.sohoTeam8.model.KidsImage">
         SELECT * FROM KidsImage WHERE img_id = #{id}
     </select>
-    <insert id="insertComment" parameterType="com.soholighting.sohoTeam8.cxEnity.Comments">
+    <insert id="insertComment" parameterType="com.soholighting.sohoTeam8.model.Comments">
         INSERT INTO Comments (image_id, content, create_time, UserId)
         VALUES (#{comment.imageId}, #{comment.commentText}, #{comment.createdAt}, #{comment.userId})
     </insert>
-    <select id="findCommentsByImageId" parameterType="java.lang.Integer" resultType="com.soholighting.sohoTeam8.cxEnity.Comments">
+    <select id="findCommentsByImageId" parameterType="java.lang.Integer" resultType="com.soholighting.sohoTeam8.model.Comments">
         SELECT * FROM Comments WHERE image_id = #{imageId}
     </select>
 </mapper>

@@ -4,9 +4,8 @@
     <title>Image Details</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" type="text/css" href="mainpage.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
 </head>
 <body>
 <div th:replace="~{fragments/header :: headerBlock}"/></div>
@@ -50,79 +49,6 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#addCommentBtn').click(function() {
-            $('#commentForm').show();
-        });
-
-        $('#commentForm').submit(function(e) {
-            e.preventDefault();
-
-            let imageId = $('input[name="imageId"]').val();
-            let commentText = $('#commentText').val();
-
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: {
-                    imageId: imageId,
-                    commentText: commentText
-                },
-                success: function(response) {
-                    console.log('Comment added:', response);
-                    $('#commentText').val('');
-                    $('#commentForm').hide();
-                    loadComments(imageId);
-                },
-                error: function(xhr, status, error) {
-                    alert('Error adding comment: ' + error);
-                }
-            });
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-    var likeButton = document.getElementById('likeBtn');
-    var likeCountDisplay = document.getElementById('likeCount');
-
-    likeButton.addEventListener('click', function() {
-        var currentCount = parseInt(likeCountDisplay.textContent);
-        likeCountDisplay.textContent = currentCount + 1;
-    });
-});
-
-
-    function loadComments(imageId) {
-        console.log(imageId);
-        $.ajax({
-            url: '/getcomments?imageId=' + imageId,
-            type: 'GET',
-            success: function(comments) {
-                console.log(comments);
-                let commentsSection = $('#commentsSection');
-                commentsSection.empty();
-
-                if (comments.length === 0) {
-                    commentsSection.append('<p>No comments yet.</p>');
-                } else {
-                    $.each(comments, function(index, comment) {
-                        commentsSection.append('<div><p>'
-                            + comment.commentText +
-                            '</p><p>UserID: ' + comment.userID +
-                            '</p><p>Time: ' +
-                            comment.createdAt + '</p></div>');
-                    });
-                }
-            },
-            error: function(xhr, status, error) {
-                alert('Error loading comments: ' + error);
-            }
-        });
-    }
-
-    var initialImageId = $('input[name="imageId"]').val();
-    loadComments(initialImageId);
-</script>
+<script src="js/workpage.js"></script>
 </body>
 </html>
