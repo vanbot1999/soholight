@@ -21,7 +21,12 @@ public class WebController {
 
         return "awardDetails";
     }
+    @GetMapping("/Adminlogin")
+    public String adminlogin() {
+   
 
+        return "AdminLogin";
+    }
     private Award findAwardById(String id) {
         return new Award(id, "Award", "date", "Description of the award");
     }
