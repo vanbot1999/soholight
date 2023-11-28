@@ -14,7 +14,8 @@
 <body style="background-color: rgba(255,255,217,0.3)">
 <div th:replace="~{fragments/header :: headerBlock}"/></div>
 <div>
-<img src="https://citylions.org/assets/hero-images/Banner-v8__FocusFillWyIwLjAwIiwiMC4wMCIsMjQwMCw5MDBd.png" alt="Image" class="img-fluid"/>
+<img src="https://citylions.org/assets/hero-images/Banner-v8__FocusFillWyIwLjAwIiwiMC4wMCIsMjQwMCw5MDBd.png" alt="Image" class="img-fluid" style="transform: translateZ(-1px) scale(1.0);background-size: cover;"/>
+
 </div>
 <div>
     <h1 class="main-title">The child-designed light project returns to the streets of Soho <span class="highlight2">FOR 2023!</span></h1>
@@ -45,7 +46,96 @@
     <p class="main-text">
         The project will bring the community together through a celebration of light during the darkest months of the year!
     </p>
+    <div>
+        <h1 class="main-title">Learn about us</h1>
+    </div>
+    <div class="container">
+        <div class="row" style="display: flex; justify-content: center; ">
+            <div class="col-md-3">
+                <div class="vision" style="width: 18rem;">
+                    <img src="test2.png" class="card-img-top" alt="test2.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">Purpose of activity</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">See more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 offset-md-1">
+                <div class="vision" style="width: 18rem;">
+                    <div id="kids-2023" class="row border p-3 mb-4">
+
+
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Creator's vision </h5>
+                        <p class="card-text">Some quick example text to build on the Creator's vision and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">See more</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-3 offset-md-1">
+                <div class="vision" style="width: 18rem;">
+                    <img src="test1.jpg" class="card-img-top" alt="test1.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">Creator's vision </h5>
+                        <p class="card-text">Some quick example text to build on the Creator's vision and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">See more</a>
+                    </div>
+                </div>
+        </div>
     <div th:replace="~{fragments/footer :: footerBlock}"/></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+
+            function fetchAndDisplayKids() {
+                ['2021', '2022', '2023'].forEach(year => {
+                    $.ajax({
+                        url: '/random-kids/' + year,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(kids) {
+                            var kidsList = $('#kids-' + year);
+                            kidsList.empty();
+                            kids.forEach(function(kid) {
+                                var imageElement = $('<img />', {
+                                    src: kid.url,
+                                    alt: "Kid Image",
+                                    class: "img-fluid",
+                                    style: "width:100px; height:auto;",
+                                    'data-id': kid.id
+                                }).on('load', function() {
+                                    $(this).addClass('loaded');
+                                });
+
+                                var kidElement = $('<div />', {
+                                    class: " text-center mb-3 kid",
+                                    html: imageElement,
+                                    click: function() {
+                                        window.location.href = '/workpage?imageId=' + kid.id;
+                                    }
+                                });
+
+
+
+                                kidsList.append(kidElement);
+                            });
+                        },
+                        error: function(error) {
+                            console.error('Error fetching kids for year ' + year + ':', error);
+                        }
+                    });
+                });
+            }
+
+
+            $(document).ready(function() {
+                fetchAndDisplayKids();
+                setInterval(fetchAndDisplayKids, 500);
+            });
+
+        </script>
 </div>
 </body>
 </html>
