@@ -1,0 +1,9 @@
+
+.sponsor-card {
+    max-width: 150px; /* limit size of card */
+    margin: 10px; /* control spacing between cards */
+    transition: transform 0.3s;/* hover effect*/
+}
+.sponsor-card:hover {
+    transform: scale(1.1); /* hover effect*/
+}
