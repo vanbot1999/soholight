@@ -14,20 +14,20 @@ public class SponsorController {
 
     @GetMapping("/sponsors")
     public String showSponsors(Model model) {
-        // 在这里添加你的业务逻辑，从数据库或其他来源获取数据
-        // 示例数据
+        //get from database later
+        // example data
         List<Sponsors> sponsors = getSponsors();
         List<SpecialThanks> specialThanksList = getSpecialThanks();
-        // 将数据传递到模板中
+        // data to model
         model.addAttribute("sponsors", sponsors);
         model.addAttribute("specialThanksList", specialThanksList);
-        // 返回Thymeleaf模板名称
+        // return
         return "sponsors";
     }
     // 示例数据
     private List<Sponsors> getSponsors() {
-        // 从数据库或其他来源获取赞助商数据
-        // 这里使用一个简单的例子
+        // get from database or other sources
+        // example
         return Arrays.asList(
                 new Sponsors("Sponsor1", "https://www.google.com", "logo.png"),
                 new Sponsors("Sponsor2", "https://www.google.com", "logo.png"),
@@ -36,16 +36,15 @@ public class SponsorController {
                 new Sponsors("Sponsor5", "https://www.google.com", "logo.png"),
                 new Sponsors("Sponsor6", "https://www.google.com", "logo.png"),
                 new Sponsors("Sponsor7", "https://www.google.com", "logo.png")
-                // 添加更多赞助商
+                // add more
         );
     }
 
     private List<SpecialThanks> getSpecialThanks() {
-        // 从数据库或其他来源获取特别鸣谢数据
-        // 这里使用一个简单的例子
+
         return Arrays.asList(
                 new SpecialThanks("Special Thanks 1", "https://www.google.com", "logo1.png")
-                // 添加更多特别鸣谢
+
         );
     }
 }
