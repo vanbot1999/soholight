@@ -1,7 +1,7 @@
-package com.soholighting.sohoTeam8.cxController;
+package com.soholighting.sohoTeam8.controller;
 
-import com.soholighting.sohoTeam8.cxEnity.KidsImage;
-import com.soholighting.sohoTeam8.cxService.KidsImageService;
+import com.soholighting.sohoTeam8.model.KidsImage;
+import com.soholighting.sohoTeam8.service.KidsImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,12 +29,12 @@ public class MainPageController {
     }
     @GetMapping("/home")
     public String Basket(Model model) {
-        List<com.soholighting.sohoTeam8.cxEnity.KidsImage> kids = studentService.findAll();
+        List<KidsImage> kids = studentService.findAll();
         Collections.shuffle(kids );
-        List<com.soholighting.sohoTeam8.cxEnity.KidsImage> twoRandomkids = kids.subList(0, 2);
+        List<KidsImage> twoRandomkids = kids.subList(0, 2);
 
         model.addAttribute("kids", twoRandomkids);
-        return "Mainpage";
+        return "home";
     }
     @GetMapping("/random-kids/{year}")
     public ResponseEntity<List<KidsImage>> getRandomKidsImagesByYear(@PathVariable String year) {
