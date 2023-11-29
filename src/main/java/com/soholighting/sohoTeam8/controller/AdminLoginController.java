@@ -27,7 +27,7 @@ public class AdminLoginController {
         cookie.setMaxAge(0);
         cookie.setPath("/");
         response.addCookie(cookie);
-        ModelAndView modelAndView = new ModelAndView("/home");
+        ModelAndView modelAndView = new ModelAndView("redirect:/Adminlogin");
         return modelAndView;
     }
 
