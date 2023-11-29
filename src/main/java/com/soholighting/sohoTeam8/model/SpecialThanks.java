@@ -18,7 +18,7 @@ public class SpecialThanks {
         this.name = name;
     }
 
-    public String getalt() {
+    public String getAlt() {
         return alt;
     }
 
