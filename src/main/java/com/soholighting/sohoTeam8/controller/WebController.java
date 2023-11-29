@@ -14,12 +14,12 @@ import java.util.List;
 public class WebController {
 
     @Autowired
-    private AwardService awardService; // 自动注入AwardService
+    private AwardService awardService;
 
     @GetMapping("/awards")
     public String awardsPage(Model model) {
-        List<Award> awards = awardService.getAllAwards(); // 从AwardService获取奖项数据
-        model.addAttribute("awards", awards); // 将奖项数据添加到模型中
+        List<Award> awards = awardService.getAllAwards();
+        model.addAttribute("awards", awards);
         return "awards";
     }
 

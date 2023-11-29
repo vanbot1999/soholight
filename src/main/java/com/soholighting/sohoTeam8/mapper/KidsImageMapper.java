@@ -12,5 +12,6 @@ public interface KidsImageMapper {
     List<KidsImage> findAllByYear(@Param("year") String year);
     KidsImage selectImageById(int id);
     void insertComment(@Param("comment") Comments comment);
-    List<Comments> findCommentsByImageId(@Param("imageId") Integer imageId);
+    List<Comments> findCommentsByImageId(@Param("image_id") int image_id);
+    List<Comments> findComment();
 }

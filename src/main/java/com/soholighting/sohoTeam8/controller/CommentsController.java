@@ -8,44 +8,40 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
-@Controller
+@RestController
 public class CommentsController {
     @Autowired
     private CommentService commentService;
 
 
     @GetMapping("/getcomments")
-    public ResponseEntity<List<Comments>> getComments(@RequestParam("imageId") Integer imageId) {
-        System.out.println("Received imageId: " + imageId);
-        List<Comments> comments = commentService.getCommentsByImageId(imageId);
-        System.out.println(comments);
-        return ResponseEntity.ok(comments);
-
+    public List<Comments> getComments(@RequestParam("imageId") Integer imageId) {
+        return commentService.getCommentsByImageId(imageId);
     }
 
 
     @PostMapping("/addcomment")
-    public String addComment(@RequestParam("imageId") Integer imageId,
-                             @RequestParam("commentText") String commentText,
+    public String addComment(@RequestParam("image_id") Integer image_id,
+                             @RequestParam("content") String content,
                              RedirectAttributes redirectAttributes) {
         Comments comment = new Comments();
-        comment.setImageId(imageId);
-        comment.setCommentText(commentText);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = LocalDateTime.now().format(formatter);
-        comment.setCreatedAt(formattedDateTime);
-
+        comment.setImageId(image_id);
+        comment.setContent(content);
+        comment.setCreate_time(new Date());
+        comment.setUserId(12138);
         commentService.addComment(comment);
-        System.out.println("Image ID: " + imageId);
-        System.out.println("Comment Text: " + commentText);
+        System.out.println("Image ID: " + image_id);
+        System.out.println("Comment Text: " + content);
 
-        redirectAttributes.addFlashAttribute("message", "Comment added successfully");
-        return "redirect:/workpage?imageId=" + imageId;
+
+        return "workpage?imageId=" + image_id;
     }
 }
