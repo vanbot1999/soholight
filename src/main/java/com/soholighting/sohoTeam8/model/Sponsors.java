@@ -13,7 +13,6 @@ public class Sponsors {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -23,7 +22,6 @@ public class Sponsors {
     public void setAlt(String alt) {
         this.alt = alt;
     }
-
     public String getImage() {
         return image;
     }

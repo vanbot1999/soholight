@@ -4,6 +4,9 @@
     <select id="findAll" resultType="com.soholighting.sohoTeam8.model.KidsImage">
         SELECT * FROM KidsImage
     </select>
+    <select id="findComment" resultType="com.soholighting.sohoTeam8.model.Comments">
+        SELECT * FROM Comment
+    </select>
     <select id="findAllByYear" parameterType="java.lang.String" resultType="com.soholighting.sohoTeam8.model.KidsImage">
         SELECT * FROM KidsImage WHERE issueDate LIKE CONCAT(#{year}, '%')
     </select>
@@ -11,10 +14,10 @@
         SELECT * FROM KidsImage WHERE img_id = #{id}
     </select>
     <insert id="insertComment" parameterType="com.soholighting.sohoTeam8.model.Comments">
-        INSERT INTO Comments (image_id, content, create_time, UserId)
-        VALUES (#{comment.imageId}, #{comment.commentText}, #{comment.createdAt}, #{comment.userId})
+        INSERT INTO Comment (image_id, content, create_time, UserID)
+        VALUES (#{comment.image_id}, #{comment.content}, #{comment.create_time}, #{comment.userId})
     </insert>
     <select id="findCommentsByImageId" parameterType="java.lang.Integer" resultType="com.soholighting.sohoTeam8.model.Comments">
-        SELECT * FROM Comments WHERE image_id = #{imageId}
+        SELECT * FROM Comment WHERE image_id = #{image_id}
     </select>
 </mapper>

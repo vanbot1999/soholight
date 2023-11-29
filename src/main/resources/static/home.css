@@ -11,7 +11,22 @@ h2, h3 {
     font-family: 'Arial', sans-serif;
     color: #333;
 }
-
+.view-all{
+    background-color: darkred;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    width: 500px;
+}
+.view-all:hover .view-all-inner{
+    background-color: white;
+    color: darkred;
+    transform: rotateX(180deg);
+}
 button {
     background-color: #007bff;
     color: white;
@@ -35,4 +50,77 @@ button {
     margin: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+}
+.img-fluid {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.img-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+.main-title {
+    color: white;
+    font-size: 34px;
+    font-family: "Mark Pro", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.main-text {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Mark Pro',Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: whitesmoke;
+    text-align: justify;
+}
+.img-hover-zoom {
+    transition: transform 0.3s ease;
+}
+
+.img-hover-zoom:hover {
+    transform: scale(1.3);
+}
+.kid-name {
+    color: #2B2A29;
+    font-family: "Mark Pro", Arial, sans-serif;
+}
+.kid-name:hover {
+    text-decoration: underline; /* 当鼠标悬停时添加下划线 */
+}
+.main-title-year {
+    color: white;
+    font-size: 25px;
+    font-family: "Mark Pro", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
 }

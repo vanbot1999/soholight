@@ -49,6 +49,6 @@ public class MainPageController {
     }
     @GetMapping("/painting")
     public String showPaintingPage() {
-        return "painting_show";
+        return "paintingShow";
     }
 }

@@ -6,29 +6,29 @@ package com.soholighting.sohoTeam8.service;
 
 import com.soholighting.sohoTeam8.model.Comments;
 import com.soholighting.sohoTeam8.mapper.KidsImageMapper;
+import com.soholighting.sohoTeam8.model.KidsImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
 @Service
 public class CommentService {
-
-    private final KidsImageMapper kidsImageMapper;
-
     @Autowired
-    public CommentService(KidsImageMapper kidsImageMapper) {
-        this.kidsImageMapper = kidsImageMapper;
-    }
+    private KidsImageMapper kidsImageMapper;
 
-    @Transactional
+
+    public List<Comments> findComment(){
+        return kidsImageMapper.findComment();
+    }
     public void addComment(Comments comment) {
         kidsImageMapper.insertComment(comment);
     }
-    public List<Comments> getCommentsByImageId(Integer imageId) {
-        System.out.println(kidsImageMapper.findCommentsByImageId(imageId));
-        return kidsImageMapper.findCommentsByImageId(imageId);
+    public List<Comments> getCommentsByImageId(int image_id) {
+        System.out.println(kidsImageMapper);
+
+        return kidsImageMapper.findCommentsByImageId(image_id);
 
     }
 }

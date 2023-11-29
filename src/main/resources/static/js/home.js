@@ -11,7 +11,7 @@ function fetchAndDisplayKids() {
                         var imageElement = $('<img />', {
                             src: kid.url,
                             alt: "Kid Image",
-                            class: "img-fluid",
+                            class: "img-fluid img-hover-zoom",
                             style: "width:100px; height:auto;",
                             'data-id': kid.id
                         }).on('load', function() {
@@ -26,7 +26,7 @@ function fetchAndDisplayKids() {
                             }
                         });
 
-                        kidElement.append('<p class="mt-auto"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>');
+                        kidElement.append('<p class="mt-auto kid-name"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>');
 
                         kidsList.append(kidElement);
                     });

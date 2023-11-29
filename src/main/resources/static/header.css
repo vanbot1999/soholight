@@ -14,9 +14,12 @@
 }
 #welcomeMessage {
     color: white;
+    font-size: 20px;
 }
 
 #logoutButton {
-    background-color: #2e2e2e; /* Adjust color as needed */
-    color: white;
+    background-color: cornflowerblue;
+    margin-left: 20px;
+    vertical-align: middle; /
+
 }
