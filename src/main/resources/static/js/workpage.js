@@ -40,10 +40,10 @@
 });
 
 
-    function loadComments(imageId) {
-        console.log(imageId);
+    function loadComments(image_id) {
+        console.log(image_id);
         $.ajax({
-            url: '/getcomments?imageId=' + imageId,
+            url: '/getcomments?imageId=' + image_id,
             type: 'GET',
             success: function(comments) {
                 console.log(comments);
@@ -54,11 +54,20 @@
                     commentsSection.append('<p>No comments yet.</p>');
                 } else {
                     $.each(comments, function(index, comment) {
-                        commentsSection.append('<div><p>'
-                            + comment.commentText +
-                            '</p><p>UserID: ' + comment.userID +
-                            '</p><p>Time: ' +
-                            comment.createdAt + '</p></div>');
+
+                        var date = new Date(comment.create_time);
+
+                        var formattedDate = date.toLocaleDateString('zh-CN');
+
+
+                        commentsSection.append(
+                            '<h3>UserID: ' + comment.userId + '</h3>' +
+                            '<p> ' + formattedDate + '</p>' +
+                            '<div class="comment-box">' +
+
+                            '<p>' + comment.content + '</p>' +
+                            '</div>'
+                        );
                     });
                 }
             },

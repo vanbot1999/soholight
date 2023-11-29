@@ -1,15 +1,42 @@
-.image-details-container {
-    text-align: center;
-}
-
-.image-details {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 10px;
-    max-height: 200px;
-}
-
-.image-details img {
-    max-height: 100%;
+.fixed-width-img {
     width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 300px;
+    display: block;
+    margin: 0 auto;
+}
+.custom-margin {
+    margin-left: -100px;
+}
+.custom-margin2 {
+    margin-left: -100px;
+}
+.text-area-form {
+    margin-top: 20px; /* 调整表单的顶部外边距 */
+}
+
+.text-area-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+#likeBtn, #addCommentBtn {
+    margin-top: 20px;
+}
+
+/* 调整以适应其他信息的样式 */
+.info-text {
+    margin-top: 20px; /* 增加顶部外边距将文本下移 */
+}
+#GG{
+    margin-bottom: 100px;
+}
+.comment-box {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
