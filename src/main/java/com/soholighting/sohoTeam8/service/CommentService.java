@@ -1,11 +1,11 @@
-package com.soholighting.sohoTeam8.cxService;
+package com.soholighting.sohoTeam8.service;
 
 
 
 
 
-import com.soholighting.sohoTeam8.cxEnity.Comments;
-import com.soholighting.sohoTeam8.cxMapper.KidsImageMapper;
+import com.soholighting.sohoTeam8.model.Comments;
+import com.soholighting.sohoTeam8.mapper.KidsImageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

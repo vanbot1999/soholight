@@ -1,7 +1,7 @@
-package com.soholighting.sohoTeam8.cxService;
+package com.soholighting.sohoTeam8.service;
 
-import com.soholighting.sohoTeam8.cxEnity.KidsImage;
-import com.soholighting.sohoTeam8.cxMapper.KidsImageMapper;
+import com.soholighting.sohoTeam8.model.KidsImage;
+import com.soholighting.sohoTeam8.mapper.KidsImageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class KidsImageService {
     @Autowired
     private KidsImageMapper kidsimageMapper;
 
-    public List<com.soholighting.sohoTeam8.cxEnity.KidsImage> findAll(){
+    public List<KidsImage> findAll(){
         return kidsimageMapper.findAll();
     }
     public List<KidsImage> getRandomKidsImages() {

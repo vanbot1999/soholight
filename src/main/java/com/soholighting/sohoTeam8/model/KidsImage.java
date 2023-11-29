@@ -1,4 +1,4 @@
-package com.soholighting.sohoTeam8.cxEnity;
+package com.soholighting.sohoTeam8.model;
 
 public class KidsImage {
     private int img_id;

@@ -1,0 +1,38 @@
+.vision {
+    height: 100%;
+}
+
+.vision img {
+    object-fit: cover;
+    height: 50%;
+}
+/* home.css */
+h2, h3 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.kids-light-show{
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.home-cards{
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}

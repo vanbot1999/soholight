@@ -1,8 +1,8 @@
-package com.soholighting.sohoTeam8.cxController;
+package com.soholighting.sohoTeam8.controller;
 
-import com.soholighting.sohoTeam8.cxEnity.KidsImage;
+import com.soholighting.sohoTeam8.model.KidsImage;
 import com.soholighting.sohoTeam8.exception.SohoLightingException;
-import com.soholighting.sohoTeam8.cxService.KidsPaintingsService;
+import com.soholighting.sohoTeam8.service.KidsPaintingsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
