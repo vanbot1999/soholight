@@ -1,0 +1,15 @@
+.image-details-container {
+    text-align: center;
+}
+
+.image-details {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+    max-height: 200px;
+}
+
+.image-details img {
+    max-height: 100%;
+    width: auto;
+}
