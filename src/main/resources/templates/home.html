@@ -11,27 +11,40 @@
     <link rel="stylesheet" type="text/css" href="home.css">
 
 </head>
-<body>
+<body style="background-color: rgba(255,255,217,0.5)">
 
 <div th:replace="~{fragments/header :: headerBlock}"/></div>
+<div class="img-fluid">
+    <img src="https://citylions.org/assets/hero-images/Banner-v8__FocusFillWyIwLjAwIiwiMC4wMCIsMjQwMCw5MDBd.png" alt="Image" class="img-fluid" style="transform: translateZ(-1px) scale(1.0);background-size: cover;"/>
+    <div class="img-overlay">
+        <h2 style="color: white">The child-designed light project returns to the streets of Soho for 2023!</h2>
+    </div>
+</div>
+<div class="container" >
 
-<div class="container">
-    <section class="row justify-content-center kids-light-show">
+    <section class="row justify-content-center kids-light-show" style="background-color: rgba(73,73,73,1)">
+        <h1 class="main-title">Works submitted and awarded over the years</h1>
+        <p class="main-text">Award winning Architecture for Kids CIC presents its annual Soho Kids Xmas Lights project showcasing the designs of pupils from Soho Parish Primary School.
+
+            The children designed the Christmas street lighting in keeping with this year's theme of lighting, identity of place, and fashion - inspired by their local area, which also offers an invitation to the entire community to engage and to reflect on the importance of the identity of a place and its development.
+
+        </p>
+        <button class="view-all">view more kids works>>></button>
         <div class="col-md-12">
-            <h2>Kids light show</h2>
-            <h3>Kids of 2021</h3>
-            <div id="kids-2021" class="row border p-3 mb-4">
+
+            <h3 class="main-title-year">2021</h3>
+            <div id="kids-2021" class="row border p-3 mb-4" style="background-color: rgba(255,255,217,1)">
                 <!-- Items for 2021 will go here -->
             </div>
-            <h3>Kids of 2022</h3>
-            <div id="kids-2022" class="row border p-3 mb-4">
+            <h3 class="main-title-year">2022</h3>
+            <div id="kids-2022" class="row border p-3 mb-4" style="background-color: rgba(255,255,217,1)">
                 <!-- Items for 2022 will go here -->
             </div>
-            <h3>Kids of 2023</h3>
-            <div id="kids-2023" class="row border p-3 mb-4">
+            <h3 class="main-title-year">2023</h3>
+            <div id="kids-2023" class="row border p-3 mb-4" style="background-color: rgba(255,255,217,1)">
                 <!-- Items for 2023 will go here -->
             </div>
-            <button>view all</button>
+
         </div>
     </section>
 
