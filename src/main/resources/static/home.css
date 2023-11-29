@@ -20,3 +20,19 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.kids-light-show{
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.home-cards{
+    width: 100%;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
