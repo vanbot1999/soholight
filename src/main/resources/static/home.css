@@ -121,6 +121,7 @@ button {
     height: 100%;
 }
 .carousel-caption {
+    margin-top: 80px;
     background: rgba(0, 0, 0, 0.5);
     color: #fff;
 }
