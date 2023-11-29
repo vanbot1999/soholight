@@ -20,22 +20,18 @@
         <p>Inspired by the creativity and community spirit showcased in the Soho Kids Xmas Lights of 2021 and 2022, we proudly honor the ingenuity of Soho's youth. Led by the visionary guidance of professionals like Antonio Capelao and supported by local establishments, the children from Soho Parish School transformed the streets of Soho into a festive spectacle, reflecting the joy of Christmas through their eyes. Their hand-drawn designs, from whimsical snowmen to majestic reindeer, were not just lights; they were beacons of youthful imagination. As we celebrate this year's talents, we remember the light they bring to our community, as bright and promising as the lights that adorn our streets</p>
     </div>
     <div id="awards-container">
-        <template id="award-template">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title"><a href="" id="award-link">name</a></h5>
-                    <h6 class="card-subtitle mb-2 text-muted" id="award-date">date</h6>
-                    <p class="card-text" id="award-description">description</p>
-                </div>
-            </div>
-        </template>
+        <div th:each="award : ${awards}">
+            <h3 th:text="${award.name}">Award Title</h3>
+            <p th:text="${award.date}">Award Date</p>
+            <p th:text="${award.description}">Award Description</p>
+            <img th:src="${award.imageUrl}" alt="Award Image"/> <!-- 显示图片 -->
+        </div>
     </div>
 </div>
 <div th:replace="~{fragments/footer :: footerBlock}"/></div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="/js/awards.js"></script>
 
 </body>
 </html>
