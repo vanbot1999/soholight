@@ -97,7 +97,6 @@ button {
 }
 .kid-name {
     color: #2B2A29;
-
     font-family: "Mark Pro", Arial, sans-serif;
 }
 .kid-name:hover {
@@ -115,4 +114,13 @@ button {
     margin-top: 80px;
     margin-bottom: 30px;
     text-align: center;
+}
+.carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
 }
