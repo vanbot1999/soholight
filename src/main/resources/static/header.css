@@ -12,3 +12,11 @@
 .custom-bg .headerBrand  {
     color: #ffffff;
 }
+#welcomeMessage {
+    color: white;
+}
+
+#logoutButton {
+    background-color: #2e2e2e; /* Adjust color as needed */
+    color: white;
+}
