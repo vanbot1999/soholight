@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="AdminLogin.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body style="background-color: rgba(255,255,217,0.3)">
+<img src="logo.png" alt="Logo" class="login-logo">
+<div class="login-wrapper">
+    <div class="login-content">
+       <h1>AdminLogin</h1>
+        <form id="loginForm" action="/home" method="post">
+            <div class="input-group">
+                <label for="userId">UserID</label>
+                <input type="text" name="userId" id="userId" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <button type="submit" id="loginButton">Login</button>
+        </form>
+    </div>
+</div>
+<div id="loginStatus"></div>
+</body>
+</html>
