@@ -3,6 +3,7 @@ package com.soholighting.sohoTeam8.controller;
 import com.soholighting.sohoTeam8.service.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,8 +18,13 @@ public class UserRegistrationController {
     private UserRegistrationService userRegistrationService;
 
     @GetMapping("/joinUs")
-    public ModelAndView registerUser() {
+    public ModelAndView registerUserForm() {
         return new ModelAndView("registerUser");
     }
-    
+
+    @PostMapping("/enroll")
+    public ModelAndView registerUser(){
+
+        return null;
+    }
 }
