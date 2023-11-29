@@ -36,6 +36,44 @@ function fetchAndDisplayKids() {
                 }
             });
         });
+    function getCookie(name) {
+        let cookieArray = document.cookie.split(';');
+        for(let i = 0; i < cookieArray.length; i++) {
+            let cookiePair = cookieArray[i].split('=');
+            if(name == cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        return null;
+    }
+
+    window.onload = function() {
+        let userId = getCookie('user');
+        let welcomeMessage = document.getElementById('welcomeMessage');
+        let logoutButton = document.getElementById('logoutButton');
+
+        if(userId) {
+            welcomeMessage.innerHTML = 'Welcome, ' + userId;
+            logoutButton.style.display = 'inline-block';
+        } else {
+            welcomeMessage.innerHTML = 'Please Sign in';
+            logoutButton.style.display = 'none';
+        }
+    };
+
+
+    $('#logoutButton').click(function() {
+        $.post('/logout', function(data, status) {
+            if (status === 'success') {
+
+                $('#welcomeMessage').html('Please Sign in');
+                $('#logoutButton').hide();
+                window.location = '/Adminlogin';
+            } else {
+                console.error('Logout failed');
+            }
+        });
+    });
 }
 
 
