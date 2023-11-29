@@ -1,15 +1,18 @@
 $(document).ready(function() {
     $.get("/api/awards", function(awards) {
-        awards.forEach(function(award) {
-            $('#awards-container').append(
-                '<div class="card">' +
-                '<div class="card-body">' +
-                '<h5 class="card-title"><a href="/award-details/' + award.id + '">' + award.name + '</a></h5>' +
-                '<h6 class="card-subtitle mb-2 text-muted">' + award.date + '</h6>' +
-                '<p class="card-text">' + award.description + '</p>' +
-                '</div>' +
-                '</div>'
-            );
-        });
+        var template = $('#award-template')[0];
+        if (template) {
+            awards.forEach(function(award) {
+                var clone = template.content.cloneNode(true);
+                var link = clone.querySelector('.card-title a');
+                link.href = '/award-details/' + award.id;
+                link.textContent = award.name;
+                clone.querySelector('.card-subtitle').textContent = award.date;
+                clone.querySelector('.card-text').textContent = award.description;
+                $('#awards-container').append(clone);
+            });
+        }
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("Error getting awards: " + textStatus, errorThrown);
     });
 });
