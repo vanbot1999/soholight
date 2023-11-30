@@ -15,10 +15,10 @@
 <body>
 <div th:replace="~{fragments/header :: headerBlock}"/>
 <div class="container">
-    <section>
+    <section class="awards-intro">
         <div class="row justify-content-center">
             <div class="col-md-10">
-                <h2>Company Awards</h2>
+                <h2 class="awards-intro-title text-center">Awards</h2>
                 <div>
                     <p>Inspired by the creativity and community spirit showcased in the Soho Kids Xmas Lights of 2021
                         and
@@ -40,20 +40,27 @@
             </div>
         </div>
     </section>
-    <section>
+    <section class="awards-years">
         <div class="row justify-content-center">
             <div class="col-md-10" id="awards-container">
-                <div th:each="award : ${awards}">
-                    <h3 th:text="${award.name}">Award Title</h3>
-                    <p th:text="${award.date}">Award Date</p>
-                    <p th:text="${award.description}">Award Description</p>
-                    <img th:src="${award.imageUrl}" alt="Award Image"/> <!-- 显示图片 -->
+                <div th:each="yearlyAwards : ${allYearlyAwards}">
+                    <h2 th:text="${yearlyAwards.year}" class="awards-intro-title text-center">Year</h2>
+                    <div class="row">
+                        <div th:each="award : ${yearlyAwards.awards}" class="col-md-4">
+                            <h3 th:text="${award.name}">Award Title</h3>
+                            <p th:text="${award.date}">Award Date</p>
+                            <p th:text="${award.description}">Award Description</p>
+                            <img th:src="@{award.jpeg}" alt="Award Image" class="award-img"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
 <div th:replace="~{fragments/footer :: footerBlock}"/>
+<!-- Back to Top Button -->
+<button id="backToTopBtn" title="Go to top">Top</button>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

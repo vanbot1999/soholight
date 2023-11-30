@@ -21,15 +21,15 @@ public class UserRegistrationController {
     @Autowired
     private UserRegistrationService userRegistrationService;
 
-    @GetMapping("/joinUs")
+    @GetMapping("/register")
     public ModelAndView registerUserForm() {
         return new ModelAndView("registerUser");
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user){
+    public ModelAndView registerUser(@ModelAttribute("user") User user){
         System.out.println(user);
         userRegistrationService.registerUser(user);
-        return "redirect:/login";
+        return new ModelAndView("adminLogin");
     }
 }

@@ -43,7 +43,7 @@ button {
     margin: 40px 20px 40px 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    background-color: rgba(73,73,73,1)
+    background-color: rgba(255, 213, 234, 0.4);
 }
 
 .home-cards{
@@ -52,8 +52,8 @@ button {
     margin: 40px 20px 40px 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    background-color: rgba(73,73,73,1);
-    color: white;
+    background-color: rgba(255, 213, 234, 0.3);
+    color: black;
 }
 
 .img-fluid {
@@ -72,7 +72,7 @@ button {
 }
 
 .main-title {
-    color: white;
+    color: black;
     font-size: 34px;
     font-family: "Mark Pro", Arial, sans-serif;
     font-weight: 700;
@@ -85,6 +85,19 @@ button {
     text-align: center;
 }
 
+.main-title2 {
+    color: snow;
+    font-size: 34px;
+    font-family: "Mark Pro", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    text-align: center;
+}
 .main-text {
     max-width: 800px;
     margin: auto;
@@ -92,7 +105,7 @@ button {
     font-family: 'Mark Pro',Arial,sans-serif;
     font-size: 20px;
     line-height: 1.6;
-    color: whitesmoke;
+    color: black;
     text-align: justify;
 }
 
@@ -114,7 +127,7 @@ button {
 }
 
 .main-title-year {
-    color: white;
+    background: linear-gradient(to right, rgba(255, 213, 234, 0.4) 0%, rgba(0, 0, 139, 1) 50%, rgba(255, 213, 234, 0.4) 100%);
     font-size: 25px;
     font-family: "Mark Pro", Arial, sans-serif;
     font-weight: 700;
@@ -125,6 +138,7 @@ button {
     margin-top: 80px;
     margin-bottom: 30px;
     text-align: center;
+    color:snow;
 }
 
 .carousel-item img {
@@ -140,12 +154,23 @@ button {
 }
 
 .works-each-year{
-    background-color: white;
+    border:0px!important;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.home-titles{
-    padding:20px;
-    color:white;
+.home-titles {
+    color: black;
+    font-size: 34px;
+    font-family: "Mark Pro", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .img-fixed-height {
@@ -163,4 +188,12 @@ button {
 
 .see-more-button:hover {
     background-color: rgba(30, 30, 30, 1);
+}
+
+.kid-name{
+    color:black;
+}
+.home-logo{
+    width:auto;
+    height:95px;
 }

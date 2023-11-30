@@ -28,7 +28,9 @@
 .card-text {
     font-size: 16px;
 }
-
+.award-img{
+    margin-bottom: 15px;
+}
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -45,4 +47,24 @@
     .card-text {
         font-size: 14px;
     }
+}
+.awards-intro-title{
+    color: black;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.awards-intro{
+    padding: 20px;
+    margin: 40px 20px 40px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: rgba(255, 213, 234, 0.3);
+}
+
+.awards-years{
+    padding: 20px;
+    margin: 40px 20px 40px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: rgba(255, 213, 234, 0.3);
 }
