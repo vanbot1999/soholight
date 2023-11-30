@@ -11,8 +11,8 @@ public class AwardService {
 
     public List<Award> getAllAwards() {
         return Arrays.asList(
-                new Award("1", "Best Innovation", "2021-01-01", "Award for the best innovative product of the year.", "image_url_1"),
-                new Award("2", "Top Performer", "2021-02-01", "Award for outstanding performance.", "image_url_2"),
-                new Award("3", "Best Design", "2021-03-01", "Award for the best design in the industry.", "image_url_3"));
+                new Award("1", "2021", "2021-01-01", "description text here", "image_url_1"),
+                new Award("2", "2022", "2022-02-01", "description text here", "image_url_2"),
+                new Award("3", "2023", "2023-03-01", "description text here", "image_url_3"));
     }
 }
