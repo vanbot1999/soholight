@@ -12,22 +12,20 @@ h2, h3 {
     color: #333;
 }
 
-.view-all{
-    background-color: darkred;
+.view-all-button {
+    background-color: rgba(50, 50, 50, 1);
     color: white;
     border: none;
-    padding: 10px 15px;
     border-radius: 10px;
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
-    width: 500px;
+    width: 85%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.view-all:hover .view-all-inner{
-    background-color: white;
-    color: darkred;
-    transform: rotateX(180deg);
+.view-all-button:hover {
+    background-color: rgba(30, 30, 30, 1);
 }
 
 button {
@@ -42,18 +40,20 @@ button {
 .kids-light-show{
     width: 100%;
     padding: 20px;
-    margin: 20px;
+    margin: 40px 20px 40px 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+    background-color: rgba(73,73,73,1)
 }
 
 .home-cards{
     width: 100%;
     padding: 20px;
-    margin: 20px;
+    margin: 40px 20px 40px 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
-    background-color:white;
+    background-color: rgba(73,73,73,1);
+    color: white;
 }
 
 .img-fluid {
@@ -145,4 +145,22 @@ button {
 
 .home-titles{
     padding:20px;
+    color:white;
+}
+
+.img-fixed-height {
+    height: 250px!important;
+    object-fit: cover!important;
+    width: 100%;
+    padding: 1.25rem;
+}
+
+.see-more-button{
+    background-color: rgba(50, 50, 50, 1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border:0;
+}
+
+.see-more-button:hover {
+    background-color: rgba(30, 30, 30, 1);
 }

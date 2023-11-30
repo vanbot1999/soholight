@@ -12,15 +12,16 @@
     <link rel="stylesheet" type="text/css" href="home.css">
     <link rel="stylesheet" type="text/css" href="paintingShow.css">
 </head>
-<body style="background-color: rgba(255,255,217,0.5)">
-<div th:replace="~{fragments/header :: headerBlock}"/></div>
+<body>
+<div th:replace="~{fragments/header :: headerBlock}"/>
 <div id="carouselExample" class="carousel slide" data-ride="carousel">
 
     <div class="carousel-inner">
 
         <!-- Image carousel item 1 -->
         <div class="carousel-item active">
-            <img src="homepageBackgroundImage.png" class="d-block w-100" alt="Step 2" style="height: 540px ;width: auto">
+            <img src="homepageBackgroundImage.png" class="d-block w-100" alt="Step 2"
+                 style="height: 540px ;width: auto">
             <div class="carousel-caption">
                 <h1 class="main-title">The child-designed light project returns to the streets of Soho for 2023!</h1>
             </div>
@@ -45,76 +46,88 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<div class="container" >
+<div class="container">
 
-    <section class="row justify-content-center kids-light-show" style="background-color: rgba(73,73,73,1)">
-        <h1 class="main-title">Works submitted and awarded over the years</h1>
-        <p class="main-text">Award winning Architecture for Kids CIC presents its annual Soho Kids Xmas Lights project showcasing the designs of pupils from Soho Parish Primary School.
+    <section class="kids-light-show">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h1 class="main-title">Works submitted and awarded over the years</h1>
+                <p class="main-text">Award winning Architecture for Kids CIC presents its annual Soho Kids Xmas Lights
+                    project
+                    showcasing the designs of pupils from Soho Parish Primary School.
 
-            The children designed the Christmas street lighting in keeping with this year's theme of lighting, identity of place, and fashion - inspired by their local area, which also offers an invitation to the entire community to engage and to reflect on the importance of the identity of a place and its development.
+                    The children designed the Christmas street lighting in keeping with this year's theme of lighting,
+                    identity
+                    of place, and fashion - inspired by their local area, which also offers an invitation to the entire
+                    community to engage and to reflect on the importance of the identity of a place and its development.
 
-        </p>
-        <button class="view-all">view more kids works>>></button>
-        <div class="col-md-12">
-
-            <h3 class="main-title-year">2021</h3>
-            <div id="kids-2021" class="row border p-3 mb-4 works-each-year">
-                <!-- Items for 2021 will go here -->
-            </div>
-            <h3 class="main-title-year">2022</h3>
-            <div id="kids-2022" class="row border p-3 mb-4 works-each-year">
-                <!-- Items for 2022 will go here -->
-            </div>
-            <h3 class="main-title-year">2023</h3>
-            <div id="kids-2023" class="row border p-3 mb-4 works-each-year">
-                <!-- Items for 2023 will go here -->
+                </p>
+                <div class="d-flex justify-content-center">
+                    <button class="view-all-button">view more kids works>>></button>
+                </div>
             </div>
 
+            <div class="col-md-10">
+                <h3 class="main-title-year">2021</h3>
+                <div id="kids-2021" class="row border p-3 mb-4 works-each-year">
+                    <!-- Items for 2021 will go here -->
+                </div>
+                <h3 class="main-title-year">2022</h3>
+                <div id="kids-2022" class="row border p-3 mb-4 works-each-year">
+                    <!-- Items for 2022 will go here -->
+                </div>
+                <h3 class="main-title-year">2023</h3>
+                <div id="kids-2023" class="row border p-3 mb-4 works-each-year">
+                    <!-- Items for 2023 will go here -->
+                </div>
+            </div>
         </div>
     </section>
 
 
-    <section class="row justify-content-center home-cards">
-        <div class="row">
-            <h2 class="home-titles">LEARN ABOUT US</h2>
-        </div>
-        <div class="row">
-        <div class="col-md-4">
-            <div class="vision" style="width: 18rem;">
-                <img src="test2.png" class="card-img-top" alt="test2.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Purpose of activity</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">See more</a>
+    <section class="home-cards">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="home-titles text-center">LEARN ABOUT US</h2>
+                <div class="col-md-12 row justify-content-center">
+                    <div class="vision col-md-4">
+                        <img src="test2.png" class="card-img-top img-fluid img-fixed-height" alt="test2.png">
+                        <div class="card-body">
+                            <h5 class="card-title">Purpose of activity</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                                of
+                                the card's content.</p>
+                            <a href="#" class="btn btn-primary see-more-button">See more</a>
+                        </div>
+                    </div>
+                    <div class="vision col-md-4">
+                        <img src="test1.jpg" class="card-img-top img-fluid img-fixed-height" alt="test1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">Creator's vision </h5>
+                            <p class="card-text">Some quick example text to build on the Creator's vision and make up
+                                the
+                                bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary see-more-button">See more</a>
+                        </div>
+                    </div>
+                    <div class="vision col-md-4">
+                        <img src="test1.jpg" class="card-img-top img-fluid img-fixed-height" alt="test1.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">Creator's vision </h5>
+                            <p class="card-text">Some quick example text to build on the Creator's vision and make up
+                                the
+                                bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary see-more-button">See more</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="vision" style="width: 18rem;">
-                <img src="test1.jpg" class="card-img-top" alt="test1.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Creator's vision </h5>
-                    <p class="card-text">Some quick example text to build on the Creator's vision and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">See more</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="vision" style="width: 18rem;">
-                <img src="test1.jpg" class="card-img-top" alt="test1.jpg">
-                <div class="card-body">
-                    <h5 class="card-title">Creator's vision </h5>
-                    <p class="card-text">Some quick example text to build on the Creator's vision and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">See more</a>
-                </div>
-            </div>
-        </div>
         </div>
     </section>
 
 </div>
 
-<div th:replace="~{fragments/footer :: footerBlock}"/></div>
+<div th:replace="~{fragments/footer :: footerBlock}"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
