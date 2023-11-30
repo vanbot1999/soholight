@@ -1,10 +1,21 @@
-
-.custom-box {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+.register-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.center-box {
-    top: 50%;
-    left: 50%;
+.login-button {
+    width: calc(100% - 20px);
+    height:40px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 213, 234, 0.5);
+    color: black;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-button:hover {
+    background-color: rgba(255, 213, 234, 0.8);
 }

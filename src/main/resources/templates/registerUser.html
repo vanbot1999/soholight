@@ -15,12 +15,12 @@
     <link rel="stylesheet" type="text/css" href="home.css">
     <link rel="stylesheet" href="registerUser.css">
 </head>
-<body>
-<div th:replace="~{fragments/header :: headerBlock}"/></div>
+<body  class="d-flex flex-column min-vh-100">
+<div th:replace="~{fragments/header :: headerBlock}"/>
 
-<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+<section class="container flex-grow-1 register-area">
 
-    <form class="row g-3 custom-box center-box mt-2"  action="/register" method="post" modelAttribute="user">
+    <form class="row g-3 custom-box center-box mt-2 justify-content-center"  action="/register" method="post" modelAttribute="user">
         <h2>Register</h2>
         <div class="col-md-6">
             <label for="firstName" class="form-label">First Name</label>
@@ -56,11 +56,11 @@
         </div>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <button type="submit" class="btn btn-primary login-button">Sign in</button>
         </div>
     </form>
-</div>
-<div th:replace="~{fragments/footer :: footerBlock}"/></div>
+</section>
+<div th:replace="~{fragments/footer :: footerBlock}"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
