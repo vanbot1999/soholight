@@ -30,6 +30,6 @@ public class UserRegistrationController {
     public ModelAndView registerUser(@ModelAttribute("user") User user){
         System.out.println(user);
         userRegistrationService.registerUser(user);
-        return new ModelAndView("login");
+        return new ModelAndView("adminLogin");
     }
 }
