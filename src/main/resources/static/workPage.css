@@ -13,7 +13,7 @@
     margin-left: -100px;
 }
 .text-area-form {
-    margin-top: 20px; /* 调整表单的顶部外边距 */
+    margin-top: 20px;
 }
 
 .text-area-form textarea {
@@ -26,15 +26,14 @@
     margin-top: 20px;
 }
 
-/* 调整以适应其他信息的样式 */
 .info-text {
-    margin-top: 20px; /* 增加顶部外边距将文本下移 */
+    margin-top: 20px;
 }
 #GG{
     margin-bottom: 100px;
 }
 .comment-box {
-    background-color: white;
+    background-color: rgba(255, 213, 234, 0.3);
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
