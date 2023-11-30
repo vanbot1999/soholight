@@ -33,7 +33,7 @@ body{
 #backToTopBtn {
     display: none;
     position: fixed;
-    bottom: 30px;
+    bottom: 68px;
     right: 30px;
     z-index: 99;
     border: none;
