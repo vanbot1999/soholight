@@ -85,6 +85,19 @@ button {
     text-align: center;
 }
 
+.main-title2 {
+    color: snow;
+    font-size: 34px;
+    font-family: "Mark Pro", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    text-align: center;
+}
 .main-text {
     max-width: 800px;
     margin: auto;

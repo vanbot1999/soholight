@@ -10,7 +10,7 @@
 <img src="logo.png" alt="Logo" class="login-logo">
 <div class="login-wrapper">
     <div class="login-content">
-       <h1>AdminLogin</h1>
+       <h1>Login</h1>
         <form id="loginForm" action="/home" method="post">
             <div class="input-group">
                 <label for="userId">UserID</label>
@@ -21,6 +21,8 @@
                 <input type="password" name="password" id="password" required>
             </div>
             <button type="submit" id="loginButton">Login</button>
+            <label>No Accounts?</label>
+            <label class="GotoRE" onclick="location.href='/register'">Go to Register>>></label>
         </form>
     </div>
 
