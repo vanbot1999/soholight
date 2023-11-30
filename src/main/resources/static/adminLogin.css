@@ -1,9 +1,5 @@
 .login-wrapper {
-    background: #fff;
-    padding: 20px;
     border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .login-content {
@@ -18,7 +14,7 @@
 
 
 .input-group {
-    margin-bottom: 15px;
+   margin-bottom: 15px;
 }
 
 .input-group label {
@@ -29,23 +25,25 @@
 .input-group input {
     width: calc(100% - 20px);
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid black;
     border-radius: 4px;
+    background-color: white;
 }
 
 #loginButton {
-    width: 100%;
-    padding: 10px;
+    width: calc(100% - 20px);
+    height:40px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
-    color: white;
+    background-color: rgba(255, 213, 234, 0.5);
+    color: black;
     cursor: pointer;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #loginButton:hover {
-    background-color: #0056b3;
+    background-color: rgba(255, 213, 234, 0.8);
 }
 
 #loginStatus {
@@ -53,6 +51,7 @@
 }
 .GotoRE{
     color: blue;
+    cursor: pointer;
 }
 
 .custom-bg {
@@ -138,4 +137,10 @@ body{
 /* Styling for the back to top button on hover */
 #backToTopBtn:hover {
     background-color: black!important;
+}
+
+.login-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
