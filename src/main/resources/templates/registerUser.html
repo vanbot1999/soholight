@@ -23,10 +23,11 @@
     <script src="/js/aboutUs.js"></script>
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+
 <div th:replace="~{fragments/header :: headerBlock}"/>
 
-<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+<section class="container flex-grow-1 register-area">
 
     <form class="row g-3 custom-box center-box my-2 shadow-lg p-3 mb-5 bg-white rounded" action="/register" method="post" modelAttribute="user">
         <h2>Register</h2>
@@ -71,16 +72,20 @@
                    onkeyup="enableSubmit();validatePassword()">
         </div>
         <div id="result" class="mt-4">
-            <div class="alert alert-danger hide-element" id="passwordError" role="alert">Password and Confirm Password is not matching</div>
-<!--            <div class="alert alert-danger invisible" id="signInError" role="alert">Enter all the details</div>-->
+            <div class="alert alert-danger hide-element" id="passwordError" role="alert">Password and Confirm Password
+                is not matching
+            </div>
         </div>
         <div class="col-12">
-<!--            <div onclick="validateForm()">-->
-                <button type="submit" class="btn btn-primary" id="submitButton" disabled>Sign in</button>
-<!--            </div>-->
+            <button type="submit" class="btn btn-primary login-button">Sign in</button>
         </div>
     </form>
-</div>
+</section>
 <div th:replace="~{fragments/footer :: footerBlock}"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/aboutUs.js"></script>
 </body>
 </html>
