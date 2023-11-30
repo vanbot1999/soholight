@@ -21,5 +21,8 @@
     background-color: cornflowerblue;
     margin-left: 20px;
     vertical-align: middle; /
-
+}
+.headerBrand
+{
+    margin-right: 20px;
 }
