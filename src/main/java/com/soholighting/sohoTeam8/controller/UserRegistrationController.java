@@ -27,9 +27,9 @@ public class UserRegistrationController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user){
+    public ModelAndView registerUser(@ModelAttribute("user") User user){
         System.out.println(user);
         userRegistrationService.registerUser(user);
-        return "redirect:/login";
+        return new ModelAndView("login");
     }
 }
