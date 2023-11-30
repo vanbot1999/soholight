@@ -21,7 +21,7 @@ public class UserRegistrationController {
     @Autowired
     private UserRegistrationService userRegistrationService;
 
-    @GetMapping("/joinUs")
+    @GetMapping("/register")
     public ModelAndView registerUserForm() {
         return new ModelAndView("registerUser");
     }
