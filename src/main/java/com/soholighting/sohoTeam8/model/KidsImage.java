@@ -6,9 +6,12 @@ public class KidsImage {
     private int age;
     private String description;
 
-    private  String url;
-    private  String sourceUrl;
-    private  String issueDate;
+    private String url;
+    private String sourceUrl;
+    private String issueDate;
+
+    public KidsImage() {
+    }
 
     public KidsImage(int id, String name, int age, String description, String url, String sourceUrl, String issueDate) {
         this.img_id = id;

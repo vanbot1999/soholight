@@ -10,51 +10,56 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="sponsors.css">
 </head>
 <body>
-<div th:replace="~{fragments/header :: headerBlock}"/></div>
+<div th:replace="~{fragments/header :: headerBlock}"/>
 
 <div class="container">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h1>Sponsors</h1>
-        </div>
-    </div>
-    <div class="row">
-        <!-- Iterate over sponsors and display them -->
-        <div th:each="sponsor : ${sponsors}" class="col-md-2">
-            <div class="card sponsor-card">
-            <div class="card">
-                <!-- Make the image a clickable link -->
-                <a th:href="${sponsor.alt}" target="_blank">
-                    <img th:src="@{${sponsor.image}}" class="card-img-top" th:alt="${sponsor.alt}">
-                </a>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 text-center">
-            <h1>Special Thanks</h1>
-        </div>
-    </div>
-    <div class="row">
-        <!-- Iterate over special thanks and display them -->
-        <div th:each="Thanks: ${specialThanksList}" class="col-md-2">
-            <div class="card sponsor-card">
-                <div class="card">
-                    <!-- Make the image a clickable link -->
-                    <a th:href="${Thanks.alt}" target="_blank">
-                        <img th:src="@{${Thanks.image}}" class="card-img-top" th:alt="${Thanks.alt}">
-                    </a>
+    <section class="sponsors">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="text-center">Sponsors</h2>
+                <div class="row justify-content-center col-md-12">
+                    <div th:each="sponsor : ${sponsors}" class="col-md-2">
+                        <div class="card sponsor-card">
+                            <div class="card">
+                                <!-- Make the image a clickable link -->
+                                <a th:href="${sponsor.alt}" target="_blank">
+                                    <img th:src="@{${sponsor.image}}" class="card-img-top" th:alt="${sponsor.alt}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+    <section class="special-thanks">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="text-center">Special Thanks</h2>
+                <div class="row justify-content-center col-md-12">
+                    <!-- Iterate over special thanks and display them -->
+                    <div th:each="Thanks: ${specialThanksList}" class="col-md-2">
+                        <div class="card sponsor-card">
+                            <div class="card">
+                                <!-- Make the image a clickable link -->
+                                <a th:href="${Thanks.alt}" target="_blank">
+                                    <img th:src="@{${Thanks.image}}" class="card-img-top" th:alt="${Thanks.alt}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-    </div>
-    </div>
-</div>
-<div th:replace="~{fragments/footer :: footerBlock}"/></div>
+<div th:replace="~{fragments/footer :: footerBlock}"/>
+<!-- Back to Top Button -->
+<button id="backToTopBtn" title="Go to top">Top</button>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

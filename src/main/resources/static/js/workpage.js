@@ -6,21 +6,21 @@
         $('#commentForm').submit(function(e) {
             e.preventDefault();
 
-            let imageId = $('input[name="imageId"]').val();
-            let commentText = $('#commentText').val();
+            let image_id = $('input[name="imageId"]').val();
+            let content = $('#commentText').val();
 
             $.ajax({
                 url: $(this).attr('action'),
                 type: 'POST',
                 data: {
-                    imageId: imageId,
-                    commentText: commentText
+                    image_id: image_id,
+                    content: content
                 },
                 success: function(response) {
                     console.log('Comment added:', response);
                     $('#commentText').val('');
                     $('#commentForm').hide();
-                    loadComments(imageId);
+                    loadComments(image_id);
                 },
                 error: function(xhr, status, error) {
                     alert('Error adding comment: ' + error);
