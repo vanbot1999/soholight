@@ -20,4 +20,8 @@
     <select id="findCommentsByImageId" parameterType="java.lang.Integer" resultType="com.soholighting.sohoTeam8.model.Comments">
         SELECT * FROM Comment WHERE image_id = #{image_id}
     </select>
+    <select id="addKidsImage" resultType="com.soholighting.sohoTeam8.model.KidsImage">
+        INSERT INTO KidsImage (img_id, name, age, description,url,sourceUrl,issueDate)
+        VALUES (#{kidsImage.img_id}, #{kidsImage.name}, #{kidsImage.age},#{kidsImage.description},#{kidsImage.url},#{kidsImage.sourceUrl},#{kidsImage.issueDate})
+    </select>
 </mapper>
