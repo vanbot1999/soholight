@@ -51,13 +51,18 @@ function fetchAndDisplayKids() {
         let userId = getCookie('user');
         let welcomeMessage = document.getElementById('welcomeMessage');
         let logoutButton = document.getElementById('logoutButton');
-
+        let loginLink = document.getElementById('loginLink');
+        let registerLink = document.getElementById('registerLink');
         if(userId) {
             welcomeMessage.innerHTML = 'Welcome, ' + userId;
             logoutButton.style.display = 'inline-block';
+            loginLink.style.display = 'none';
+            registerLink.style.display = 'none';
         } else {
             welcomeMessage.innerHTML = 'Please Sign in';
             logoutButton.style.display = 'none';
+            loginLink.style.display = 'inline';
+            registerLink.style.display = 'inline';
         }
     };
 
