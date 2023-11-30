@@ -1,4 +1,11 @@
-.register-area{
+.custom-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-area {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,7 +13,7 @@
 
 .login-button {
     width: calc(100% - 20px);
-    height:40px;
+    height: 40px;
     border: none;
     border-radius: 4px;
     background-color: rgba(255, 213, 234, 0.5);
@@ -19,13 +26,16 @@
 .login-button:hover {
     background-color: rgba(255, 213, 234, 0.8);
 }
+
 .center-box {
     top: 50%;
     left: 50%;
 }
-.display-element{
+
+.display-element {
     display: block;
 }
-.hide-element{
+
+.hide-element {
     display: none;
 }
