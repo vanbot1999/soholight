@@ -14,4 +14,5 @@ public interface KidsImageMapper {
     void insertComment(@Param("comment") Comments comment);
     List<Comments> findCommentsByImageId(@Param("image_id") int image_id);
     List<Comments> findComment();
+    void insertKidsImage(@Param("kidsImage") KidsImage kidsImage);
 }
