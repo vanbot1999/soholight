@@ -1,6 +1,5 @@
 function submitForm() {
-    var formData = $('#imageForm').serialize();
-
+    const formData = $('#imageForm').serialize();
     $.ajax({
         type: 'POST',
         url: '/admin/addImage',
@@ -13,4 +12,19 @@ function submitForm() {
             console.error('Error:', error);
         }
     });
+}
+function enableSubmit(){
+    let img_id = document.getElementById("img_id").value;
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let description = document.getElementById("description").value;
+    let url = document.getElementById("img_id").value;
+    let sourceUrl = document.getElementById("sourceUrl").value;
+    let issueDate = document.getElementById("issueDate").value;
+    let submitButton = document.getElementById("submitButton");
+    if(img_id === ''|| name === ''||age === ''||description === ''||url === ''||sourceUrl === ''||issueDate === ''){
+        submitButton.disabled = true;
+    }else{
+        submitButton.disabled = false;
+    }
 }
