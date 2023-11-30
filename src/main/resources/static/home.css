@@ -179,26 +179,3 @@ button {
 .kid-name{
     color:black;
 }
-
-/* Styling for the back to top button */
-#backToTopBtn {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-/* Styling for the back to top button on hover */
-#backToTopBtn:hover {
-    background-color: black;
-}
