@@ -1,34 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="adminLogin.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="common.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body style="background-color: rgba(255,255,217,0.3)">
-<img src="logo.png" alt="Logo" class="login-logo">
-<div class="login-wrapper">
-    <div class="login-content">
-       <h1>Login</h1>
-        <form id="loginForm" action="/home" method="post">
-            <div class="input-group">
-                <label for="userId">UserID</label>
-                <input type="text" name="userId" id="userId" required>
+<body>
+<div th:replace="~{fragments/header :: headerBlock}"/>
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="login-wrapper col-md-4">
+            <div class="login-content text-center">
+                <h1>Login</h1>
+                <form id="loginForm" action="/home" method="post">
+                    <div class="input-group">
+                        <label for="userId">UserID</label>
+                        <input type="text" name="userId" id="userId" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required>
+                    </div>
+                    <button type="submit" id="loginButton">Login</button>
+                    <label>No Accounts?</label>
+                    <label class="GotoRE" onclick="location.href='/register'">Go to Register>>></label>
+                </form>
             </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
-            </div>
-            <button type="submit" id="loginButton">Login</button>
-            <label>No Accounts?</label>
-            <label class="GotoRE" onclick="location.href='/register'">Go to Register>>></label>
-        </form>
+
+        </div>
     </div>
+</section>
 
-</div>
 <div id="loginStatus"></div>
-
+<div th:replace="~{fragments/footer :: footerBlock}"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
