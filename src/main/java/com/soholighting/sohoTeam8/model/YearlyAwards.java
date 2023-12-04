@@ -4,25 +4,26 @@ import java.util.List;
 
 public class YearlyAwards {
     private String year;
-    private List<Award> awards;
+    private List<YearlyAwardCategory> awardCategories;
 
-    // Constructor
-    public YearlyAwards(String year, List<Award> awards) {
+    public YearlyAwards(String year, List<YearlyAwardCategory> awardCategories) {
         this.year = year;
-        this.awards = awards;
+        this.awardCategories = awardCategories;
     }
 
-    // Getters and setters
     public String getYear() {
         return year;
     }
+
     public void setYear(String year) {
         this.year = year;
     }
-    public List<Award> getAwards() {
-        return awards;
+
+    public List<YearlyAwardCategory> getAwardCategories() {
+        return awardCategories;
     }
-    public void setAwards(List<Award> awards) {
-        this.awards = awards;
+
+    public void setAwardCategories(List<YearlyAwardCategory> awardCategories) {
+        this.awardCategories = awardCategories;
     }
 }
