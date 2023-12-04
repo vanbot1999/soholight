@@ -14,48 +14,54 @@
     <link rel="stylesheet" href="awards.css">
 </head>
 <body>
-<div th:replace="~{fragments/header :: headerBlock}"/>
+<div th:replace="~{fragments/header :: headerBlock}"></div>
 <div class="container">
-
-    <section>
-        <h2>RIBA Awards</h2>
-        <p>RIBA Learning Is very excited of the
-            Soho Kids Xmas Lights project. ect
-
-            ives chil portunity to explore their
-
-            if , learn about lighting design,
-
-            ig ity to design their own lights
-            see their accomplishments celebrated in
-            incredible lights which are made and
-            displayed on their loc al streets. Giving children
-            these opportunities aN only vital to enabling
-            them to learn about the spaces where they
-            live, learn and play but it also helps them to
-            realise their creative potential whilst bringing
-            joy and light to their community.</p>
-    </section>
-
-    <div th:each="yearlyAwards : ${allYearlyAwards}">
-        <section class="award-section">
-            <h2 th:text="${yearlyAwards.year}">2022 RIBA WINNERS</h2>
-            <div th:each="awardCategory : ${yearlyAwards.awardCategories}" class="award-category">
-                <h3 th:text="${awardCategory.categoryTitle}">最佳色彩和光影集合</h3>
-                <div th:each="award : ${awardCategory.awards}">
-                    <img th:src="@{${award.winnerImage}}" alt="获奖作品图片" class="award-image">
-                    <div class="winner-info">
-                        <h4 th:text="${award.winnerName}">获奖者姓名</h4>
-                        <p th:text="${award.winnerBackground}">获奖者背景</p>
-                        <p th:text="${award.winnerSpeech}">获奖感言</p>
+    <div class="row justify-content-center">
+        <section class="col-md-10 text-center mt-5 mb-5">
+            <h2>RIBA Awards</h2>
+            <p>RIBA Learning is very excited to be the part of the Soho Kids Xmas Lights project. The project gives
+                children the opportunity to explore their local architecture, learn about lighting design,
+                use their creativity to design their own lights and see their accomplishments celebrated in the
+                incredible lights which are made and
+                displayed on their local streets. Giving children these opportunities is not only vital to enabling
+                them to learn about the spaces where they
+                live, learn and play but it also helps them to
+                realise their creative potential whilst bringing
+                joy and light to their community.</p>
+        </section>
+    </div>
+    <div class="container mt-4">
+        <!-- Loop through each year of awards -->
+        <section th:each="yearlyAwards : ${allYearlyAwards}">
+            <div class="row justify-content-center">
+                <div class="col-md-10 offset-md-1">
+                    <h2 class="text-center mb-3" th:text="${yearlyAwards.year} + ' RIBA WINNERS'">2022 RIBA WINNERS</h2>
+                    <!-- Loop through each award category -->
+                    <div th:each="awardCategory : ${yearlyAwards.awardCategories}" class="text-center">
+                        <h3 th:text="${awardCategory.categoryTitle}">categoryTitle</h3>
+                        <!-- Create a new row for each category -->
+                        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                            <!-- Loop through each award within a category -->
+                            <div th:each="award : ${awardCategory.awards}" class="col mb-4">
+                                <!-- Each award is a card within a column -->
+                                <div class="card h-100">
+                                    <img th:src="@{${award.winnerImage}}" alt="Winner Image" class="card-img-top award-image">
+                                    <div class="card-body">
+                                        <h4 class="card-title" th:text="${award.winnerName}">Winner Name</h4>
+                                        <p class="card-text" th:text="${award.winnerBackground}">Winner Background</p>
+                                        <p class="card-text" th:text="${award.winnerSpeech}">Winner Speech</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
 </div>
-<div th:replace="~{fragments/footer :: footerBlock}"/>
-<!-- Back to Top Button -->
+<div th:replace="~{fragments/footer :: footerBlock}"></div>
 <button id="backToTopBtn" title="Go to top">Top</button>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
