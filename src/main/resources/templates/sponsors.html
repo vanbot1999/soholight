@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="header.css">
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="sponsors.css">
+    <link rel="stylesheet" href="/js/sponsors.js">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <div th:replace="~{fragments/header :: headerBlock}"/>
@@ -55,6 +57,122 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section class="sponsors">
+        <h2 class="home-titles text-center">Our sponsors comment!</h2>
+        <!-- Tab Container -->
+        <div id="tab-container">
+            <div id="tab2023" class="tab active-tab">2021</div>
+            <div id="tab2022" class="tab">2022</div>
+            <div id="tab2021" class="tab">2023</div>
+        </div>
+        <!-- Content Container -->
+        <div id="content-container" class="position-relative">
+            <div id="content2023" class="content" style="display:block;">
+                <p class="sponsorcomment">We are all delighted to be able to support the Soho Parish Christmas light project and will always play an active and supporting part in the local Soho
+                    community. Christmas is such a special and magical time of the year for children and to see their artwork up in lights throughout Soho will be a wonderful and memorable gift.</p>
+            </div>
+            <div id="content2022" class="content" style="display:none;">
+                <p class="sponsorcomment">The Soho Business Alliance(SBA) is extremely proud to extend its support to the local Soho Parish Primary School this year with our membership coming together at the 11th hour to raise the
+
+                sponsorship to switch on the Soho Kids Xmas Lights. The illustrated illuminated LED lights, designed by the local children is in its 2nd year led by architect Antonio Capelao. It is a wonderful community centred addition to Soho for the season, which we are
+
+                pleased to help facilitate.The SBA is an organisation that exists to give a unified voice and representation to businesses and people doing business in Soho- and to help make Soho better for ALL.
+                </p>
+            </div>
+            <div id="content2021" class="content" style="display:none;">
+                <p class="sponsorcomment">
+                    waiting for more sponsors comment
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="sponsors">
+        <h2 class="home-titles text-center">Sponsorship Amount</h2>
+        <div class="container mt-5">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+        <script>
+            const data = {
+                labels: ['2021', '2022', '2023'], // year
+                datasets: [{
+                    label: 'Sponsorship Amount',
+                    data: [62000, 43000, 60000], // amount
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 205, 86, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            };
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            };
+            // create the chart
+            const myChart = new Chart(document.getElementById('myChart'), config);
+        </script>
+    </section>
+    <section class="sponsors">
+
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <h2 class="home-titles text-center">HELP US</h2>
+                    <div class="col-md-12 row justify-content-center">
+                        <div class="vision col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Level 1</h5>
+                                <p class="sponsor-amount">$10000</p>
+                                <p class="card-text">Cover the cost for the production and installation of 6 street light panels. We will promote your sponsorship by using your logo in all our promotional materials: banners, press releases, websites, and social media posts. Your logo will also be displayed on the lamp posts where the lighting panels are installed (with QR code).</p>
+                                <a href="#" class="btn btn-primary see-more-button">Explore Level 1</a>
+                            </div>
+                        </div>
+                        <!-- Add similar blocks for other sponsorship levels -->
+                        <div class="vision col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Level 2</h5>
+                                <p class="sponsor-amount">$5000</p>
+                                <p class="card-text">·will cover the cost for the production and installation of 3 street light panels
+                                    ·we will promote your sponsorship by using your logo in our promo material banners, press release,an targeted social media post (targeted promo printed an digital matter), and lamp posts where the lighting panels are installed (QR code)</p>
+                                <a href="#" class="btn btn-primary see-more-button">Explore Level 2</a>
+                            </div>
+                        </div>
+                        <div class="vision col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Level 3</h5>
+                                <p class="sponsor-amount">$2500</p>
+                                <p class="card-text"> ﻿
+                                    will cover the cost for the
+                                    production of 2 street light panels. we will promote your
+                                    sponsorship by using your
+                                    logo in the press release,
+                                    and social media posts
+                                    featuring the artwork and
+                                    the lights you sponsored,
+                                    and lamp posts where the
+                                    lighting panels are installed (with QR code).</p>
+                                <a href="#" class="btn btn-primary see-more-button">Explore Level 3</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     </section>
 </div>
 <div th:replace="~{fragments/footer :: footerBlock}"/>
