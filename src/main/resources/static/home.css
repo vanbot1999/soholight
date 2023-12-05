@@ -225,3 +225,7 @@ button {
     max-height: 100%;
     object-fit: contain;
 }
+
+.home-h4{
+    margin-bottom:40px;
+}
