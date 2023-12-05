@@ -26,3 +26,24 @@
     background-color: rgba(255, 213, 234, 0.3);
     color:rgba(73,73,73,1);
 }
+
+#tab-container {
+    display: flex;
+}
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 213, 235, 0.8);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+.tab:hover {
+    background-color: rgba(255, 213, 234, 0.8);
+}
+.active-tab {
+    background-color: rgba(255, 197, 227, 0.8);
+}
+.sponsorcomment{
+    font-size: 20px;
+}
