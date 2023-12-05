@@ -25,4 +25,9 @@ public class WebController {
     public String adminlogin() {
         return "AdminLogin";
     }
+
+    @GetMapping("/legacy")
+    public String gotoLegacy() {
+        return "legacy";
+    }
 }
