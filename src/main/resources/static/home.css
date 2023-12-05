@@ -267,13 +267,13 @@ button {
     cursor: pointer;
 }
 .image-container:hover .speech-bubble {
-    transform: scale(1); /* 鼠标悬停时气泡框从小变大 */
+    transform: scale(1);
 }
-/* 气泡框的基本样式 */
+
 .speech-bubble {
     position: absolute;
-    min-width: 100px; /* 最小宽度 */
-    max-width: 300px; /* 最大宽度 */
+    min-width: 100px;
+    max-width: 300px;
     padding: 10px;
     background-color: white;
     border: 2px solid #000;
@@ -290,12 +290,12 @@ button {
 }
 
 
-/* 气泡框的小尾巴 */
+
 .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -20px; /* 尾巴的位置 */
-    left: 50px; /* 根据气泡框的实际位置调整 */
+    bottom: -20px;
+    left: 50px;
     border-width: 10px;
     border-style: solid;
     border-color: white transparent transparent transparent;
@@ -303,9 +303,9 @@ button {
 }
 
 
-/* 当图片容器被悬停时显示气泡框 */
+
 .image-container:hover .speech-bubble {
-    visibility: visible; /* 使气泡框可见 */
+    visibility: visible;
     opacity: 1;
 }
 
