@@ -81,35 +81,54 @@ function fetchAndDisplayKids() {
     });
 }
 
+//#65
+function showContent(year) {
+    var contents = document.getElementsByClassName('content');
+    var tabs = document.getElementsByClassName('tab');
+    for (var i = 0; i < contents.length; i++) {
+        contents[i].style.display = 'none';
+        tabs[i].classList.remove('active-tab');
+    }
+    document.getElementById('content' + year).style.display = 'block';
+    document.getElementById('tab' + year).classList.add('active-tab');
+}
+document.addEventListener('DOMContentLoaded', function() {
+    fetchAndDisplayKids();
+    setInterval(fetchAndDisplayKids, 2000);
 
-$(document).ready(function() {
-        fetchAndDisplayKids();
-        setInterval(fetchAndDisplayKids, 2000);
+    var mybutton = document.getElementById("backToTopBtn");
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (mybutton) {
+        window.onscroll = function() { scrollFunction(); };
+        mybutton.onclick = function() { topFunction(); };
+    }
+
+    function showContent(year) {
+        var contents = document.getElementsByClassName('content');
+        var tabs = document.getElementsByClassName('tab');
+        for (var i = 0; i < contents.length; i++) {
+            contents[i].style.display = 'none';
+            tabs[i].classList.remove('active-tab');
+        }
+        document.getElementById('content' + year).style.display = 'block';
+        document.getElementById('tab' + year).classList.add('active-tab');
+    }
+
+    document.getElementById('tab2023').addEventListener('click', function() { showContent('2023'); });
+    document.getElementById('tab2022').addEventListener('click', function() { showContent('2022'); });
+    document.getElementById('tab2021').addEventListener('click', function() { showContent('2021'); });
+
+    showContent('2023');
 });
-
-// Get the #backToTopBtn element on the page.
-var mybutton = document.getElementById("backToTopBtn");
-
-// Execute the scrollFunction function when the window scrolls.
-window.onscroll = function () { scrollFunction() };
-
-function scrollFunction() {
-
-    // Show #backToTopBtn button if the page has scrolled down more than 30 pixels
-    if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-        mybutton.style.display = "block";
-    }
-    // Otherwise, hide the #backToTopBtn button.
-    else {
-        mybutton.style.display = "none";
-    }
-}
-
-// Execute the topFunction function when the #backToTopBtn button is clicked.
-mybutton.onclick = function () { topFunction() };
-
-function topFunction() {
-
-    // Smoothly scroll to the top of the page
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}

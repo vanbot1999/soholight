@@ -197,3 +197,31 @@ button {
     width:auto;
     height:95px;
 }
+
+/*#65*/
+#tab-container {
+    display: flex;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 213, 235, 0.8)
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.tab:hover {
+    background-color: rgba(255, 213, 234, 0.8);
+}
+
+.active-tab {
+    background-color: rgba(255, 197, 227, 0.8);
+}
+
+.yearlyMap {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
