@@ -2,15 +2,18 @@
     height: 100%;
 }
 
+
 .vision img {
     object-fit: cover;
     height: 50%;
 }
 
+
 h2, h3 {
     font-family: 'Arial', sans-serif;
     color: #333;
 }
+
 
 .view-all-button {
     background-color: rgba(50, 50, 50, 1);
@@ -24,9 +27,11 @@ h2, h3 {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+
 .view-all-button:hover {
     background-color: rgba(30, 30, 30, 1);
 }
+
 
 button {
     background-color: #007bff;
@@ -37,6 +42,7 @@ button {
     cursor: pointer;
 }
 
+
 .kids-light-show{
     width: 100%;
     padding: 20px;
@@ -45,6 +51,7 @@ button {
     transition: 0.3s;
     background-color: rgba(255, 213, 234, 0.4);
 }
+
 
 .home-cards{
     width: 100%;
@@ -56,11 +63,13 @@ button {
     color: black;
 }
 
+
 .img-fluid {
     position: relative;
     width: 100%;
     height: auto;
 }
+
 
 .img-overlay {
     position: absolute;
@@ -70,6 +79,7 @@ button {
     color: white;
     text-align: center;
 }
+
 
 .main-title {
     color: black;
@@ -84,6 +94,7 @@ button {
     margin-bottom: 30px;
     text-align: center;
 }
+
 
 .main-title2 {
     color: snow;
@@ -109,22 +120,27 @@ button {
     text-align: justify;
 }
 
+
 .img-hover-zoom {
     transition: transform 0.3s ease;
 }
 
+
 .img-hover-zoom:hover {
     transform: scale(1.3);
 }
+
 
 .kid-name {
     color: #2B2A29;
     font-family: "Mark Pro", Arial, sans-serif;
 }
 
+
 .kid-name:hover {
     text-decoration: underline;
 }
+
 
 .main-title-year {
     background: linear-gradient(to right, rgba(255, 213, 234, 0.4) 0%, rgba(0, 0, 139, 1) 50%, rgba(255, 213, 234, 0.4) 100%);
@@ -141,11 +157,13 @@ button {
     color:snow;
 }
 
+
 .carousel-item img {
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
+
 
 .carousel-caption {
     margin-top: 80px;
@@ -153,11 +171,13 @@ button {
     color: #fff;
 }
 
+
 .works-each-year{
     border:0px!important;
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 .home-titles {
     color: black;
@@ -173,6 +193,7 @@ button {
     text-align: center;
 }
 
+
 .img-fixed-height {
     height: 250px!important;
     object-fit: cover!important;
@@ -180,15 +201,18 @@ button {
     padding: 1.25rem;
 }
 
+
 .see-more-button{
     background-color: rgba(50, 50, 50, 1);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     border:0;
 }
 
+
 .see-more-button:hover {
     background-color: rgba(30, 30, 30, 1);
 }
+
 
 .kid-name{
     color:black;
@@ -198,10 +222,12 @@ button {
     height:95px;
 }
 
+
 /*#65*/
 #tab-container {
     display: flex;
 }
+
 
 .tab {
     flex: 1;
@@ -212,13 +238,16 @@ button {
     cursor: pointer;
 }
 
+
 .tab:hover {
     background-color: rgba(255, 213, 234, 0.8);
 }
 
+
 .active-tab {
     background-color: rgba(255, 197, 227, 0.8);
 }
+
 
 .yearlyMap {
     max-width: 100%;
@@ -226,6 +255,57 @@ button {
     object-fit: contain;
 }
 
+
 .home-h4{
     margin-bottom:40px;
 }
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 150px;
+    cursor: pointer;
+}
+.image-container:hover .speech-bubble {
+    transform: scale(1); /* 鼠标悬停时气泡框从小变大 */
+}
+/* 气泡框的基本样式 */
+.speech-bubble {
+    position: absolute;
+    min-width: 100px; /* 最小宽度 */
+    max-width: 300px; /* 最大宽度 */
+    padding: 10px;
+    background-color: white;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+
+    transform-origin: bottom left;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+    bottom: 60%;
+    left: 80%;
+    width: 900px;
+}
+
+
+/* 气泡框的小尾巴 */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* 尾巴的位置 */
+    left: 50px; /* 根据气泡框的实际位置调整 */
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    margin-left: -10px;
+}
+
+
+/* 当图片容器被悬停时显示气泡框 */
+.image-container:hover .speech-bubble {
+    visibility: visible; /* 使气泡框可见 */
+    opacity: 1;
+}
+
