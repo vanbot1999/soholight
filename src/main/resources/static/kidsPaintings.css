@@ -1,0 +1,26 @@
+.custom-bg {
+    background-color: #2e2e2e;
+}
+.custom-bg .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.custom-bg .navbar-nav .nav-link:hover {
+    color: #cccccc;
+}
+
+.custom-bg .headerBrand  {
+    color: #ffffff;
+}
+#welcomeMessage {
+    color: white;
+    font-size: 20px;
+}
+
+#logoutButton {
+    background-color: cornflowerblue;
+    margin-left: 20px;
+    vertical-align: middle; /
+
+}
+
