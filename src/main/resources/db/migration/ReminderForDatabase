@@ -1,0 +1,4 @@
+Everyone please creates your own table and send your sql migration files to db.migration.yourtablename folder
+Create sql migration files example:
+mariadb -u root -p Soholight < src/main/resources/db//migration/youttablename/V1__Create_tables.sql
+mariadb -u root -p Soholight < src/main/resources/db//migration/youttablename/V2__Insert_data.sql
