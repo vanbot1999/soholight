@@ -13,44 +13,15 @@
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="footer.css">
   <link rel="stylesheet" type="text/css" href="home.css">
-  <link rel="stylesheet" href="registerUser.css">
-  <script src="/js/registerUser.js"></script>
-
+  <link rel="stylesheet" href="donate.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="/js/aboutUs.js"></script>
 
 </head>
 <div th:replace="~{fragments/header :: headerBlock}"/>
-<style>
-  body {
-    background-color: #f8f9fa;
-  }
-
-  .container {
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-
-  .donate-form {
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .rewards-list {
-    list-style: inside;
-    padding: 0;
-  }
-
-  .reward-item {
-    margin-bottom: 10px;
-  }
-</style>
 </head>
-
 <body>
 
 <div class="container donate-form">
@@ -64,11 +35,9 @@
       <h3>How to donate</h3>
       <p>You can donate to this project using the form below. You can choose to make a one-time or a recurring donation, and you can also select a reward from the list of options. All donations are tax-deductible, and you will receive a receipt and a thank-you message via email.</p>
 
-      <!-- Donation Form -->
-      <h4><a href="https://www.gofundme.com/en-gb/c/blog/set-up-donation-page" target="_blank">Donation Form</a></h4>
+       <h5><a href="https://www.gofundme.com/en-gb/c/blog/set-up-donation-page" target="_blank">Donation Form</a></h5>
 
-      <!-- Rewards -->
-      <h3>Rewards</h3>
+      <h5>Rewards</h5>
       <ul class="rewards-list">
         <li class="reward-item">For donations of $25 or more, you will receive a digital certificate of gratitude and a shout-out on our social media channels.</li>
         <li class="reward-item">For donations of $50 or more, you will receive a set of postcards featuring the designs of the lighting panels, as well as the previous rewards.</li>
@@ -76,6 +45,8 @@
         <li class="reward-item">For donations of $250 or more, you will receive an invitation to a private online event where you can meet and chat with Antonio Capelao and the pupils, as well as the previous rewards.</li>
         <li class="reward-item">For donations of $500 or more, you will receive a special mention on the lighting panels as a sponsor, as well as the previous rewards.</li>
       </ul>
+
+      <h6>Thank you for your support and generosity! &#129505</h6>
     </div>
   </div>
 </div>
