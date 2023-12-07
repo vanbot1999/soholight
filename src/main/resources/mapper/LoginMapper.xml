@@ -6,4 +6,9 @@
         FROM UserLogin
         WHERE username = #{username} AND password = #{password}
     </select>
+    <select id="getUserIdByUsername" resultType="java.lang.Integer">
+        SELECT user_id
+        FROM UserLogin
+        WHERE username = #{username}
+    </select>
 </mapper>
