@@ -1,5 +1,6 @@
 package com.soholighting.sohoTeam8.mapper;
 
+import com.soholighting.sohoTeam8.model.AdminAccount;
 import com.soholighting.sohoTeam8.model.Comments;
 import com.soholighting.sohoTeam8.model.KidsImage;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,4 +16,5 @@ public interface KidsImageMapper {
     List<Comments> findCommentsByImageId(@Param("image_id") int image_id);
     List<Comments> findComment();
     void insertKidsImage(@Param("kidsImage") KidsImage kidsImage);
+    AdminAccount getUserLogin(@Param("user_id") String user_id, @Param("password") String password);
 }
