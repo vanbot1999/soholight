@@ -6,30 +6,31 @@ function fetchAndDisplayKids() {
                 dataType: 'json',
                 success: function(kids) {
                     var kidsList = $('#kids-' + year);
-                    kidsList.empty();
-                    kids.forEach(function(kid) {
-                        var imageElement = $('<img />', {
-                            src: kid.url,
-                            alt: "Kid Image",
-                            class: "img-fluid img-hover-zoom",
-                            style: "width:100px; height:auto;",
-                            'data-id': kid.id
-                        }).on('load', function() {
-                            $(this).addClass('loaded');
+                    kidsList.find('.kid').addClass('flipping-out');
+                    setTimeout(function() {
+                        kidsList.empty();
+                        kids.forEach(function(kid) {
+                            var imageElement = $('<img />', {
+                                src: kid.url,
+                                alt: "Kid Image",
+                                class: "img-fluid img-hover-zoom loaded", // 已加载类直接添加
+                                style: "width:100px; height:auto;",
+                                'data-id': kid.id
+                            });
+
+                            var kidElement = $('<div />', {
+                                class: "col-md-4 text-center mb-3 kid flipping-in", // 添加翻入动画类
+                                click: function() {
+                                    window.location.href = '/workpage?imageId=' + kid.id;
+                                }
+                            });
+
+                            kidElement.append(imageElement);
+                            kidElement.append('<p class="mt-auto kid-name"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>');
+
+                            kidsList.append(kidElement);
                         });
-
-                        var kidElement = $('<div />', {
-                            class: "col-md-4 text-center mb-3 kid",
-                            html: imageElement,
-                            click: function() {
-                                window.location.href = '/workpage?imageId=' + kid.id;
-                            }
-                        });
-
-                        kidElement.append('<p class="mt-auto kid-name"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>');
-
-                        kidsList.append(kidElement);
-                    });
+                    }, 500); // 这里的延时应与翻出动画的时间一致
                 },
                 error: function(error) {
                     console.error('Error fetching kids for year ' + year + ':', error);
