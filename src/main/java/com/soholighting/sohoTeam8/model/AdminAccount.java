@@ -1,18 +1,25 @@
 package com.soholighting.sohoTeam8.model;
 
 public class AdminAccount {
-    private String userId;
+    private int user_id;
+    private String username;
     private String password;
 
-    // getter和setter方法
-    public String getUserId() {
-        return userId;
+
+    public int getUserId() {
+        return user_id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserId(int user_id) {
+        this.user_id = user_id;
     }
 
+    public String getUsername(){
+        return  username;
+    }
+    public void setUsername(){
+        this.username=username;
+    }
     public String getPassword() {
         return password;
     }
