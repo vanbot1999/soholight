@@ -16,5 +16,5 @@ public interface KidsImageMapper {
     List<Comments> findCommentsByImageId(@Param("image_id") int image_id);
     List<Comments> findComment();
     void insertKidsImage(@Param("kidsImage") KidsImage kidsImage);
-    AdminAccount getUserLogin(@Param("user_id") String user_id, @Param("password") String password);
+    AdminAccount getUserLogin(@Param("username") String username, @Param("password") String password);
 }

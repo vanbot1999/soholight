@@ -4,6 +4,6 @@
     <select id="getUserLogin" resultType="com.soholighting.sohoTeam8.model.AdminAccount">
         SELECT *
         FROM UserLogin
-        WHERE user_id = #{user_id} AND password = #{password}
+        WHERE username = #{username} AND password = #{password}
     </select>
 </mapper>
