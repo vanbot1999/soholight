@@ -309,3 +309,28 @@ button {
     opacity: 1;
 }
 
+.anchor-menu {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.anchor-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.anchor-menu ul li a {
+    display: block;
+    padding: 5px 10px;
+    color: #007bff;
+    text-decoration: none;
+    text-align: center;
+}
+
+.anchor-menu ul li a:hover {
+    background-color: #f8f9fa;
+    border-radius: 3px;
+}
