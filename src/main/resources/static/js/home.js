@@ -1,82 +1,39 @@
 function fetchAndDisplayKids() {
-        ['2021', '2022', '2023'].forEach(year => {
-            $.ajax({
-                url: '/random-kids/' + year,
-                type: 'GET',
-                dataType: 'json',
-                success: function(kids) {
-                    var kidsList = $('#kids-' + year);
-                    kidsList.find('.kid').addClass('flipping-out');
-                    setTimeout(function() {
-                        kidsList.empty();
-                        kids.forEach(function(kid) {
-                            var imageElement = $('<img />', {
-                                src: kid.url,
-                                alt: "Kid Image",
-                                class: "img-fluid img-hover-zoom loaded", // 已加载类直接添加
-                                style: "width:100px; height:auto;",
-                                'data-id': kid.id
-                            });
-
-                            var kidElement = $('<div />', {
-                                class: "col-md-4 text-center mb-3 kid flipping-in", // 添加翻入动画类
-                                click: function() {
-                                    window.location.href = '/workpage?imageId=' + kid.id;
-                                }
-                            });
-
-                            kidElement.append(imageElement);
-                            kidElement.append('<p class="mt-auto kid-name"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>');
-
-                            kidsList.append(kidElement);
+    ['2021', '2022', '2023'].forEach(year => {
+        $.ajax({
+            url: '/random-kids/' + year,
+            type: 'GET',
+            dataType: 'json',
+            success: function (kids) {
+                var kidsList = $('#kids-' + year);
+                kidsList.find('.kid').addClass('flipping-out');
+                setTimeout(function () {
+                    kidsList.empty();
+                    kids.forEach(function (kid) {
+                        var imageElement = $('<img />', {
+                            src: kid.url,
+                            alt: "Kid Image",
+                            class: "img-fluid img-hover-zoom loaded", // 已加载类直接添加
+                            style: "width:100px; height:auto;",
+                            'data-id': kid.id
                         });
-                    }, 500); // 这里的延时应与翻出动画的时间一致
-                },
-                error: function(error) {
-                    console.error('Error fetching kids for year ' + year + ':', error);
-                }
-            });
-        });
-    function getCookie(name) {
-        let cookieArray = document.cookie.split(';');
-        for(let i = 0; i < cookieArray.length; i++) {
-            let cookiePair = cookieArray[i].split('=');
-            if(name == cookiePair[0].trim()) {
-                return decodeURIComponent(cookiePair[1]);
-            }
-        }
-        return null;
-    }
 
-    window.onload = function() {
-        let userId = getCookie('user');
-        let welcomeMessage = document.getElementById('welcomeMessage');
-        let logoutButton = document.getElementById('logoutButton');
-        let loginLink = document.getElementById('loginLink');
-        let registerLink = document.getElementById('registerLink');
-        if(userId) {
-            welcomeMessage.innerHTML = 'Welcome, ' + userId;
-            logoutButton.style.display = 'inline-block';
-            loginLink.style.display = 'none';
-            registerLink.style.display = 'none';
-        } else {
-            welcomeMessage.innerHTML = 'Please Sign in';
-            logoutButton.style.display = 'none';
-            loginLink.style.display = 'inline';
-            registerLink.style.display = 'inline';
-        }
-    };
+                        var kidElement = $('<div />', {
+                            class: "col-md-4 text-center mb-3 kid flipping-in", // 添加翻入动画类
+                            click: function () {
+                                window.location.href = '/workpage?imageId=' + kid.id;
+                            }
+                        });
 
+                        kidElement.append(imageElement);
+                        kidElement.append('<p class="mt-auto kid-name"> - ID: ' + kid.id + ' <br>- Name: ' + kid.name + ' <br>- Age: ' + kid.age + '</p>');
 
-    $('#logoutButton').click(function() {
-        $.post('/logout', function(data, status) {
-            if (status === 'success') {
-
-                $('#welcomeMessage').html('Please Sign in');
-                $('#logoutButton').hide();
-                window.location = '/Adminlogin';
-            } else {
-                console.error('Logout failed');
+                        kidsList.append(kidElement);
+                    });
+                }, 500); // 这里的延时应与翻出动画的时间一致
+            },
+            error: function (error) {
+                console.error('Error fetching kids for year ' + year + ':', error);
             }
         });
     });
@@ -108,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function topFunction() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 0});
     }
 
     if (mybutton) {

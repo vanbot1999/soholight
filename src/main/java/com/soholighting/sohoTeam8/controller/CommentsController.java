@@ -2,7 +2,10 @@ package com.soholighting.sohoTeam8.controller;
 
 import com.soholighting.sohoTeam8.model.Comments;
 import com.soholighting.sohoTeam8.service.CommentService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,19 +32,38 @@ public class CommentsController {
 
 
     @PostMapping("/addcomment")
-    public String addComment(@RequestParam("image_id") Integer image_id,
-                             @RequestParam("content") String content,
-                             RedirectAttributes redirectAttributes) {
+    public ResponseEntity<?> addComment(@RequestParam("image_id") Integer image_id,
+                                        HttpServletRequest request,
+                                        @RequestParam("content") String content) {
+        String username = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("user".equals(cookie.getName())) {
+                    username = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+        if (username == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User is not logged in.");
+        }
+
+        Integer userId = commentService.getUserIdByUsername(username);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+        }
+        System.out.println(userId);
         Comments comment = new Comments();
         comment.setImageId(image_id);
         comment.setContent(content);
         comment.setCreate_time(new Date());
-        comment.setUserId(12138);
+        comment.setUserId(userId);
+
+        System.out.println(comment);
         commentService.addComment(comment);
-        System.out.println("Image ID: " + image_id);
-        System.out.println("Comment Text: " + content);
 
-
-        return "workpage?imageId=" + image_id;
+        return ResponseEntity.ok("Comment added successfully.");
     }
 }

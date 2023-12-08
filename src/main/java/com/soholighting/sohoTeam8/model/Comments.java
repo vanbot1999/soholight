@@ -18,7 +18,7 @@ public class Comments {
     private Date create_time;
 
 
-    private int userId=12138;
+    private int user_id;
 
     public Comments() {
         // Default constructor
@@ -59,11 +59,11 @@ public class Comments {
     }
 
     public int getUserId() {
-        return userId;
+        return user_id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserId(int user_id) {
+        this.user_id = user_id;
     }
 
     // toString Method
@@ -75,7 +75,7 @@ public class Comments {
                 ", imageId=" + image_id +
                 ", commentText='" + content + '\'' +
                 ", createdAt=" + create_time +
-                ", userId=" + userId +
+                ", userId=" + user_id +
                 '}';
     }
 }

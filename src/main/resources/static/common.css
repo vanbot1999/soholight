@@ -1,27 +1,9 @@
 .container {
-    max-width: 1200px;
-    margin: auto;
     padding: 20px;
 }
 
-.container, .row, .col {
+.container, .col {
     box-sizing: border-box;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.mt-20 {
-    margin-top: 20px;
-}
-
-.mb-20 {
-    margin-bottom: 20px;
-}
-
-.p-20 {
-    padding: 20px;
 }
 
 body{
@@ -50,4 +32,8 @@ body{
 /* Styling for the back to top button on hover */
 #backToTopBtn:hover {
     background-color: black;
+}
+
+html{
+    scroll-behavior: smooth;
 }

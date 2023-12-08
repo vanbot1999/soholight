@@ -32,17 +32,17 @@ public class AdminLoginController {
     }
 
     @PostMapping("/home")
-    public ModelAndView login(@RequestParam String user_id, @RequestParam String password, HttpServletResponse response) {
-        AdminAccount adminAccount = adminAccountService.login(user_id, password);
+    public ModelAndView login(@RequestParam String username, @RequestParam String password, HttpServletResponse response) {
+        AdminAccount adminAccount = adminAccountService.login(username, password);
         System.out.println("fpx");
         if (adminAccount != null) {
-            Cookie cookie = new Cookie("user", user_id);
+            Cookie cookie = new Cookie("user", username);
             cookie.setMaxAge(7 * 24 * 60 * 60);
             cookie.setPath("/");
             response.addCookie(cookie);
 
             ModelAndView modelAndView = new ModelAndView("home");
-            modelAndView.addObject("userID", user_id);
+            modelAndView.addObject("username", username);
             return modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("AdminLogin");
