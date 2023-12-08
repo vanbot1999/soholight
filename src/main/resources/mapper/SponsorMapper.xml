@@ -15,5 +15,8 @@
         INSERT INTO Sponsors (Sponsor_id,name,Url,Sponsor_logo)
         VALUES (#{Sponsors.Sponsor_id}, #{Sponsors.name}, #{Sponsors.Url}, #{Sponsors.Sponsor_logo}}
     </insert>
-
+    <delete id="removeById" parameterType="com.soholighting.sohoTeam8.model.Sponsorst">
+        DELETE FROM Sponsors
+        WHERE Sponsor_id = #{id}
+    </delete>
 </mapper>

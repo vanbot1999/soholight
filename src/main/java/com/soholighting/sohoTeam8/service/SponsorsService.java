@@ -1,7 +1,7 @@
 package com.soholighting.sohoTeam8.service;
 
 import com.soholighting.sohoTeam8.mapper.SponsorMapper;
-import com.soholighting.sohoTeam8.model.KidsImage;
+import com.soholighting.sohoTeam8.model.Comments;
 import com.soholighting.sohoTeam8.model.Sponsors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +28,11 @@ public Sponsors getsponsorbyid(int id){
     Sponsors sponsorById = SponsorMapper.selectSponsorById(id);
     return sponsorById;
 }
-
+    public void insertSponsor(Sponsors sponsors) {
+        SponsorMapper.insertSponsor(sponsors);
+    }
+    public Sponsors removeSponsorById(int id) {
+        Sponsors removeById = SponsorMapper.removeSponsorById(id);
+        return removeById;
+    }
 }
