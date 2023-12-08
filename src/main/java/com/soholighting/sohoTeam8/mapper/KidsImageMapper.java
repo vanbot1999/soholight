@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface KidsImageMapper {
     List<KidsImage> findAll();
@@ -18,4 +20,11 @@ public interface KidsImageMapper {
     void insertKidsImage(@Param("kidsImage") KidsImage kidsImage);
     AdminAccount getUserLogin(@Param("username") String username, @Param("password") String password);
     Integer getUserIdByUsername(@Param("username") String username);
+    void incrementLikes(@Param("imageId") int imageId);
+
+
+    // 更新点赞状态
+    void setHasLiked(@Param("userId") int userId, @Param("imageId") int imageId, @Param("hasLiked") boolean hasLiked);
+
+    Boolean checkUserLiked(@Param("userId") int userId, @Param("imageId") int imageId);
 }

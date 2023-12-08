@@ -38,7 +38,8 @@ public class AdminAddImageController {
                 formData.get("description"),
                 formData.get("url"),
                 formData.get("sourceUrl"),
-                formData.get("issueDate"));
+                formData.get("issueDate"),
+                Integer.parseInt("likes"));
         try {
             adminAddImageService.addImageDetails(kidsImage);
             return ResponseEntity.ok("success");

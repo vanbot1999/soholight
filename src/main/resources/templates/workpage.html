@@ -31,9 +31,10 @@
                         <p>Name: <span th:text="${kidsImage.name}">Sereen</span></p>
                         <p>Age: <span th:text="${kidsImage.age}">6</span></p>
                     </div>
-                    <div>
-                        <button id="likeBtn" class="btn btn-success">Like</button>
+                    <div id="likeContainer">
+                        <button style="margin-right: 15px"  id="likeBtn" class="heart"  th:data-image-id="${imageId}" >Like</button>
                         <span id="likeCount">0</span> Likes
+                        <button id="deleteLikeBtn" style="display: none;">Delete Like</button>
                     </div>
                     <div>
                         <button id="addCommentBtn" class="btn btn-primary">Add Comments</button>
