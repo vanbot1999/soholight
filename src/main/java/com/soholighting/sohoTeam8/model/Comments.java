@@ -19,6 +19,7 @@ public class Comments {
 
 
     private int user_id;
+    private String username;
 
     public Comments() {
         // Default constructor
@@ -66,7 +67,14 @@ public class Comments {
         this.user_id = user_id;
     }
 
-    // toString Method
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+// toString Method
 
     @Override
     public String toString() {
@@ -76,6 +84,7 @@ public class Comments {
                 ", commentText='" + content + '\'' +
                 ", createdAt=" + create_time +
                 ", userId=" + user_id +
+                ", username=" + username +
                 '}';
     }
 }
