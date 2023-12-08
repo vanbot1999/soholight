@@ -29,7 +29,7 @@
                             <div class="card">
                                 <!-- Make the image a clickable link -->
                                 <a th:href="${sponsor.URL}" target="_blank">
-                                    <img th:src="@{${sponsor.sponsor_logo}}" class="card-img-top" th:alt="${sponsor.alt}">
+                                    <img th:src="@{${sponsor.sponsor_logo}}" class="card-img-top" th:alt="${sponsor.URL}">
                                 </a>
                             </div>
                         </div>
@@ -48,8 +48,8 @@
                         <div class="card sponsor-card">
                             <div class="card">
                                 <!-- Make the image a clickable link -->
-                                <a th:href="${Thanks.alt}" target="_blank">
-                                    <img th:src="@{${Thanks.image}}" class="card-img-top" th:alt="${Thanks.alt}">
+                                <a th:href="${Thanks.URL}" target="_blank">
+                                    <img th:src="@{${Thanks.thanks_logo}}" class="card-img-top" th:alt="${Thanks.URL}">
                                 </a>
                             </div>
                         </div>

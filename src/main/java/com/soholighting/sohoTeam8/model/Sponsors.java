@@ -1,15 +1,16 @@
 package com.soholighting.sohoTeam8.model;
 public class Sponsors {
+    private int Sponsor_id;
     private String name;
     private String URL;
     private String sponsor_logo;
-    private int Sponsor_id;
 
-    public Sponsors(String name, String URL, String sponsor_logo, int sponsor_id) {
+    public Sponsors(int sponsor_id,String name, String URL, String sponsor_logo) {
+        this.Sponsor_id = sponsor_id;
         this.name = name;
         this.URL = URL;
         this.sponsor_logo = sponsor_logo;
-        Sponsor_id = sponsor_id;
+
     }
 
     public String getName() {
@@ -41,7 +42,7 @@ public class Sponsors {
     }
 
     public void setSponsor_id(int sponsor_id) {
-        Sponsor_id = sponsor_id;
+        this.Sponsor_id = sponsor_id;
     }
 }
 
