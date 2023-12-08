@@ -31,4 +31,8 @@ public class CommentService {
         return kidsImageMapper.findCommentsByImageId(image_id);
 
     }
+    public Integer getUserIdByUsername(String username) {
+
+        return kidsImageMapper.getUserIdByUsername(username);
+    }
 }

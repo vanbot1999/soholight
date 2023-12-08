@@ -14,8 +14,8 @@ import java.util.List;
 public class AdminAccountService {
     @Autowired
     private KidsImageMapper kidsImageMapper;
-    public AdminAccount login(String user_id, String password) {
+    public AdminAccount login(String username, String password) {
 
-        return kidsImageMapper.getUserLogin(user_id, password);
+        return kidsImageMapper.getUserLogin(username, password);
     }
 }

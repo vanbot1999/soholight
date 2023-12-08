@@ -4,6 +4,11 @@
     <select id="getUserLogin" resultType="com.soholighting.sohoTeam8.model.AdminAccount">
         SELECT *
         FROM UserLogin
-        WHERE user_id = #{user_id} AND password = #{password}
+        WHERE username = #{username} AND password = #{password}
+    </select>
+    <select id="getUserIdByUsername" resultType="java.lang.Integer">
+        SELECT user_id
+        FROM UserLogin
+        WHERE username = #{username}
     </select>
 </mapper>

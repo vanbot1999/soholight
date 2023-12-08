@@ -1,35 +1,38 @@
-    $(document).ready(function() {
-        $('#addCommentBtn').click(function() {
-            $('#commentForm').show();
-        });
+$(document).ready(function() {
+    $('#addCommentBtn').click(function() {
+        $('#commentForm').show();
+    });});
 
-        $('#commentForm').submit(function(e) {
-            e.preventDefault();
+    $('#commentForm').submit(function(e) {
+    e.preventDefault();
 
-            let image_id = $('input[name="imageId"]').val();
-            let content = $('#commentText').val();
+    let image_id = $('input[name="imageId"]').val();
+    let content = $('#commentText').val();
+        let username = getCookie('user');
+        $.ajax({
+        url: '/addcomment', // 确保这个URL是正确的
+        type: 'POST',
+        data: {
+            image_id: image_id,
+            content: content,
+            username: username
 
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: {
-                    image_id: image_id,
-                    content: content
-                },
-                success: function(response) {
-                    console.log('Comment added:', response);
-                    $('#commentText').val('');
-                    $('#commentForm').hide();
-                    loadComments(image_id);
-                },
-                error: function(xhr, status, error) {
-                    alert('Error adding comment: ' + error);
-                }
-            });
-        });
+        },
+        success: function(response) {
+            // 如果不是用重定向，则需要处理response返回的数据
+            console.log('Comment added:', response);
+            $('#commentText').val('');
+            $('#commentForm').hide();
+            loadComments(image_id);
+        },
+        error: function(xhr, status, error) {
+            alert('Error adding comment: ' + error);
+        }
     });
+});
 
-    document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
     var likeButton = document.getElementById('likeBtn');
     var likeCountDisplay = document.getElementById('likeCount');
 
@@ -79,3 +82,13 @@
 
     var initialImageId = $('input[name="imageId"]').val();
     loadComments(initialImageId);
+    function getCookie(name) {
+        let cookieArray = document.cookie.split(';');
+        for(let i = 0; i < cookieArray.length; i++) {
+            let cookiePair = cookieArray[i].split('=');
+            if(name == cookiePair[0].trim()) {
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        return null;
+    }
