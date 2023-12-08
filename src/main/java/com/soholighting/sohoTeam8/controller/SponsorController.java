@@ -2,6 +2,8 @@ package com.soholighting.sohoTeam8.controller;
 
 import com.soholighting.sohoTeam8.model.SpecialThanks;
 import com.soholighting.sohoTeam8.model.Sponsors;
+import com.soholighting.sohoTeam8.service.SponsorsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +15,13 @@ import static java.util.Arrays.asList;
 
 @Controller
 public class SponsorController {
-
+    @Autowired
+    private SponsorsService sponsorsService;
     @GetMapping("/sponsors")
     public String showSponsors(Model model) {
         //get from database later
         // example data
-        List<Sponsors> sponsors = getSponsors();
+        List<Sponsors> sponsors = sponsorsService.getAllSponsors();
         List<SpecialThanks> specialThanksList = getSpecialThanks();
         // data to model
         model.addAttribute("sponsors", sponsors);
@@ -26,27 +29,7 @@ public class SponsorController {
         // return
         return "sponsors";
     }
-    // 示例数据
-    private List<Sponsors> getSponsors() {
-        // get from database or other sources
-        // example
-        return asList(
-                new Sponsors("Sponsor1", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor2", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor3", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor4", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor5", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor6", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor7", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor8", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor9", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor10", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor11", "https://www.google.com", "logo.png"),
-                new Sponsors("Sponsor12", "https://www.google.com", "logo.png")
 
-                // add more
-        );
-    }
     private List<SpecialThanks> getSpecialThanks() {
         return asList(
                 new SpecialThanks("SpecialThanks1", "https://www.google.com", "logo.png"),
