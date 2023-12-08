@@ -26,7 +26,7 @@ public class CommentService {
         kidsImageMapper.insertComment(comment);
     }
     public List<Comments> getCommentsByImageId(int image_id) {
-        System.out.println(kidsImageMapper);
+
 
         return kidsImageMapper.findCommentsByImageId(image_id);
 

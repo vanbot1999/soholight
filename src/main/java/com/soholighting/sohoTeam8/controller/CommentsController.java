@@ -27,7 +27,9 @@ public class CommentsController {
 
     @GetMapping("/getcomments")
     public List<Comments> getComments(@RequestParam("imageId") Integer imageId) {
+        System.out.println(commentService.getCommentsByImageId(imageId));
         return commentService.getCommentsByImageId(imageId);
+
     }
 
 
