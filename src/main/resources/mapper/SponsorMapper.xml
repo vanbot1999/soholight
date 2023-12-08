@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soholighting.sohoTeam8.mapper.SponsorMapper">
+    <select id="findAllSponsors" resultType="com.soholighting.sohoTeam8.model.Sponsors">
+        SELECT * FROM Sponsors
+    </select>
+    <select id="findAllBySponsorsName" parameterType="java.lang.String" resultType="com.soholighting.sohoTeam8.model.Sponsors">
+        SELECT * FROM Sponsors WHERE name = '#{name}'
+    </select>
+    <select id="selectSponsorsById" resultType="com.soholighting.sohoTeam8.model.Sponsors">
+        SELECT * FROM Sponsors WHERE Sponsor_id = #{id}
+    </select>
+    <insert id="insertSponsor" parameterType="com.soholighting.sohoTeam8.model.Sponsors">
+        INSERT INTO Sponsors (Sponsor_id,name,Url,Sponsor_logo)
+        VALUES (#{Sponsors.Sponsor_id}, #{Sponsors.name}, #{Sponsors.Url}, #{Sponsors.Sponsor_logo})
+    </insert>
+    <delete id="removeById" parameterType="com.soholighting.sohoTeam8.model.Sponsors">
+        DELETE FROM Sponsors
+        WHERE Sponsor_id = #{id}
+    </delete>
+</mapper>
