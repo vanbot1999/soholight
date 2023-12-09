@@ -40,31 +40,43 @@ $(document).ready(function() {
     var likeButton = $('#likeBtn');
     var likeCountDisplay = $('#likeCount');
     var likeContainer = $('#likeContainer');
+    var deleteLikeButton = $('#deleteLikeBtn');
 
     // 检查用户是否已经点赞
     checkUserLiked(imageId);
 
     // 绑定点赞按钮的点击事件
-    $('#likeBtn').on('click', function() {
-        var currentCount = parseInt(likeCountDisplay.text(), 10);
-
+    likeButton.on('click', function () {
         $.ajax({
-            url:   imageId + '/like',
+            url: '/' + imageId + '/like', // 根据后端定义的路由修改
             type: 'POST',
-            success: function() {
+            success: function () {
                 // 更新显示的点赞数
+                var currentCount = parseInt(likeCountDisplay.text(), 10);
                 likeCountDisplay.text(currentCount + 1);
-                // 更新按钮的状态
-                likeButton.prop('disabled', true).addClass('liked');
-                $('<button>', {
-                    text: 'Delete Like',
-                    id: 'deleteLikeBtn',
-                    click: function() {
-                        // 添加删除点赞的逻辑
-                    }
-                }).appendTo(likeContainer);
+                 likeButton.addClass('liked').prop('disabled', true);
+                // 显示 "Delete Like" 按钮
+                deleteLikeButton.show();
             },
-            error: function(xhr) {
+            error: function (xhr) {
+                console.error('Error:', xhr.responseText);
+            }
+        });
+    });
+    deleteLikeButton.on('click', function () {
+        $.ajax({
+            url: '/' + imageId + '/like', // 根据后端定义的路由修改
+            type: 'DELETE',
+            success: function () {
+                // 更新显示的点赞数
+                var currentCount = parseInt(likeCountDisplay.text(), 10);
+                likeCountDisplay.text(Math.max(currentCount - 1, 0));
+                // 更新按钮的状态
+                likeButton.removeClass('liked').prop('disabled', false);
+                // 隐藏 "Delete Like" 按钮
+                deleteLikeButton.hide();
+            },
+            error: function (xhr) {
                 console.error('Error:', xhr.responseText);
             }
         });
@@ -72,26 +84,23 @@ $(document).ready(function() {
 
     // 检查用户是否已经点赞的函数
     function checkUserLiked(imageId) {
-        // 添加检查用户是否已点赞的 AJAX 请求
-    }
-
-    // 假设 deleteLikeBtn 已经在 HTML 中存在，您可以使用以下代码：
-    $('#deleteLikeBtn').on('click', function() {
         $.ajax({
-            url: imageId + '/unlike',
-            type: 'POST',
-            success: function() {
-                var currentCount = parseInt(likeCountDisplay.text(), 10);
-                likeCountDisplay.text(Math.max(currentCount - 1, 0));
-                likeButton.prop('disabled', false).removeClass('liked');
-                $(this).hide();
+            url: '/' + imageId + '/check-like', // 假设您有一个用于检查点赞的后端路由
+            type: 'GET',
+            success: function (response) {
+                // 如果用户已经点赞，则更新按钮状态
+                if (response) {
+                    likeButton.hide();
+                    deleteLikeButton.show();
+                }
             },
-            error: function(xhr) {
+            error: function (xhr) {
                 console.error('Error:', xhr.responseText);
             }
         });
-    });
-});
+    }
+})
+
 
 
     function loadComments(image_id) {

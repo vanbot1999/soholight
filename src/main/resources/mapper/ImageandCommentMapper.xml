@@ -35,21 +35,31 @@
         INSERT INTO KidsImage (img_id, name, age, description,url,sourceUrl,issueDate)
         VALUES (#{kidsImage.img_id}, #{kidsImage.name}, #{kidsImage.age},#{kidsImage.description},#{kidsImage.url},#{kidsImage.sourceUrl},#{kidsImage.issueDate})
     </select>
-    <update id="incrementLikes" parameterType="int">
+    <insert id="insertLike" parameterType="map">
+        INSERT INTO UserImageLikes (user_id, img_id) VALUES (#{userId}, #{imgId})
+    </insert>
+
+    <delete id="deleteLike" parameterType="map">
+        DELETE FROM UserImageLikes WHERE user_id = #{userId} AND img_id = #{imgId}
+    </delete>
+
+    <select id="checkLike" resultType="int">
+        SELECT COUNT(*)
+        FROM UserImageLikes
+        WHERE user_id = #{userId}
+          AND img_id = #{imgId}
+    </select>
+
+    <update id="incrementImageLikes" parameterType="int">
         UPDATE KidsImage
         SET likes = likes + 1
-        WHERE img_id = #{imageId}
+        WHERE img_id = #{imgId}
     </update>
-    <select id="checkUserLiked" parameterType="map" resultType="Boolean">
-        SELECT hasLiked
-        FROM Comment
-        WHERE UserID = #{userId}
-          AND image_id = #{imageId}
-        LIMIT 1
-    </select>
-    <update id="setHasLiked" parameterType="map">
-        UPDATE Comment
-        SET hasLiked = #{hasLiked}
-        WHERE image_id = #{imageId}
+
+    <update id="decrementImageLikes" parameterType="int">
+        UPDATE KidsImage
+        SET likes = likes - 1
+        WHERE img_id = #{imgId}
     </update>
+
 </mapper>

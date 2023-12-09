@@ -10,6 +10,7 @@ import com.soholighting.sohoTeam8.model.KidsImage;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.util.HashMap;
@@ -38,19 +39,28 @@ public class CommentService {
 
         return kidsImageMapper.getUserIdByUsername(username);
     }
-    public void incrementLikes(int imageId) {
-        kidsImageMapper.incrementLikes(imageId);
-    }
-    public boolean hasLiked(int userId, int imageId) {
-        // 调用KidsImageMapper的方法来查询数据库
-        Boolean hasLiked = kidsImageMapper.checkUserLiked(userId, imageId);
-        // 如果数据库中没有记录，默认用户没有点赞
-        return hasLiked != null && hasLiked;
+    public boolean hasLiked(int userId, int imgId) {
+        // 直接传递参数给映射器方法
+        return kidsImageMapper.checkLike(userId, imgId) > 0;
     }
 
-    // 更新点赞的状态
-    public void setHasLiked(int userId, int imageId, boolean hasLiked) {
-        // 调用KidsImageMapper的方法来更新数据库中的点赞状态
-        kidsImageMapper.setHasLiked(userId, imageId, hasLiked);
+
+    @Transactional
+    public void likeImage(int userId, int imgId) {
+        if (kidsImageMapper.checkLike(userId, imgId) == 0) {
+            kidsImageMapper.insertLike(userId, imgId);
+            kidsImageMapper.incrementImageLikes(imgId);
+        }
+        // Else, user already liked the image, handle according to your logic
     }
+
+    @Transactional
+    public void unlikeImage(int userId, int imgId) {
+        if (kidsImageMapper.checkLike(userId, imgId) > 0) {
+            kidsImageMapper.deleteLike(userId, imgId);
+            kidsImageMapper.decrementImageLikes(imgId);
+        }
+        // Else, user hasn't liked the image, handle according to your logic
+    }
+
 }
