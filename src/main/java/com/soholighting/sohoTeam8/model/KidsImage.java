@@ -9,11 +9,11 @@ public class KidsImage {
     private String url;
     private String sourceUrl;
     private String issueDate;
-
+ private  int likes;
     public KidsImage() {
     }
 
-    public KidsImage(int id, String name, int age, String description, String url, String sourceUrl, String issueDate) {
+    public KidsImage(int id, String name, int age, String description, String url, String sourceUrl, String issueDate,int likes) {
         this.img_id = id;
         this.name = name;
         this.age = age;
@@ -22,6 +22,7 @@ public class KidsImage {
         this.url = url;
         this.sourceUrl = sourceUrl;
         this.issueDate = issueDate;
+        this.likes=likes;
     }
 
 
@@ -80,5 +81,13 @@ public class KidsImage {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }

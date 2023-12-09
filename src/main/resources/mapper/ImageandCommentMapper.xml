@@ -35,4 +35,21 @@
         INSERT INTO KidsImage (img_id, name, age, description,url,sourceUrl,issueDate)
         VALUES (#{kidsImage.img_id}, #{kidsImage.name}, #{kidsImage.age},#{kidsImage.description},#{kidsImage.url},#{kidsImage.sourceUrl},#{kidsImage.issueDate})
     </select>
+    <update id="incrementLikes" parameterType="int">
+        UPDATE KidsImage
+        SET likes = likes + 1
+        WHERE img_id = #{imageId}
+    </update>
+    <select id="checkUserLiked" parameterType="map" resultType="Boolean">
+        SELECT hasLiked
+        FROM Comment
+        WHERE UserID = #{userId}
+          AND image_id = #{imageId}
+        LIMIT 1
+    </select>
+    <update id="setHasLiked" parameterType="map">
+        UPDATE Comment
+        SET hasLiked = #{hasLiked}
+        WHERE image_id = #{imageId}
+    </update>
 </mapper>

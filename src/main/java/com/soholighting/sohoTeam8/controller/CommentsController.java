@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDateTime;
@@ -30,6 +27,57 @@ public class CommentsController {
         System.out.println(commentService.getCommentsByImageId(imageId));
         return commentService.getCommentsByImageId(imageId);
 
+    }
+    @PostMapping("/{imageId}/like")
+    public ResponseEntity<?> likeImage(@PathVariable("imageId") int imageId, HttpServletRequest request) {
+        int userId = getCurrentUserId(request);
+
+
+        if(commentService.hasLiked(userId, imageId)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("User has already liked this image.");
+        }
+
+
+        commentService.setHasLiked(userId, imageId, true);
+        return ResponseEntity.ok().build();
+    }
+
+
+    @DeleteMapping("/{imageId}/like")
+    public ResponseEntity<?> unlikeImage(@PathVariable("imageId") int imageId, HttpServletRequest request) {
+        int userId = getCurrentUserId(request);
+
+
+        if(!commentService.hasLiked(userId, imageId)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("User has not liked this image.");
+        }
+
+
+        commentService.setHasLiked(userId, imageId, false);
+        return ResponseEntity.ok().build();
+    }
+
+    private Integer getCurrentUserId(HttpServletRequest request) {
+        // 从cookie中获取username
+        String username = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("user".equals(cookie.getName())) {
+                    username = cookie.getValue();
+                    break;
+                }
+            }
+        }
+
+
+        if (username == null) {
+            return null;
+        }
+
+
+        Integer userId = commentService.getUserIdByUsername(username);
+        return userId;
     }
 
 
