@@ -7,7 +7,9 @@
 .sponsor-card:hover {
     transform: scale(1.1); /* hover effect*/
 }
-
+.sponsor-card img {
+    height: 40px; /* Adjust the value as needed */
+}
 .sponsors{
     width: 100%;
     padding: 20px;

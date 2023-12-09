@@ -6,7 +6,7 @@ public class SpecialThanks {
     private String thanks_logo;
     private int thanks_id;
 
-    public SpecialThanks(String name, String URL, String thanks_logo) {
+    public SpecialThanks(int thanks_id,String name, String URL, String thanks_logo) {
         this.thanks_id = thanks_id;
         this.name = name;
         this.URL = URL;
