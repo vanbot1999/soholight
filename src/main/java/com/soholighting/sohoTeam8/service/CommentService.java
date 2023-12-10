@@ -62,5 +62,9 @@ public class CommentService {
         }
         // Else, user hasn't liked the image, handle according to your logic
     }
+    public int getLikeCountByImageId(int imageId) {
+
+        return kidsImageMapper.countLikes(imageId);
+    }
 
 }

@@ -10,7 +10,7 @@ $(document).ready(function() {
     let content = $('#commentText').val();
         let username = getCookie('user');
         $.ajax({
-        url: '/addcomment', // 确保这个URL是正确的
+        url: '/addcomment',
         type: 'POST',
         data: {
             image_id: image_id,
@@ -19,7 +19,7 @@ $(document).ready(function() {
 
         },
         success: function(response) {
-            // 如果不是用重定向，则需要处理response返回的数据
+
             console.log('Comment added:', response);
             $('#commentText').val('');
             $('#commentForm').hide();
@@ -42,68 +42,91 @@ $(document).ready(function() {
     var likeContainer = $('#likeContainer');
     var deleteLikeButton = $('#deleteLikeBtn');
 
-    // 检查用户是否已经点赞
-    checkUserLiked(imageId);
 
-    // 绑定点赞按钮的点击事件
-    likeButton.on('click', function () {
+    checkUserLiked(imageId);
+    updateLikeCount(imageId);
+
+    likeButton.on('click', function() {
         $.ajax({
-            url: '/' + imageId + '/like', // 根据后端定义的路由修改
+            url: '/' + imageId + '/like',
             type: 'POST',
-            success: function () {
-                // 更新显示的点赞数
-                var currentCount = parseInt(likeCountDisplay.text(), 10);
-                likeCountDisplay.text(currentCount + 1);
-                 likeButton.addClass('liked').prop('disabled', true);
-                // 显示 "Delete Like" 按钮
+            success: function(response) {
+                updateLikeCount(imageId);
+
+                $('#likeCount').text(response);
+
+                likeButton.addClass('liked').prop('disabled', true);
+
                 deleteLikeButton.show();
             },
-            error: function (xhr) {
-                console.error('Error:', xhr.responseText);
-            }
-        });
-    });
-    deleteLikeButton.on('click', function () {
-        $.ajax({
-            url: '/' + imageId + '/like', // 根据后端定义的路由修改
-            type: 'DELETE',
-            success: function () {
-                // 更新显示的点赞数
-                var currentCount = parseInt(likeCountDisplay.text(), 10);
-                likeCountDisplay.text(Math.max(currentCount - 1, 0));
-                // 更新按钮的状态
-                likeButton.removeClass('liked').prop('disabled', false);
-                // 隐藏 "Delete Like" 按钮
-                deleteLikeButton.hide();
-            },
-            error: function (xhr) {
-                console.error('Error:', xhr.responseText);
+            error: function(xhr) {
+                console.error( xhr.responseText);
             }
         });
     });
 
-    // 检查用户是否已经点赞的函数
+
+    deleteLikeButton.on('click', function() {
+        $.ajax({
+            url: '/' + imageId + '/unlike',
+            type: 'DELETE',
+            success: function(response) {
+                updateLikeCount(imageId);
+                likeButton.removeClass('liked').prop('disabled', false);
+                deleteLikeButton.hide();
+                $('#likeCount').text(response);
+            },
+            error: function(xhr) {
+                console.error( xhr.responseText);
+            }
+        });
+    });
+
     function checkUserLiked(imageId) {
         $.ajax({
-            url: '/' + imageId + '/check-like', // 假设您有一个用于检查点赞的后端路由
+            url: '/' + imageId + '/check-like',
             type: 'GET',
-            success: function (response) {
-                // 如果用户已经点赞，则更新按钮状态
-                if (response) {
-                    likeButton.hide();
-                    deleteLikeButton.show();
+            success: function(response) {
+                if(response) {
+
+                    $('#likeBtn').addClass('liked').prop('disabled', true);
+                    $('#deleteLikeBtn').show();
+                } else {
+
+                    $('#likeBtn').removeClass('liked').prop('disabled', false);
+                    $('#deleteLikeBtn').hide();
                 }
+                updateLikeCount(imageId);
             },
-            error: function (xhr) {
+            error: function(xhr) {
                 console.error('Error:', xhr.responseText);
             }
         });
     }
+    checkUserLiked(imageId);
+    updateLikeCount(imageId);
 })
 
 
+function updateLikeCount(imageId) {
+    var urlParams = new URLSearchParams(window.location.search);
+    var imageId = urlParams.get('imageId');
+    $.ajax({
+        url: '/' + imageId + '/like-count',
+        type: 'GET',
+        success: function (response) {
 
+
+            $('#likeCount').text(response);
+
+        },
+        error: function (xhr) {
+            console.error('Error:', xhr.responseText);
+        }
+    });
+}
     function loadComments(image_id) {
+        var currentUsername = getCookie('user');
         console.log(image_id);
         $.ajax({
             url: '/getcomments?imageId=' + image_id,
@@ -121,20 +144,29 @@ $(document).ready(function() {
                         var date = new Date(comment.create_time);
 
                         var formattedDate = date.toLocaleDateString('zh-CN');
-
-
-                        commentsSection.append(
-                            '<h3>' + comment.username + '</h3>' +
+                        var commentHtml =  '<h3>' + comment.username + '</h3>' +
                             '<h5>UserID: ' + comment.userId + '</h5>' +
                             '<p> ' + formattedDate + '</p>' +
                             '<div class="comment-box">' +
-
                             '<p>' + comment.content + '</p>' +
-
                             '</div>'+
-                        '<button>' + 'like' + '</button>' +
-                        '<button>' + 'delete' + '</button>'
-                        );
+                            '<button onclick="likeComment(' + comment.id + ')">like</button>';
+                        if (currentUsername === comment.username) {
+                            commentHtml += '<button onclick="deleteComment(' + comment.id + ')">delete</button>';
+                        }
+                        commentsSection.append('<div class="comment-box">' + commentHtml + '</div>');
+                        // commentsSection.append(
+                        //     '<h3>' + comment.username + '</h3>' +
+                        //     '<h5>UserID: ' + comment.userId + '</h5>' +
+                        //     '<p> ' + formattedDate + '</p>' +
+                        //     '<div class="comment-box">' +
+                        //
+                        //     '<p>' + comment.content + '</p>' +
+                        //
+                        //     '</div>'+
+                        // '<button>' + 'like' + '</button>' +
+                        // '<button>' + 'delete' + '</button>'
+                        // );
                     });
                 }
             },
@@ -156,31 +188,3 @@ $(document).ready(function() {
         }
         return null;
     }
-// document.addEventListener('DOMContentLoaded', function() {
-//     var likeButton = document.getElementById('likeBtn');
-//     var likeContainer = document.getElementById('likeContainer');
-//     var likeCountDisplay = document.getElementById('likeCount');
-//
-//     likeButton.addEventListener('click', function() {
-//         // ... 省略 AJAX 请求和其他逻辑 ...
-//
-//         // 添加liked类到按钮，这将使心形变为红色
-//         likeButton.classList.add('liked');
-//
-//         // 创建 "Delete Like" 按钮
-//         var deleteLikeBtn = document.createElement('button');
-//         deleteLikeBtn.textContent = 'Delete Like';
-//         deleteLikeBtn.id = 'deleteLikeBtn';
-//         deleteLikeBtn.className = 'delete-like-btn';
-//         deleteLikeBtn.onclick = function() {
-//             // 这里可以添加删除点赞的逻辑
-//             console.log('Delete like clicked');
-//         };
-//
-//         // 添加 "Delete Like" 按钮到容器中
-//         likeContainer.appendChild(deleteLikeBtn);
-//
-//         // 禁用点赞按钮
-//         likeButton.disabled = true;
-//     });
-// });

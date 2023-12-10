@@ -26,4 +26,5 @@ public interface KidsImageMapper {
     int checkLike(@Param("userId") int userId, @Param("imgId") int imgId);
     void incrementImageLikes(@Param("imgId") int imgId);
     void decrementImageLikes(@Param("imgId") int imgId);
+    int countLikes(@Param("imgId") int imgId);
 }

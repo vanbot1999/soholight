@@ -61,5 +61,8 @@
         SET likes = likes - 1
         WHERE img_id = #{imgId}
     </update>
+    <select id="countLikes" resultType="int">
+        SELECT COUNT(*) FROM UserImageLikes WHERE img_id = #{imgId}
+    </select>
 
 </mapper>
