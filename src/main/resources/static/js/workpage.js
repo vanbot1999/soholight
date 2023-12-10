@@ -155,18 +155,7 @@ function updateLikeCount(imageId) {
                             commentHtml += '<button onclick="deleteComment(' + comment.id + ')">delete</button>';
                         }
                         commentsSection.append('<div class="comment-box">' + commentHtml + '</div>');
-                        // commentsSection.append(
-                        //     '<h3>' + comment.username + '</h3>' +
-                        //     '<h5>UserID: ' + comment.userId + '</h5>' +
-                        //     '<p> ' + formattedDate + '</p>' +
-                        //     '<div class="comment-box">' +
-                        //
-                        //     '<p>' + comment.content + '</p>' +
-                        //
-                        //     '</div>'+
-                        // '<button>' + 'like' + '</button>' +
-                        // '<button>' + 'delete' + '</button>'
-                        // );
+
                     });
                 }
             },

@@ -40,7 +40,7 @@ public class CommentService {
         return kidsImageMapper.getUserIdByUsername(username);
     }
     public boolean hasLiked(int userId, int imgId) {
-        // 直接传递参数给映射器方法
+
         return kidsImageMapper.checkLike(userId, imgId) > 0;
     }
 
@@ -51,7 +51,7 @@ public class CommentService {
             kidsImageMapper.insertLike(userId, imgId);
             kidsImageMapper.incrementImageLikes(imgId);
         }
-        // Else, user already liked the image, handle according to your logic
+
     }
 
     @Transactional
@@ -60,7 +60,7 @@ public class CommentService {
             kidsImageMapper.deleteLike(userId, imgId);
             kidsImageMapper.decrementImageLikes(imgId);
         }
-        // Else, user hasn't liked the image, handle according to your logic
+
     }
     public int getLikeCountByImageId(int imageId) {
 
