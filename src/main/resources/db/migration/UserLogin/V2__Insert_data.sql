@@ -23,19 +23,17 @@ CREATE DATABASE /*!32312 IF NOT EXISTS */ `Soholight` /*!40100 DEFAULT CHARACTER
 USE `Soholight`;
 
 --
--- Dumping data for table `User`
+-- Dumping data for table `userlogin`
 --
-
-LOCK TABLES `User` WRITE;
-/*!40000 ALTER TABLE `User`
+LOCK TABLES `userlogin` WRITE;
+/*!40000 ALTER TABLE `userlogin`
     DISABLE KEYS */;
-INSERT INTO User (first_name, last_name, email, birthday_date)
-VALUES ('Enoch ', 'Ribin', 'enoch.ribin@gmail.com', '1998-05-15'),
-       ('Yifan', 'Wu', 'yifan.wu@gmail.com', '1999-10-10'),
-       ('Chenxu', 'Zhou', 'chenxu.zhou@gmail.com', '1998-03-10'),
-       ('Shijie', 'Yin', 'shijie.yin@gmail.com', '1997-11-28');
-
-/*!40000 ALTER TABLE `User`
+INSERT INTO `userlogin` (user_id, username, password)
+VALUES (1, 'enoch', 'password123'),
+       (2, 'yifan', 'password123'),
+       (3, 'chenxu', 'password123'),
+       (4, 'shijie', 'password123');
+/*!40000 ALTER TABLE `userlogin`
     ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE = @OLD_TIME_ZONE */;
@@ -48,3 +46,4 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-12-05 12:24:05
+
