@@ -19,8 +19,8 @@ public class KidsPaintingsController {
     private KidsPaintingsService kidsPaintingsService;
 
     @GetMapping("/motif")
-    public ModelAndView getKidsPaintingBasedOnYear(@RequestParam(value = "year", required = false) int year) {
-        if (year != 0) {
+    public ModelAndView getKidsPaintingBasedOnYear(@RequestParam(value = "year", required = false) Integer year) {
+        if (year != null) {
                 System.out.println(year);
             try {
                 return getModelAndViewByYear(Integer.toString(year));
