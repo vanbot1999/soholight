@@ -1,26 +1,26 @@
 package com.soholighting.sohoTeam8.service;
-
-import com.soholighting.sohoTeam8.mapper.FeedbackMapper;
-import com.soholighting.sohoTeam8.model.Feedback;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.soholighting.sohoTeam8.model.Feedback;
+import com.soholighting.sohoTeam8.repository.FeedbackRepository;
 import java.util.List;
 
-/**
- * @author Enoch Ribin 23089855
- */
 @Service
 public class FeedbackService {
 
-    @Autowired
-    private FeedbackMapper feedbackMapper;
+    private final FeedbackRepository feedbackRepository;
 
-    public List<Feedback> findAllFeedback() {
-        return feedbackMapper.findAllFeedbacks();
+    public FeedbackService(FeedbackRepository feedbackRepository) {
+        this.feedbackRepository = feedbackRepository;
     }
 
     public void insertFeedback(Feedback feedback) {
-        feedbackMapper.insertFeedback(feedback);
+        if (feedback.getUsername() == null || feedback.getUsername().trim().isEmpty()) {
+            feedback.setUsername("Anonymous");
+        }
+        feedbackRepository.save(feedback);
+    }
+
+    public List<Feedback> findAllFeedback() {
+        return feedbackRepository.findAll();
     }
 }
