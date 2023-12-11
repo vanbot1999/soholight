@@ -1,6 +1,8 @@
 package com.soholighting.sohoTeam8.controller;
 
 import  com.soholighting.sohoTeam8.model.Feedback;
+import com.soholighting.sohoTeam8.service.FeedbackService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,21 +13,20 @@ import java.util.List;
 
 @Controller
 public class FeedbackController {
-    private final List<Feedback> feedbackList = new ArrayList<>();
+    @Autowired
+    private FeedbackService feedbackService;
 
     @GetMapping("/feedback")
     public String feedbackForm(Model model) {
         model.addAttribute("feedback", new Feedback());
-        model.addAttribute("feedbackList", feedbackList);
+        model.addAttribute("feedbackList", feedbackService.findAllFeedback());
         return "feedback";
     }
 
     @PostMapping("/feedback")
-    public String submitFeedback(Feedback feedback, Model model) {
-        if (feedback.getUsername() == null || feedback.getUsername().isEmpty()) {
-            feedback.setUsername("Anonymous User");
-        }
-        feedbackList.add(feedback);
+    public String submitFeedback(Feedback feedback) {
+        System.out.println(feedback);
+        feedbackService.insertFeedback(feedback);
         return "redirect:/feedback";
     }
 }
