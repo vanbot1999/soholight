@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Paintings & Light</title>
+    <title>Add Motif</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
@@ -15,7 +15,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/js/home.js"></script>
     <script src="/js/addImage.js"></script>
     <script src="/js/header.js"></script>
 </head>
@@ -23,54 +22,60 @@
 <div th:replace="~{fragments/header :: headerBlock}"/>
 
 
-<section class="container w-50 shadow-lg p-3 mb-5 bg-white rounded">
-    <h2 class="mb-4">Image Information Form</h2>
-
+<section class="container w-50 shadow-lg p-3 my-3 bg-white rounded">
     <form id="imageForm">
+        <h2 class="mb-4">Add Motif Form</h2>
+        <span id="errorMessages" class="text-danger"></span>
         <div class="mb-3">
             <label for="img_id" class="form-label">Image ID:</label>
-            <input type="text" class="form-control" id="img_id" name="img_id"  onkeyup="enableSubmit()" required>
+            <input type="number" class="form-control" id="img_id" name="img_id"  max="9999999" required>
+            <span id="img_id_error" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label for="name" class="form-label">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" onkeyup="enableSubmit()"required>
+            <input type="text" class="form-control" id="name" name="name" required>
+            <span id="name_error" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label for="age" class="form-label">Age:</label>
-            <input type="number" class="form-control" id="age" name="age" max="15" min="1" onkeyup="enableSubmit()" required>
+            <input type="number" class="form-control" id="age" name="age" max="20"
+                   required>
+            <span id="age_error" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label for="description" class="form-label">Description:</label>
-            <textarea class="form-control" id="description" name="description" rows="3" onkeyup="enableSubmit()" required></textarea>
+            <textarea class="form-control" id="description" name="description" rows="3"
+                      required></textarea>
+            <span id="description_error" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label for="url" class="form-label">URL:</label>
-            <input type="url" class="form-control" id="url" name="url" onkeyup="enableSubmit()" required>
+            <input type="url" class="form-control" id="url" name="url" required>
+            <span id="url_error" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label for="sourceUrl" class="form-label">Source URL:</label>
-            <input type="url" class="form-control" id="sourceUrl" name="sourceUrl" onkeyup="enableSubmit()" required>
+            <input type="url" class="form-control" id="sourceUrl" name="sourceUrl"required>
+            <span id="source_url_error" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
             <label for="issueDate" class="form-label">Issue Year:</label>
-            <input type="number" class="form-control" id="issueDate" name="issueDate" max="2023" min="2020" onkeyup="enableSubmit()" required>
+            <input type="number" class="form-control" id="issueDate" name="issueDate" max="2024" min="2020"
+                   required>
+            <span id="issue_date_error" class="text-danger"></span>
         </div>
 
-        <button type="button" class="btn btn-primary" id="submitButton" onclick="submitForm()" disabled>Submit</button>
+        <button type="button" class="btn btn-primary" id="submitButton" onclick="submitForm()">Submit</button>
     </form>
 
     <div id="result" class="mt-4"></div>
 </section>
 <div th:replace="~{fragments/footer :: footerBlock}"/>
-<!-- Back to Top Button -->
-<button id="backToTopBtn" title="Go to top">Top</button>
-
-
 </body>
 </html>
