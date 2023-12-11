@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sponsors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link href="//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="sponsors.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div th:replace="~{fragments/header :: headerBlock}"/>
+
+<div class="container">
+    <section class="sponsors">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="text-center">Sponsors</h2>
+                <div class="row justify-content-center col-md-12">
+                    <div th:each="sponsor : ${sponsors}" class="col-md-2">
+                        <div class="card sponsor-card">
+                            <div class="card">
+                                <!-- Make the image a clickable link -->
+                                <a th:href="${sponsor.URL}" target="_blank">
+                                    <img th:src="@{${sponsor.sponsor_logo}}" class="card-img-top" th:alt="${sponsor.URL}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="special-thanks">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="text-center">Special Thanks</h2>
+                <div class="row justify-content-center col-md-12">
+                    <!-- Iterate over special thanks and display them -->
+                    <div th:each="Thanks: ${specialThanks}" class="col-md-2">
+                        <div class="card sponsor-card">
+                            <div class="card">
+                                <!-- Make the image a clickable link -->
+                                <a th:href="${Thanks.URL}" target="_blank">
+                                    <img th:src="@{${Thanks.thanks_logo}}" class="card-img-top" th:alt="${Thanks.URL}">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sponsors">
+        <h2 class="home-titles text-center">Our sponsors comment!</h2>
+        <!-- Tab Container -->
+        <div id="tab-container">
+            <div id="tab2023" class="tab active-tab">2021</div>
+            <div id="tab2022" class="tab">2022</div>
+            <div id="tab2021" class="tab">2023</div>
+        </div>
+        <!-- Content Container -->
+        <div id="content-container" class="position-relative">
+            <div id="content2023" class="content" style="display:block;">
+                <p class="sponsorcomment">We are all delighted to be able to support the Soho Parish Christmas light project and will always play an active and supporting part in the local Soho
+                    community. Christmas is such a special and magical time of the year for children and to see their artwork up in lights throughout Soho will be a wonderful and memorable gift.</p>
+            </div>
+            <div id="content2022" class="content" style="display:none;">
+                <p class="sponsorcomment">The Soho Business Alliance(SBA) is extremely proud to extend its support to the local Soho Parish Primary School this year with our membership coming together at the 11th hour to raise the
+
+                    sponsorship to switch on the Soho Kids Xmas Lights. The illustrated illuminated LED lights, designed by the local children is in its 2nd year led by architect Antonio Capelao. It is a wonderful community centred addition to Soho for the season, which we are
+
+                    pleased to help facilitate.The SBA is an organisation that exists to give a unified voice and representation to businesses and people doing business in Soho- and to help make Soho better for ALL.
+                </p>
+            </div>
+            <div id="content2021" class="content" style="display:none;">
+                <p class="sponsorcomment">
+                    waiting for more sponsors comment
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sponsors">
+        <h2 class="home-titles text-center">Sponsorship Amount</h2>
+        <div class="container mt-5">
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+
+    </section>
+    <section class="sponsors">
+
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2 class="home-titles text-center">HELP US</h2>
+                <div class="col-md-12 row justify-content-center">
+                    <div class="vision col-md-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Level 1</h5>
+                            <p class="sponsor-amount">$10000</p>
+                            <p class="card-text">Cover the cost for the production and installation of 6 street light panels. We will promote your sponsorship by using your logo in all our promotional materials: banners, press releases, websites, and social media posts. Your logo will also be displayed on the lamp posts where the lighting panels are installed (with QR code).</p>
+                            <a href="#" class="btn btn-primary see-more-button" data-increase="10000">Explore Level 1</a>
+                        </div>
+                    </div>
+                    <!-- Add similar blocks for other sponsorship levels -->
+                    <div class="vision col-md-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Level 2</h5>
+                            <p class="sponsor-amount">$5000</p>
+                            <p class="card-text">·will cover the cost for the production and installation of 3 street light panels
+                                ·we will promote your sponsorship by using your logo in our promo material banners, press release,an targeted social media post (targeted promo printed an digital matter), and lamp posts where the lighting panels are installed (QR code)</p>
+                            <a href="#" class="btn btn-primary see-more-button" data-increase="5000">Explore Level 2</a>
+                        </div>
+                    </div>
+                    <div class="vision col-md-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Level 3</h5>
+                            <p class="sponsor-amount">$2500</p>
+                            <p class="card-text"> ﻿
+                                will cover the cost for the
+                                production of 2 street light panels. we will promote your
+                                sponsorship by using your
+                                logo in the press release,
+                                and social media posts
+                                featuring the artwork and
+                                the lights you sponsored,
+                                and lamp posts where the
+                                lighting panels are installed (with QR code).</p>
+                            <a href="#" class="btn btn-primary see-more-button" data-increase="2500">Explore Level 3</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+<div th:replace="~{fragments/footer :: footerBlock}"/>
+<!-- Back to Top Button -->
+<button id="backToTopBtn" title="Go to top">Top</button>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/sponsors.js"></script>
+</body>
+</html>

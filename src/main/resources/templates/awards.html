@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Awards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    <link href="//cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="awards.css">
+</head>
+<body>
+<div th:replace="~{fragments/header :: headerBlock}"></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <section class="col-md-10 text-center mt-5 mb-5">
+            <h2>RIBA Awards</h2>
+            <p>RIBA Learning is very excited to be the part of the Soho Kids Xmas Lights project. The project gives
+                children the opportunity to explore their local architecture, learn about lighting design,
+                use their creativity to design their own lights and see their accomplishments celebrated in the
+                incredible lights which are made and
+                displayed on their local streets. Giving children these opportunities is not only vital to enabling
+                them to learn about the spaces where they
+                live, learn and play but it also helps them to
+                realise their creative potential whilst bringing
+                joy and light to their community.</p>
+        </section>
+    </div>
+    <div class="container mt-4">
+        <!-- Loop through each year of awards -->
+        <section th:each="yearlyAwards : ${allYearlyAwards}">
+            <div class="row justify-content-center">
+                <div class="col-md-10 offset-md-1">
+                    <h2 class="text-center mb-3" th:text="${yearlyAwards.year} + ' RIBA WINNERS'">2022 RIBA WINNERS</h2>
+                    <!-- Loop through each award category -->
+                    <div th:each="awardCategory : ${yearlyAwards.awardCategories}" class="text-center">
+                        <h3 th:text="${awardCategory.categoryTitle}">categoryTitle</h3>
+                        <!-- Create a new row for each category -->
+                        <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                            <!-- Loop through each award within a category -->
+                            <div th:each="award : ${awardCategory.awards}" class="col mb-4">
+                                <!-- Each award is a card within a column -->
+                                <div class="card h-100">
+                                    <img th:src="@{${award.winnerImage}}" alt="Winner Image" class="card-img-top award-image">
+                                    <div class="card-body">
+                                        <h4 class="card-title" th:text="${award.winnerName}">Winner Name</h4>
+                                        <p class="card-text" th:text="${award.winnerBackground}">Winner Background</p>
+                                        <p class="card-text" th:text="${award.winnerSpeech}">Winner Speech</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+<div th:replace="~{fragments/footer :: footerBlock}"></div>
+<button id="backToTopBtn" title="Go to top">Top</button>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/header.js"></script>
+</body>
+</html>

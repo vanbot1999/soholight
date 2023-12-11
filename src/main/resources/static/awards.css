@@ -1,0 +1,70 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card-body {
+    padding: 2px 16px;
+}
+
+.card-title {
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.card-title a {
+    text-decoration: none;
+}
+
+.card-subtitle {
+    margin-bottom: 15px;
+}
+
+.card-text {
+    font-size: 16px;
+}
+.award-img{
+    margin-bottom: 15px;
+}
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .card {
+        margin-bottom: 10px;
+    }
+
+    .card-body {
+        padding: 5px 10px;
+    }
+
+    .card-text {
+        font-size: 14px;
+    }
+}
+.awards-intro-title{
+    color: black;
+    font-size: 25px;
+    line-height: 1.2;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.awards-intro{
+    padding: 20px;
+    margin: 40px 20px 40px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: rgba(255, 213, 234, 0.3);
+}
+
+.awards-years{
+    padding: 20px;
+    margin: 40px 20px 40px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: rgba(255, 213, 234, 0.3);
+}
