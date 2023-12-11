@@ -20,11 +20,11 @@ public interface KidsImageMapper {
     void insertKidsImage(@Param("kidsImage") KidsImage kidsImage);
     AdminAccount getUserLogin(@Param("username") String username, @Param("password") String password);
     Integer getUserIdByUsername(@Param("username") String username);
-    void incrementLikes(@Param("imageId") int imageId);
+    void insertLike(@Param("userId") int userId, @Param("imgId") int imgId);
 
-
-    // 更新点赞状态
-    void setHasLiked(@Param("userId") int userId, @Param("imageId") int imageId, @Param("hasLiked") boolean hasLiked);
-
-    Boolean checkUserLiked(@Param("userId") int userId, @Param("imageId") int imageId);
+    void deleteLike(@Param("userId") int userId, @Param("imgId") int imgId);
+    int checkLike(@Param("userId") int userId, @Param("imgId") int imgId);
+    void incrementImageLikes(@Param("imgId") int imgId);
+    void decrementImageLikes(@Param("imgId") int imgId);
+    int countLikes(@Param("imgId") int imgId);
 }

@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class CommentsController {
@@ -30,35 +31,48 @@ public class CommentsController {
     }
     @PostMapping("/{imageId}/like")
     public ResponseEntity<?> likeImage(@PathVariable("imageId") int imageId, HttpServletRequest request) {
-        int userId = getCurrentUserId(request);
-
+        Integer userId = getCurrentUserId(request);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User is not authenticated.");
+        }
 
         if(commentService.hasLiked(userId, imageId)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("User has already liked this image.");
         }
 
-
-        commentService.setHasLiked(userId, imageId, true);
+        commentService.likeImage(userId, imageId);
         return ResponseEntity.ok().build();
     }
 
-
-    @DeleteMapping("/{imageId}/like")
+    @DeleteMapping("/{imageId}/unlike")
     public ResponseEntity<?> unlikeImage(@PathVariable("imageId") int imageId, HttpServletRequest request) {
-        int userId = getCurrentUserId(request);
-
+        Integer userId = getCurrentUserId(request);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User is not authenticated.");
+        }
 
         if(!commentService.hasLiked(userId, imageId)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("User has not liked this image.");
         }
 
-
-        commentService.setHasLiked(userId, imageId, false);
+        commentService.unlikeImage(userId, imageId);
         return ResponseEntity.ok().build();
+    }
+    @GetMapping("/{imageId}/check-like")
+    public ResponseEntity<Boolean> checkLike(@PathVariable("imageId") int imageId, HttpServletRequest request) {
+
+        Integer userId = getCurrentUserId(request);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+
+        boolean hasLiked = commentService.hasLiked(userId, imageId);
+        return ResponseEntity.ok(hasLiked);
     }
 
     private Integer getCurrentUserId(HttpServletRequest request) {
-        // 从cookie中获取username
+
         String username = null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
@@ -111,9 +125,21 @@ public class CommentsController {
         comment.setCreate_time(new Date());
         comment.setUserId(userId);
 
-        System.out.println(comment);
+
         commentService.addComment(comment);
 
         return ResponseEntity.ok("Comment added successfully.");
     }
+    @GetMapping("/{imageId}/like-count")
+    public ResponseEntity<?> getLikesCount(@PathVariable("imageId") int imageId) {
+        try {
+            int likeCount = commentService.getLikeCountByImageId(imageId);
+            System.out.println(likeCount);
+            return new ResponseEntity<>(likeCount, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 }
