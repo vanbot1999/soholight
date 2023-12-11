@@ -27,7 +27,7 @@ public class UserRegistrationController {
     @PostMapping("/register")
     public ModelAndView registerUser(@ModelAttribute("user") User user){
         System.out.println(user);
-        userRegistrationService.registerUser(user);
+        userRegistrationService.insertUser(user);
         return new ModelAndView("adminLogin");
     }
 }
