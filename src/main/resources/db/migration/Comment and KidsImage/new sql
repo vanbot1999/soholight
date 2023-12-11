@@ -1,8 +1,9 @@
 ALTER TABLE UserImageLikes
-    FOREIGN KEY (user_id) REFERENCES UserLogin(user_id),
-    FOREIGN KEY (img_id) REFERENCES KidsImage(img_id)
+    ADD CONSTRAINT fk_UserImageLikes_UserLogin
+        FOREIGN KEY (user_id) REFERENCES UserLogin(user_id);
 
 CREATE TABLE UserImageLikes (
+PRIMARY Key(user_id,img_id)
                                 user_id INT,
                                 img_id INT,
                                 liked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
