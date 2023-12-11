@@ -1,16 +1,8 @@
-.vision {
-    height: 100%;
-}
-
-.vision img {
-    object-fit: cover;
-    height: 50%;
-}
-
 h2, h3 {
     font-family: 'Arial', sans-serif;
     color: #333;
 }
+
 
 .view-all-button {
     background-color: rgba(50, 50, 50, 1);
@@ -24,9 +16,11 @@ h2, h3 {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+
 .view-all-button:hover {
     background-color: rgba(30, 30, 30, 1);
 }
+
 
 button {
     background-color: #007bff;
@@ -37,6 +31,7 @@ button {
     cursor: pointer;
 }
 
+
 .kids-light-show{
     width: 100%;
     padding: 20px;
@@ -45,6 +40,7 @@ button {
     transition: 0.3s;
     background-color: rgba(255, 213, 234, 0.4);
 }
+
 
 .home-cards{
     width: 100%;
@@ -56,11 +52,13 @@ button {
     color: black;
 }
 
+
 .img-fluid {
     position: relative;
     width: 100%;
     height: auto;
 }
+
 
 .img-overlay {
     position: absolute;
@@ -71,6 +69,7 @@ button {
     text-align: center;
 }
 
+
 .main-title {
     color: black;
     font-size: 34px;
@@ -79,24 +78,20 @@ button {
     line-height: 1.2;
     text-transform: uppercase;
     max-width: 700px;
-    margin: auto;
     margin-top: 80px;
     margin-bottom: 30px;
-    text-align: center;
 }
 
-.main-title2 {
+
+.carousel-text {
     color: snow;
     font-size: 34px;
     font-family: "Mark Pro", Arial, sans-serif;
     font-weight: 700;
     line-height: 1.2;
     text-transform: uppercase;
-    max-width: 700px;
-    margin: auto;
     margin-top: 80px;
     margin-bottom: 30px;
-    text-align: center;
 }
 .main-text {
     max-width: 800px;
@@ -106,25 +101,29 @@ button {
     font-size: 20px;
     line-height: 1.6;
     color: black;
-    text-align: justify;
 }
+
 
 .img-hover-zoom {
     transition: transform 0.3s ease;
 }
 
+
 .img-hover-zoom:hover {
     transform: scale(1.3);
 }
+
 
 .kid-name {
     color: #2B2A29;
     font-family: "Mark Pro", Arial, sans-serif;
 }
 
+
 .kid-name:hover {
     text-decoration: underline;
 }
+
 
 .main-title-year {
     background: linear-gradient(to right, rgba(255, 213, 234, 0.4) 0%, rgba(0, 0, 139, 1) 50%, rgba(255, 213, 234, 0.4) 100%);
@@ -134,18 +133,18 @@ button {
     line-height: 1.2;
     text-transform: uppercase;
     max-width: 700px;
-    margin: auto;
     margin-top: 80px;
     margin-bottom: 30px;
     text-align: center;
     color:snow;
 }
 
+
 .carousel-item img {
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    height: 540px;
 }
+
 
 .carousel-caption {
     margin-top: 80px;
@@ -153,11 +152,13 @@ button {
     color: #fff;
 }
 
+
 .works-each-year{
-    border:0px!important;
+    border:0!important;
     background-color: rgba(255, 255, 255, 1);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 
 .home-titles {
     color: black;
@@ -166,12 +167,10 @@ button {
     font-weight: 700;
     line-height: 1.2;
     text-transform: uppercase;
-    max-width: 700px;
-    margin: auto;
     margin-top: 40px;
     margin-bottom: 30px;
-    text-align: center;
 }
+
 
 .img-fixed-height {
     height: 250px!important;
@@ -180,15 +179,18 @@ button {
     padding: 1.25rem;
 }
 
+
 .see-more-button{
     background-color: rgba(50, 50, 50, 1);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     border:0;
 }
 
+
 .see-more-button:hover {
     background-color: rgba(30, 30, 30, 1);
 }
+
 
 .kid-name{
     color:black;
@@ -196,4 +198,137 @@ button {
 .home-logo{
     width:auto;
     height:95px;
+}
+
+
+/*#65*/
+#tab-container {
+    display: flex;
+}
+
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 213, 235, 0.8);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+
+.tab:hover {
+    background-color: rgba(255, 213, 234, 0.8);
+}
+
+
+.active-tab {
+    background-color: rgba(255, 197, 227, 0.8);
+}
+
+
+.yearlyMap {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+.home-h4{
+    margin-bottom:40px;
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 150px;
+    cursor: pointer;
+}
+.image-container:hover .speech-bubble {
+    transform: scale(1);
+}
+
+.speech-bubble {
+    position: absolute;
+    min-width: 100px;
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+
+    transform-origin: bottom left;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+    bottom: 60%;
+    left: 80%;
+    width: 900px;
+}
+
+
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    margin-left: -10px;
+}
+
+
+
+.image-container:hover .speech-bubble {
+    visibility: visible;
+    opacity: 1;
+}
+@keyframes flip-out {
+    0% {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+}
+
+@keyframes flip-in {
+    0% {
+        transform: rotateY(-90deg);
+        opacity: 0;
+    }
+    100% {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.kid {
+    backface-visibility: hidden;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.flipping-out {
+    animation: flip-out 0.5s forwards;
+}
+
+.flipping-in {
+    animation: flip-in 0.5s forwards;
+}
+
+.about-us-bg-image{
+    height: auto;
+    width: 100%;
+}
+
+.anchor-area{
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 100;
 }

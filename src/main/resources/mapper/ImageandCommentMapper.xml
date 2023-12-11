@@ -17,11 +17,39 @@
         INSERT INTO Comment (image_id, content, create_time, UserID)
         VALUES (#{comment.image_id}, #{comment.content}, #{comment.create_time}, #{comment.userId})
     </insert>
-    <select id="findCommentsByImageId" parameterType="java.lang.Integer" resultType="com.soholighting.sohoTeam8.model.Comments">
-        SELECT * FROM Comment WHERE image_id = #{image_id}
+    <select id="findCommentsByImageId" parameterType="java.lang.Integer" resultMap="commentResultMap">
+        SELECT c.id, c.image_id, c.content, c.create_time, c.UserID, u.username
+        FROM Comment c
+                 JOIN UserLogin u ON c.UserID = u.user_id
+        WHERE c.image_id = #{image_id}
     </select>
+    <resultMap id="commentResultMap" type="com.soholighting.sohoTeam8.model.Comments">
+        <id property="id" column="id" />
+        <result property="image_id" column="image_id" />
+        <result property="content" column="content" />
+        <result property="create_time" column="create_time" />
+        <result property="user_id" column="user_id" />
+        <result property="username" column="username" />
+    </resultMap>
     <select id="insertKidsImage" resultType="com.soholighting.sohoTeam8.model.KidsImage">
         INSERT INTO KidsImage (img_id, name, age, description,url,sourceUrl,issueDate)
         VALUES (#{kidsImage.img_id}, #{kidsImage.name}, #{kidsImage.age},#{kidsImage.description},#{kidsImage.url},#{kidsImage.sourceUrl},#{kidsImage.issueDate})
     </select>
+    <update id="incrementLikes" parameterType="int">
+        UPDATE KidsImage
+        SET likes = likes + 1
+        WHERE img_id = #{imageId}
+    </update>
+    <select id="checkUserLiked" parameterType="map" resultType="Boolean">
+        SELECT hasLiked
+        FROM Comment
+        WHERE UserID = #{userId}
+          AND image_id = #{imageId}
+        LIMIT 1
+    </select>
+    <update id="setHasLiked" parameterType="map">
+        UPDATE Comment
+        SET hasLiked = #{hasLiked}
+        WHERE image_id = #{imageId}
+    </update>
 </mapper>

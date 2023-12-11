@@ -32,36 +32,22 @@ public class AdminLoginController {
     }
 
     @PostMapping("/home")
-    public ModelAndView login(@RequestParam String userId, @RequestParam String password, HttpServletResponse response) {
-        try {
-            List<AdminAccount> adminAccounts = adminAccountService.readUsersFromJson();
-            for (AdminAccount adminAccount : adminAccounts) {
-                if (adminAccount.getUserId().equals(userId) && adminAccount.getPassword().equals(password)) {
+    public ModelAndView login(@RequestParam String username, @RequestParam String password, HttpServletResponse response) {
+        AdminAccount adminAccount = adminAccountService.login(username, password);
+        System.out.println("fpx");
+        if (adminAccount != null) {
+            Cookie cookie = new Cookie("user", username);
+            cookie.setMaxAge(7 * 24 * 60 * 60);
+            cookie.setPath("/");
+            response.addCookie(cookie);
 
-                    Cookie cookie = new Cookie("user", userId);
-                    cookie.setMaxAge(7 * 24 * 60 * 60);
-                    response.addCookie(cookie);
-
-
-                    ModelAndView modelAndView = new ModelAndView("home");
-                    modelAndView.addObject("userID", userId);
-                    System.out.println("GG");
-                    return modelAndView;
-                }
-            }
-
+            ModelAndView modelAndView = new ModelAndView("home");
+            modelAndView.addObject("username", username);
+            return modelAndView;
+        } else {
             ModelAndView modelAndView = new ModelAndView("AdminLogin");
             modelAndView.addObject("error", "Invalid username or password");
             return modelAndView;
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
-
-            ModelAndView errorModelAndView = new ModelAndView("error");
-            errorModelAndView.addObject("error", "An error occurred while processing your request. Please try again later.");
-            return errorModelAndView;
         }
     }
 }

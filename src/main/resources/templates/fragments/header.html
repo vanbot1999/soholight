@@ -2,17 +2,17 @@
     <nav class="navbar navbar-expand-lg navbar-light custom-bg">
         <div class="container">
             <div class="headerBrand">
-                <img src="logo1.png" alt="Logo" width="30" height="30" class="d-inline-block align-top">
+                <a th:href="@{/home}">
+                    <img src="logo1.png" alt="Logo" width="30" height="30" class="d-inline-block align-top">
+                </a>
             </div>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/home}">Home</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/paintings}">Paintings</a>
                     </li>
@@ -33,6 +33,15 @@
                     </li>
                     <li id="addImage" class="nav-item">
                         <a class="nav-link" th:href="@{/admin/addImage}">Add Image</a>
+                    </li>
+                    <li id="donate" class="nav-item">
+                        <a class="nav-link" th:href="@{/donate}">Donate</a>
+                    </li>
+                    <li id="makeItHappen" class="nav-item">
+                        <a class="nav-link" th:href="@{/make_it_happen}">Make It Happen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/feedback}">Feedback</a>
                     </li>
                 </ul>
             </div>
