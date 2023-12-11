@@ -45,21 +45,24 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/feedback}">Feedback</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" id="dropmenu">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Login
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownLogin">
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownLogin" >
+
                             <a class="dropdown-item" th:href="@{/Adminlogin}">Login</a>
                             <a class="dropdown-item" th:href="@{/register}">Register</a>
+
                         </div>
                     </li>
                 </ul>
             </div>
-            <h1 id="welcomeMessage" style="color:white">
+            <label id="welcomeMessage" style="color:darkred;margin-left: 20px">
 
-            </h1>
-            <button id="logoutButton" style="display: none;">Logout</button>
+            </label>
+            <button id="logoutButton" style="display: none;margin-left: 20px">Logout</button>
         </div>
 
 

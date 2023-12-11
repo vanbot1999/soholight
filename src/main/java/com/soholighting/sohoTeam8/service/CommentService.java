@@ -78,5 +78,13 @@ public class CommentService {
             e.printStackTrace();
         }
     }
+    public List<Comments> getAllComments() {
+        try {
+            System.out.println(commentRepository.getAllComments());
+            return commentRepository.getAllComments();
+        } catch (SQLException e) {
 
+            throw new RuntimeException("error", e);
+        }
+    }
 }

@@ -27,16 +27,38 @@ public class CommentRepository {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    Comments comment = new Comments();
-                    comment.setId(rs.getInt("id"));
-                    comment.setImageId(rs.getInt("image_id"));
-                    comment.setContent(rs.getString("content"));
-                    comment.setCreate_time(rs.getTimestamp("create_time"));
-                    comment.setUserId(rs.getInt("UserID"));
-                    // ... set other fields of Comment object
+                    Comments comment = createCommentFromResultSet(rs);
 
                     comments.add(comment);
                 }
+            }
+        }
+        return comments;
+    }
+    private Comments createCommentFromResultSet(ResultSet rs) throws SQLException {
+        Comments comment = new Comments();
+        comment.setId(rs.getInt("id"));
+        comment.setImageId(rs.getInt("image_id"));
+        comment.setContent(rs.getString("content"));
+        comment.setCreate_time(rs.getTimestamp("create_time"));
+        comment.setUserId(rs.getInt("UserID"));
+
+        return comment;
+    }
+
+    public List<Comments> getAllComments() throws SQLException {
+        List<Comments> comments = new ArrayList<>();
+        String sql = "SELECT * FROM Comment";
+
+        try (Connection connection = getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                Comments comment = createCommentFromResultSet(rs);
+
+
+                comments.add(comment);
             }
         }
         return comments;

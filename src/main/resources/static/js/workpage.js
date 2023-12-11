@@ -9,6 +9,11 @@ $(document).ready(function() {
     let image_id = $('input[name="imageId"]').val();
     let content = $('#commentText').val();
         let username = getCookie('user');
+        var currentUserId = getCookie('user');
+        if (!currentUserId) {
+            alert('您还没有登录。');
+            return;
+        }
         $.ajax({
         url: '/addcomment',
         type: 'POST',
@@ -41,7 +46,11 @@ $(document).ready(function() {
     var likeCountDisplay = $('#likeCount');
     var likeContainer = $('#likeContainer');
     var deleteLikeButton = $('#deleteLikeBtn');
-
+    var currentUserId = getCookie('user');
+    if (!currentUserId) {
+        alert('您还没有登录。');
+        return;
+    }
 
     checkUserLiked(imageId);
     updateLikeCount(imageId);
@@ -67,6 +76,11 @@ $(document).ready(function() {
 
 
     deleteLikeButton.on('click', function() {
+        var currentUserId = getCookie('user');
+        if (!currentUserId) {
+            alert('您还没有登录。');
+            return;
+        }
         $.ajax({
             url: '/' + imageId + '/unlike',
             type: 'DELETE',
@@ -109,6 +123,11 @@ $(document).ready(function() {
 
 
 function updateLikeCount(imageId) {
+    var currentUserId = getCookie('user');
+    if (!currentUserId) {
+        alert('您还没有登录。');
+        return;
+    }
     var urlParams = new URLSearchParams(window.location.search);
     var imageId = urlParams.get('imageId');
     $.ajax({
@@ -148,8 +167,8 @@ function updateLikeCount(imageId) {
                             '<p> ' + formattedDate + '</p>' +
                             '<div class="comment-box">' +
                             '<p>' + comment.content + '</p>' +
-                            '</div>'+
-                            '<button onclick="likeComment(' + comment.id + ')">like</button>';
+                            '</div>'
+
 
 
                         if (currentUsername === comment.username) {
@@ -186,7 +205,11 @@ function confirmDelete(commentId, username) {
 
 
 function deleteComment(commentId) {
-
+    var currentUserId = getCookie('user');
+    if (!currentUserId) {
+        alert('您还没有登录。');
+        return;
+    }
     $.ajax({
         url: '/delete/' + commentId,
         type: 'DELETE',

@@ -59,7 +59,7 @@ window.onload = function() {
         welcomeMessage.innerHTML = 'Welcome, ' + userId;
         logoutButton.style.display = 'inline-block';
     } else {
-        welcomeMessage.innerHTML = 'Please Sign in';
+
         logoutButton.style.display = 'none';
     }
 };
@@ -67,7 +67,7 @@ $('#logoutButton').click(function() {
     $.post('/logout', function(data, status) {
         if (status === 'success') {
 
-            $('#welcomeMessage').html('Please Sign in');
+
             $('#logoutButton').hide();
             window.location = '/Adminlogin';
         } else {
