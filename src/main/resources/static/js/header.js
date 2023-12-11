@@ -22,7 +22,7 @@ window.onload = function() {
         loginLink.style.display = 'none';
         registerLink.style.display = 'none';
     } else {
-        welcomeMessage.innerHTML = 'Please Sign in';
+
         logoutButton.style.display = 'none';
         loginLink.style.display = 'inline';
         registerLink.style.display = 'inline';
