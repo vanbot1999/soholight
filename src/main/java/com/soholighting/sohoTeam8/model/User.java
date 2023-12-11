@@ -3,7 +3,6 @@ package com.soholighting.sohoTeam8.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.List;
 
 /**
  * @author Enoch Ribin 23089855
@@ -17,6 +16,7 @@ public class User {
     private String userName;
     private String password;
     private String phoneNumber;
+    private String birthday;
 
     @Override
     public String toString() {
@@ -27,7 +27,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", birthday=" + birthday +
                 '}';
     }
-
 }

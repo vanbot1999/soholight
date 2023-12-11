@@ -1,6 +1,8 @@
 package com.soholighting.sohoTeam8.service;
 
+import com.soholighting.sohoTeam8.mapper.UserRegistrationMapper;
 import com.soholighting.sohoTeam8.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,18 +13,18 @@ import java.util.List;
  */
 @Service
 public class UserRegistrationService {
-    public List<User> initUsers = new ArrayList<>();
+    @Autowired
+    private UserRegistrationMapper userRegistrationMapper;
 
-    UserRegistrationService() {
-        initUsers.add(new User("Ron", "Derik", "ronderik@gmail.com", "ronderik", "password", "1234567867"));
-        initUsers.add(new User("John", "Jacob", "johnjacob@gmail.com", "johnjacob", "password", "999999999"));
-        initUsers.add(new User("Jr", "Jones", "jrjones@gmail.com", "jrjones", "password", "888888888"));
-        initUsers.add(new User("Lee", "Priest", "leepriest@gmail.com", "leepriest", "password", "4545666666"));
+    public List<User> findAll() {
+        return userRegistrationMapper.findAll();
     }
 
-    public void registerUser(User user) {
-        initUsers.add(user);
-        System.out.println("Success :" + user);
+    public void insertUser(User user) {
+        userRegistrationMapper.insertUser(user);
+        int userId = userRegistrationMapper.findLastInsertedID().intValue();;
+        userRegistrationMapper.insertPhoneNumber(userId,user.getPhoneNumber());
+        userRegistrationMapper.insertUserLoginDetails(userId, user);
     }
 
 }
