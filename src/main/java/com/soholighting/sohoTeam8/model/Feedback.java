@@ -40,5 +40,14 @@ public class Feedback {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    @Override
+    public String toString() {
+        return "Feedback{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }
 
