@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert Sponsor</title>
+</head>
+<body>
+
+<h2>Insert New Sponsor</h2>
+
+<form th:action="@{/insertSponsor}" th:object="${newSponsor}" method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" th:field="*{name}" required/><br/>
+
+  <label for="URL">URL:</label>
+  <input type="text" id="URL" name="URL" th:field="*{URL}" required/><br/>
+
+  <label for="sponsor_logo">Sponsor Logo:</label>
+  <input type="text" id="sponsor_logo" name="sponsor_logo" th:field="*{sponsor_logo}" required/><br/>
+
+  <button type="submit">Submit</button>
+</form>
+
+<h2>All Sponsors</h2>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Sponsor ID</th>
+    <th>Name</th>
+    <th>URL</th>
+    <th>Sponsor Logo</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="sponsor : ${allSponsors}">
+    <td th:text="${sponsor.sponsor_id}"></td>
+    <td th:text="${sponsor.name}"></td>
+    <td th:text="${sponsor.URL}"></td>
+    <td th:text="${sponsor.sponsor_logo}"></td>
+    <td>
+      <form th:action="@{/removeSponsor}" method="post">
+        <input type="hidden" name="name" th:value="${sponsor.name}"/>
+        <button type="submit">Remove</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

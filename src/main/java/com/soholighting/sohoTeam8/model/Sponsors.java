@@ -13,6 +13,10 @@ public class Sponsors {
 
     }
 
+    public Sponsors() {
+
+    }
+
     public String getName() {
         return name;
     }
