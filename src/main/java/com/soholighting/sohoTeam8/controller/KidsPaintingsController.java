@@ -4,9 +4,7 @@ import com.soholighting.sohoTeam8.model.KidsImage;
 import com.soholighting.sohoTeam8.exception.SohoLightingException;
 import com.soholighting.sohoTeam8.service.KidsPaintingsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -20,17 +18,12 @@ public class KidsPaintingsController {
     @Autowired
     private KidsPaintingsService kidsPaintingsService;
 
-    @GetMapping(path = {"/paintings", "/paintings/{index}"})
-    public ModelAndView getKidsPaintingBasedOnYear(@PathVariable("index") Optional<String> index) {
-        if (index.isEmpty()) {
+    @GetMapping("/motif")
+    public ModelAndView getKidsPaintingBasedOnYear(@RequestParam(value = "year", required = false) Integer year) {
+        if (year != null) {
+                System.out.println(year);
             try {
-                return getModelAndViewAllPaintings();
-            } catch (SohoLightingException e) {
-                return new ModelAndView("Mainpage");
-            }
-        } else {
-            try {
-                return getModelAndViewByYear(index);
+                return getModelAndViewByYear(Integer.toString(year));
             } catch (SohoLightingException e) {
                 try {
                     return getModelAndViewAllPaintings();
@@ -38,11 +31,17 @@ public class KidsPaintingsController {
                     return new ModelAndView("Mainpage");
                 }
             }
+        } else {
+            try {
+                return getModelAndViewAllPaintings();
+            } catch (SohoLightingException e) {
+                return new ModelAndView("Mainpage");
+            }
         }
     }
 
-    private ModelAndView getModelAndViewByYear(Optional<String> index) throws SohoLightingException {
-        List<KidsImage> kidsPaintingsList = kidsPaintingsService.getPaintingsBasedOnYear(index.get());
+    private ModelAndView getModelAndViewByYear(String year) throws SohoLightingException {
+        List<KidsImage> kidsPaintingsList = kidsPaintingsService.getPaintingsBasedOnYear(year);
         ModelAndView kidsPaintingsMV = new ModelAndView("kidsPaintings");
         kidsPaintingsMV.addObject("kidsPaintings", kidsPaintingsList);
         return kidsPaintingsMV;
