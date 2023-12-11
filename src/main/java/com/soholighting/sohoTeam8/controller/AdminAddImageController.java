@@ -6,10 +6,7 @@ import com.soholighting.sohoTeam8.service.AdminAddImageService;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -23,13 +20,13 @@ public class AdminAddImageController {
     @Autowired
     private AdminAddImageService adminAddImageService;
 
-    @GetMapping("/admin/addImage")
+    @GetMapping("addImage")
     public ModelAndView addImageDetailsForm() {
         return new ModelAndView("addImage");
     }
 
     @SneakyThrows
-    @PostMapping("/admin/addImage")
+    @PostMapping("addImage")
     public ResponseEntity<String> addImageDetails(@RequestParam Map<String, String> formData) {
         KidsImage kidsImage = new KidsImage(
                 Integer.parseInt(formData.get("img_id")),
@@ -38,8 +35,8 @@ public class AdminAddImageController {
                 formData.get("description"),
                 formData.get("url"),
                 formData.get("sourceUrl"),
-                formData.get("issueDate"),
-                Integer.parseInt("likes"));
+                formData.get("issueDate"));
+        System.out.println(kidsImage);
         try {
             adminAddImageService.addImageDetails(kidsImage);
             return ResponseEntity.ok("success");

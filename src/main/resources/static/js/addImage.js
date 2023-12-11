@@ -2,7 +2,7 @@ function submitForm() {
     const formData = $('#imageForm').serialize();
     $.ajax({
         type: 'POST',
-        url: '/admin/addImage',
+        url: '/addImage',
         data: formData,
         success: function (response) {
             $('#result').html('<div class="alert alert-success" role="alert">Form submitted successfully!</div>');
