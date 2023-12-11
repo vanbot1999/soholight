@@ -141,5 +141,20 @@ public class CommentsController {
         }
     }
 
+    @DeleteMapping("/delete/{commentId}")
+    public ResponseEntity<?> deleteComment(@PathVariable("commentId") int commentId,
+                                           HttpServletRequest request) {
+        Integer userId = getCurrentUserId(request);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("用户未认证。");
+        }
+
+        try {
+            commentService.deleteComment(commentId, userId);
+            return ResponseEntity.ok("评论删除成功。");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("删除评论错误: " + e.getMessage());
+        }
+    }
 
 }

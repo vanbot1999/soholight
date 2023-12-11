@@ -142,7 +142,6 @@ function updateLikeCount(imageId) {
                     $.each(comments, function(index, comment) {
 
                         var date = new Date(comment.create_time);
-
                         var formattedDate = date.toLocaleDateString('zh-CN');
                         var commentHtml =  '<h3>' + comment.username + '</h3>' +
                             '<h5>UserID: ' + comment.userId + '</h5>' +
@@ -151,11 +150,12 @@ function updateLikeCount(imageId) {
                             '<p>' + comment.content + '</p>' +
                             '</div>'+
                             '<button onclick="likeComment(' + comment.id + ')">like</button>';
+
+
                         if (currentUsername === comment.username) {
-                            commentHtml += '<button onclick="deleteComment(' + comment.id + ')">delete</button>';
+                            commentHtml += '<button onclick="confirmDelete(' + comment.id + ',\'' + currentUsername + '\')">delete</button>';
                         }
                         commentsSection.append('<div class="comment-box">' + commentHtml + '</div>');
-
                     });
                 }
             },
@@ -177,3 +177,25 @@ function updateLikeCount(imageId) {
         }
         return null;
     }
+function confirmDelete(commentId, username) {
+    var confirmed = confirm('Are you sure to delete this comment？');
+    if (confirmed) {
+        deleteComment(commentId, username);
+    }
+}
+
+
+function deleteComment(commentId) {
+
+    $.ajax({
+        url: '/delete/' + commentId,
+        type: 'DELETE',
+        success: function(response) {
+            alert('Delete successfully。');
+            loadComments($('input[name="imageId"]').val());
+        },
+        error: function(xhr) {
+            alert('System in Error: ' + xhr.responseText);
+        }
+    });
+}

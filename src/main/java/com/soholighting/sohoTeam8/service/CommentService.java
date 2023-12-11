@@ -6,22 +6,25 @@ package com.soholighting.sohoTeam8.service;
 
 import com.soholighting.sohoTeam8.model.Comments;
 import com.soholighting.sohoTeam8.mapper.KidsImageMapper;
-import com.soholighting.sohoTeam8.model.KidsImage;
-import org.apache.ibatis.session.SqlSession;
+import com.soholighting.sohoTeam8.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-import java.util.HashMap;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class CommentService {
     @Autowired
     private KidsImageMapper kidsImageMapper;
 
+    private final CommentRepository commentRepository;
+
+    public CommentService(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
+    }
 
     public List<Comments> findComment(){
         return kidsImageMapper.findComment();
@@ -66,7 +69,14 @@ public class CommentService {
 
         return kidsImageMapper.countLikes(imageId);
     }
-    public void deleteComment(int userId) {
-        kidsImageMapper.deleteComment(userId);
+
+    public void deleteComment(int commentId, int userId) {
+        try {
+            commentRepository.deleteCommentByImageIdAndUserId(commentId, userId);
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
     }
+
 }
