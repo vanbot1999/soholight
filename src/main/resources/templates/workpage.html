@@ -6,54 +6,66 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" type="text/css" href="home.css">
+
     <link rel="stylesheet" type="text/css" href="workPage.css">
     <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="footer.css">
 </head>
-<body style="background-color: rgba(255,255,217,0.5)">
+<body >
 <div th:replace="~{fragments/header :: headerBlock}"/>
+<p class="main-title">Image Details</p>
+<div class="container image-details-container" >
 
-<div>
-    <div>
-        <div class="container">
-            <h1>Image Details</h1>
-
-            <div class="row custom-margin">
-
-                <div class="col-md-4  ">
-                    <img th:src="${kidsImage.sourceUrl}" alt="Child's Drawing" class="fixed-width-img"/>
+    <div class="row image-details-row">
+        <div class="col-md-4">
+            <div class="card">
+                <img th:src="${kidsImage.sourceUrl}" alt="Child's Drawing" class="card-img-top" style="height: 300px; width: 100%; object-fit: cover;"/>
+                <div class="card-body">
+                    <p class="card-text">Some details about the child's drawing...</p>
                 </div>
-                <div class="col-md-4 custom-margin2">
-                    <img th:src="${kidsImage.url}" alt="Decorative Light" class="fixed-width-img"/>
-                </div>
-                <div class="col-md-4 " id="GG">
-                    <div class="info-text">
-                        <p>Name: <span th:text="${kidsImage.name}">Sereen</span></p>
-                        <p>Age: <span th:text="${kidsImage.age}">6</span></p>
-                    </div>
-                    <div id="likeContainer">
-                        <button style="margin-right: 15px"  id="likeBtn" class="heart"  th:data-image-id="${imageId}" >Like</button>
-                        <span id="likeCount">0</span>
-                        <button id="deleteLikeBtn" style="display: none;">Delete Like</button>
-                    </div>
-                    <div>
-                        <button id="addCommentBtn" class="btn btn-primary">Add Comments</button>
-                    </div>
-                    <div class="text-area-form">
-                        <form id="commentForm" style="display:none;" th:action="@{/addcomment}" method="post">
-                            <input type="hidden" name="imageId" th:value="${kidsImage.id}"/>
-                            <textarea id="commentText" name="commentText"
-                                      placeholder="Enter your comment here..."></textarea>
-                            <button type="submit" id="submitCommentBtn">Submit Comment</button>
-                        </form>
-                    </div>
-                </div>
-
-
             </div>
-            <h1>Great comments</h1>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img th:src="${kidsImage.url}" alt="Decorative Light" class="card-img-top" style="height: 300px; width: 100%; object-fit: cover;"/>
+                <div class="card-body">
+                    <p class="card-text">Some details about the decorative light...</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="info-text">
+                <p>Name: <span th:text="${kidsImage.name}">Sheena</span></p>
+                <p>Age: <span th:text="${kidsImage.age}">11</span></p>
+            </div>
+            <div id="likeContainer">
+                <button style="margin-right: 15px" id="likeBtn" class="heart" th:data-image-id="${imageId}">Like</button>
+                <span id="likeCount">1</span>
+                <button id="deleteLikeBtn" style="display: none;">Delete Like</button>
+            </div>
+            <div>
+                <button id="addCommentBtn" class="btn btn-primary">Add Comments</button>
+            </div>
+            <div class="text-area-form">
+                <form id="commentForm" style="display:none;" th:action="@{/addcomment}" method="post">
+                    <input type="hidden" name="imageId" th:value="${kidsImage.id}"/>
+                    <textarea id="commentText" name="commentText" placeholder="Enter your comment here..."></textarea>
+                    <button type="submit" id="submitCommentBtn">Submit Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container comments-container">
+    <h1 class="main-title">Great comments</h1>
+    <div class="card comments-card">
+        <div class="card-body">
             <div id="commentsSection">
+
             </div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
     <div th:replace="~{fragments/footer :: footerBlock}"/>
@@ -64,5 +76,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/js/header.js"></script>
     <script src="/js/workpage.js"></script>
+
 </body>
 </html>

@@ -83,7 +83,19 @@
 </div>
 </div>
 <div th:replace="~{fragments/footer :: footerBlock}"/>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="/js/jq.snow.js"></script>
+<script>
+    $(function(){
+        $.fn.snow({
 
+            minSize: 2,
+            maxSize: 10,
+            newOn: 300
+
+        });
+    });
+</script>
 </body>
 
 </html>
