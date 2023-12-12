@@ -25,6 +25,10 @@ public class WebController {
     public String adminlogin() {
         return "AdminLogin";
     }
+    @GetMapping("/Admin")
+    public String gg() {
+        return "Adniopage";
+    }
 
     @GetMapping("/legacy")
     public String gotoLegacy() {

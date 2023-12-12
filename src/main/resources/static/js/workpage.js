@@ -9,6 +9,11 @@ $(document).ready(function() {
     let image_id = $('input[name="imageId"]').val();
     let content = $('#commentText').val();
         let username = getCookie('user');
+        var currentUserId = getCookie('user');
+        if (!currentUserId) {
+            alert('您还没有登录。');
+            return;
+        }
         $.ajax({
         url: '/addcomment',
         type: 'POST',
@@ -41,7 +46,11 @@ $(document).ready(function() {
     var likeCountDisplay = $('#likeCount');
     var likeContainer = $('#likeContainer');
     var deleteLikeButton = $('#deleteLikeBtn');
-
+    var currentUserId = getCookie('user');
+    if (!currentUserId) {
+        alert('您还没有登录。');
+        return;
+    }
 
     checkUserLiked(imageId);
     updateLikeCount(imageId);
@@ -67,6 +76,11 @@ $(document).ready(function() {
 
 
     deleteLikeButton.on('click', function() {
+        var currentUserId = getCookie('user');
+        if (!currentUserId) {
+            alert('您还没有登录。');
+            return;
+        }
         $.ajax({
             url: '/' + imageId + '/unlike',
             type: 'DELETE',
@@ -109,6 +123,11 @@ $(document).ready(function() {
 
 
 function updateLikeCount(imageId) {
+    var currentUserId = getCookie('user');
+    if (!currentUserId) {
+        alert('您还没有登录。');
+        return;
+    }
     var urlParams = new URLSearchParams(window.location.search);
     var imageId = urlParams.get('imageId');
     $.ajax({
@@ -142,20 +161,20 @@ function updateLikeCount(imageId) {
                     $.each(comments, function(index, comment) {
 
                         var date = new Date(comment.create_time);
-
                         var formattedDate = date.toLocaleDateString('zh-CN');
                         var commentHtml =  '<h3>' + comment.username + '</h3>' +
                             '<h5>UserID: ' + comment.userId + '</h5>' +
                             '<p> ' + formattedDate + '</p>' +
                             '<div class="comment-box">' +
                             '<p>' + comment.content + '</p>' +
-                            '</div>'+
-                            '<button onclick="likeComment(' + comment.id + ')">like</button>';
+                            '</div>'
+
+
+
                         if (currentUsername === comment.username) {
-                            commentHtml += '<button onclick="deleteComment(' + comment.id + ')">delete</button>';
+                            commentHtml += '<button onclick="confirmDelete(' + comment.id + ',\'' + currentUsername + '\')">delete</button>';
                         }
                         commentsSection.append('<div class="comment-box">' + commentHtml + '</div>');
-
                     });
                 }
             },
@@ -177,3 +196,29 @@ function updateLikeCount(imageId) {
         }
         return null;
     }
+function confirmDelete(commentId, username) {
+    var confirmed = confirm('Are you sure to delete this comment？');
+    if (confirmed) {
+        deleteComment(commentId, username);
+    }
+}
+
+
+function deleteComment(commentId) {
+    var currentUserId = getCookie('user');
+    if (!currentUserId) {
+        alert('您还没有登录。');
+        return;
+    }
+    $.ajax({
+        url: '/delete/' + commentId,
+        type: 'DELETE',
+        success: function(response) {
+            alert('Delete successfully。');
+            loadComments($('input[name="imageId"]').val());
+        },
+        error: function(xhr) {
+            alert('System in Error: ' + xhr.responseText);
+        }
+    });
+}
