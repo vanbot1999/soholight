@@ -12,17 +12,20 @@ import javax.sql.DataSource;
 public class AppConfig {
 
     @Bean
+    // This method will be called by Spring to create and manage the FeedbackRepository instance
     public FeedbackRepository feedbackRepository() {
         return new FeedbackRepository();
     }
+    // It requires a DataSource and YearlyAwardCategoryRepository as dependencies
     public YearlyAwardsRepository yearlyAwardsRepository(DataSource dataSource, YearlyAwardCategoryRepository yearlyAwardCategoryRepository) {
         return new YearlyAwardsRepository(dataSource, yearlyAwardCategoryRepository);
     }
-
+    // It requires a DataSource and AwardRepository as dependencies
     public YearlyAwardCategoryRepository yearlyAwardCategoryRepository(DataSource dataSource, AwardRepository awardRepository) {
         return new YearlyAwardCategoryRepository(dataSource, awardRepository);
     }
-
+    // It requires a DataSource as a dependency
+    // DataSource is used for database connectivity and operations related to the Award entity
     public AwardRepository awardRepository(DataSource dataSource) {
         return new AwardRepository(dataSource);
     }

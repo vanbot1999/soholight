@@ -10,19 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+// Repository class for handling YearlyAwards entity-related database operations.
 public class YearlyAwardsRepository {
 
     private final DataSource dataSource;
     private final YearlyAwardCategoryRepository yearlyAwardCategoryRepository;
 
-
+    // Constructor to inject dependencies for DataSource and YearlyAwardCategoryRepository.
     @Autowired
     public YearlyAwardsRepository(DataSource dataSource, YearlyAwardCategoryRepository yearlyAwardCategoryRepository) {
         this.dataSource = dataSource;
         this.yearlyAwardCategoryRepository = yearlyAwardCategoryRepository;
     }
+    // Method to find all yearly awards.
     public List<YearlyAwards> findAll() {
         List<YearlyAwards> yearlyAwardsList = new ArrayList<>();
+        // SQL query to select all yearly awards.
         String sql = "SELECT * FROM yearly_awards";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
