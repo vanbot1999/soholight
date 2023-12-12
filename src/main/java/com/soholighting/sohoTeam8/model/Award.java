@@ -6,6 +6,8 @@ public class Award {
     private String winnerBackground;
     private String winnerSpeech;
     private String winnerImage;
+    public Award() {
+    }
 
     public Award(String id, String winnerName, String winnerBackground, String winnerSpeech, String winnerImage) {
         this.id = id;

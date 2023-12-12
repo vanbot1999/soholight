@@ -17,7 +17,7 @@ public class WebController {
     @GetMapping("/awards")
     public String awardsPage(Model model) {
         List<YearlyAwards> allYearlyAwards = awardService.getAllYearlyAwards();
-        model.addAttribute("allYearlyAwards", allYearlyAwards);
+        model.addAttribute("allYearlyAwards", awardService.getAllYearlyAwards());
         return "awards";
     }
 
