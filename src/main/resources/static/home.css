@@ -241,7 +241,7 @@ button {
     position: relative;
     display: inline-block;
     margin-top: 20px;
-    margin-left: 150px;
+    margin-left: 70px;
     cursor: pointer;
 }
 .image-container:hover .speech-bubble {
@@ -331,4 +331,10 @@ button {
     right: 0;
     transform: translateY(-50%);
     z-index: 100;
+}
+.highlight {
+    background: linear-gradient(to right, rgba(255, 0, 0, 1), rgba(0, 0, 255, 1));
+    -webkit-background-clip: text;
+    color: transparent;
+
 }
