@@ -1,11 +1,9 @@
 package com.soholighting.sohoTeam8.service;
 
-import com.soholighting.sohoTeam8.model.Award;
-import com.soholighting.sohoTeam8.model.YearlyAwardCategory;
 import com.soholighting.sohoTeam8.model.YearlyAwards;
-import com.soholighting.sohoTeam8.repository.YearlyAwardsRepository;
-import com.soholighting.sohoTeam8.repository.AwardCategoryRepository;
 import com.soholighting.sohoTeam8.repository.AwardRepository;
+import com.soholighting.sohoTeam8.repository.YearlyAwardCategoryRepository;
+import com.soholighting.sohoTeam8.repository.YearlyAwardsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,22 +12,22 @@ import java.util.List;
 @Service
 public class AwardService {
 
-    @Autowired
-    private YearlyAwardsRepository yearlyAwardsRepository;
+    private final YearlyAwardsRepository yearlyAwardsRepository;
+    private final YearlyAwardCategoryRepository yearlyAwardCategoryRepository;
+    private final AwardRepository awardRepository;
 
     @Autowired
-    private AwardCategoryRepository awardCategoryRepository;
-
-    @Autowired
-    private AwardRepository awardRepository;
+    public AwardService(YearlyAwardsRepository yearlyAwardsRepository,
+                        YearlyAwardCategoryRepository yearlyAwardCategoryRepository,
+                        AwardRepository awardRepository) {
+        this.yearlyAwardsRepository = yearlyAwardsRepository;
+        this.yearlyAwardCategoryRepository = yearlyAwardCategoryRepository;
+        this.awardRepository = awardRepository;
+    }
 
     public List<YearlyAwards> getAllYearlyAwards() {
-        return yearlyAwardsRepository.findAll();
+        List<YearlyAwards> yearlyAwardsList = yearlyAwardsRepository.findAll();
+        return yearlyAwardsList;
     }
-    public List<YearlyAwardCategory> getAllAwardCategories() {
-        return awardCategoryRepository.findAll();
-    }
-    public List<Award> getAllAwards() {
-        return awardRepository.findAll();
-    }
+
 }

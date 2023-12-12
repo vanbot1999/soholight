@@ -1,37 +1,42 @@
 package com.soholighting.sohoTeam8.repository;
 
 import com.soholighting.sohoTeam8.model.Award;
-import org.springframework.beans.factory.annotation.Autowired;
-import javax.sql.DataSource;
+import org.springframework.stereotype.Repository;
 import java.sql.*;
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class AwardRepository {
 
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
-    public List<Award> findAll() {
-        List<Award> awardList = new ArrayList<>();
+    public AwardRepository(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public List<Award> findByCategoryId(int categoryId) {
+        List<Award> awards = new ArrayList<>();
+        String sql = "SELECT * FROM award WHERE category_id = ?";
         try (Connection conn = dataSource.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM award")) {
-            while (rs.next()) {
-                Award award = new Award(
-                        rs.getString("id"),
-                        rs.getString("winnerName"),
-                        rs.getString("winnerBackground"),
-                        rs.getString("winnerSpeech"),
-                        rs.getString("winnerImage")
-                );
-                awardList.add(award);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, categoryId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Award award = new Award(
+                            rs.getString("id"),
+                            rs.getString("winnerName"),
+                            rs.getString("winnerBackground"),
+                            rs.getString("winnerSpeech"),
+                            rs.getString("winnerImage")
+                    );
+                    awards.add(award);
+                }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return awardList;
+        return awards;
     }
-
 }

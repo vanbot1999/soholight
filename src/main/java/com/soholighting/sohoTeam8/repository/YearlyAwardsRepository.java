@@ -1,27 +1,38 @@
 package com.soholighting.sohoTeam8.repository;
 
+import com.soholighting.sohoTeam8.model.YearlyAwardCategory;
 import com.soholighting.sohoTeam8.model.YearlyAwards;
 import org.springframework.beans.factory.annotation.Autowired;
-import javax.sql.DataSource;
+import org.springframework.stereotype.Repository;
 import java.sql.*;
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class YearlyAwardsRepository {
 
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
+    private final YearlyAwardCategoryRepository yearlyAwardCategoryRepository;
 
+
+    @Autowired
+    public YearlyAwardsRepository(DataSource dataSource, YearlyAwardCategoryRepository yearlyAwardCategoryRepository) {
+        this.dataSource = dataSource;
+        this.yearlyAwardCategoryRepository = yearlyAwardCategoryRepository;
+    }
     public List<YearlyAwards> findAll() {
         List<YearlyAwards> yearlyAwardsList = new ArrayList<>();
-        String sql = "SELECT year FROM yearly_awards";
+        String sql = "SELECT * FROM yearly_awards";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
+
             while (rs.next()) {
-                YearlyAwards yearlyAwards = new YearlyAwards(rs.getString("year"));
-                yearlyAwards.setYear(rs.getString("year"));
-                yearlyAwards.setAwardCategories(new ArrayList<>());
+                int yearId = rs.getInt("year_id");
+                String year = rs.getString("year");
+                List<YearlyAwardCategory> categories = yearlyAwardCategoryRepository.findByYearId(yearId);
+                YearlyAwards yearlyAwards = new YearlyAwards(year, categories);
                 yearlyAwardsList.add(yearlyAwards);
             }
         } catch (SQLException e) {
@@ -29,24 +40,4 @@ public class YearlyAwardsRepository {
         }
         return yearlyAwardsList;
     }
-
-    public List<YearlyAwards> findByYear(String year) {
-        List<YearlyAwards> yearlyAwardsList = new ArrayList<>();
-        String sql = "SELECT year FROM yearly_awards WHERE year = ?";
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, year);
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    YearlyAwards yearlyAwards = new YearlyAwards(rs.getString("year"));
-                    yearlyAwards.setYear(rs.getString("year"));
-                    yearlyAwards.setAwardCategories(new ArrayList<>());
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return yearlyAwardsList;
-    }
-
 }
