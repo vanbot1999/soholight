@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="home.css">
     <link rel="stylesheet" type="text/css" href="paintingShow.css">
 </head>
-<body>
+<body class="home-page">
 
 <!--    Navbar  -->
 <section th:replace="~{fragments/header :: headerBlock}"/>
@@ -141,6 +141,7 @@
                     </div>
                 </div>
             </section>
+            <!-- Background -->
             <section class="kids-light-show" id="background">
                 <div  class="row justify-content-center">
                     <div class="col-md-10">
@@ -156,7 +157,7 @@
                             The Royal Institute of British Architects (RIBA Learning) every year distinguishes some of the pupils lighting designs with an award.</p>
 
                         <div class="image-container">
-                            <img style="text-align: center" class="" src="https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/adna.3jwe247ow7s0.webp" alt="client photo" >
+                            <img  class="" src="https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/adna.3jwe247ow7s0.webp" alt="client photo" >
                             <div class="speech-bubble">
                                 <p class="card-text">I was inspired by the children of Newburgh, Scotland as they have been designing the Christmas lighting for
                                     their high street for over 20 years now - with the agreement of Mrs Shona Gray (Head of Newburgh Action Group),
@@ -169,11 +170,12 @@
                     </div>
                 </div>
             </section>
+            <!-- card for link to about us-->
             <section class="kids-light-show" id="about">
-                <h2 class="home-titles text-center">ABOUT US</h2>
-                <img class="about-us-bg-image" src="test2.png" alt="test2.png">
-                <h5 class="text-center">Purpose of activity</h5>
-                <p class="text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h2 class="home-titles text-center">WANT MORE?</h2>
+                <img class="about-us-bg-image" src="https://citylions.org/assets/hero-images/Banner-v8__FocusFillWyIwLjAwIiwiMC4wMCIsMjQwMCw5MDBd.png" alt="test2.png">
+                <h5 class="text-center highlight">SOHO 2023</h5>
+                <p class="text-center highlight">THE CHILD-DESIGNED LIGHT PROJECT RETURNS TO THE STREETS OF SOHO FOR 2023!</p>
                 <div class="d-flex justify-content-center">
                     <a href="/aboutus" class="btn btn-primary">See more</a>
                 </div>

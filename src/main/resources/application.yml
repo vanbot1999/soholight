@@ -9,6 +9,8 @@ spring:
     sql:
       init:
         mode: always
+    hikari:
+      maximum-pool-size: 10
   jpa:
     hibernate:
       ddl-auto: update
