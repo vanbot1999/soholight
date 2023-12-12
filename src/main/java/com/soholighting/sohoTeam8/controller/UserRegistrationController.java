@@ -41,12 +41,12 @@ public class UserRegistrationController {
     }
 
     @DeleteMapping("/deleteUser")
-    public void deleteUser(@ModelAttribute("user") User user) {
+    public void deleteUser(@ModelAttribute("user") User user) throws SohoLightingException {
         userRegistrationService.deleteUser(user);
     }
 
     @PutMapping("/updateUser")
-    public void updateUser(@ModelAttribute("user") User user) {
+    public void updateUser(@ModelAttribute("user") User user) throws SohoLightingException {
         userRegistrationService.updateUser(user);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.function.BiFunction;
 
 /**
  * @author Enoch Ribin 23089855
@@ -15,8 +16,7 @@ import java.util.List;
 @Service
 public class UserRegistrationService {
 
-
-    private UserRegistrationRepository userRegistrationRepository;
+    private final UserRegistrationRepository userRegistrationRepository;
 
     @Autowired
     public UserRegistrationService(UserRegistrationRepository userRegistrationRepository) {
@@ -28,34 +28,53 @@ public class UserRegistrationService {
     }
 
     public void insertUser(User user) throws SohoLightingException {
-        if (userRegistrationRepository.saveUser(user) != 1) {
-            throw new SohoLightingException("User not saved in DB");
+        validateOperation(userRegistrationRepository.saveUser(user), "User not saved in DB");
+
+        Long userId = getValidUserId(userRegistrationRepository.findLastInsertedUserID(), "Failed to retrieve user ID after saving");
+
+        validateOperation(userRegistrationRepository.savePhoneNumber(user, userId), "Phone number not stored in DB");
+        validateOperation(userRegistrationRepository.saveUserLoginDetails(user, userId), "User Login not stored in DB");
+    }
+
+    public void updateUser(User user) throws SohoLightingException {
+        Long userId = userRegistrationRepository.findUserID(user);
+
+        if (userId == null || userId == 0) {
+            insertUser(user);
+            return;
         }
 
-        Long userId = userRegistrationRepository.findLastInsertedUserID();
+        updateDetail(user, userId, userRegistrationRepository::updateUser, "User not updated");
+        updateDetail(user, userId, userRegistrationRepository::updatePhoneNumber, "Phone number not updated");
+        updateDetail(user, userId, userRegistrationRepository::updateUserLoginDetails, "User Login not updated");
+    }
 
-        if (userRegistrationRepository.savePhoneNumber(user, userId) != 1 ||
-                userRegistrationRepository.saveUserLoginDetails(user, userId) != 1) {
-            throw new SohoLightingException("Data not stored in DB");
+    public void deleteUser(User user) throws SohoLightingException {
+        Long userId = getValidUserId(userRegistrationRepository.findUserID(user), "User not found");
+
+        userRegistrationRepository.deletePhoneNumber(userId);
+        userRegistrationRepository.deleteUserLoginDetails(userId);
+        userRegistrationRepository.deleteUserById(userId);
+    }
+
+    private void validateOperation(int result, String errorMessage) throws SohoLightingException {
+        if (result != 1) {
+            throw new SohoLightingException(errorMessage);
         }
     }
 
-    public void updateUser(User user){
-        Long user_id = userRegistrationRepository.findUserID(user);
-        userRegistrationRepository.updateUser(user,user_id);
-        userRegistrationRepository.updatePhoneNumber(user,user_id);
-        userRegistrationRepository.updateUserLoginDetails(user,user_id);
-
+    private Long getValidUserId(Long userId, String errorMessage) throws SohoLightingException {
+        if (userId == null || userId == 0) {
+            throw new SohoLightingException(errorMessage);
+        }
+        return userId;
     }
 
-    public void deleteUser(User user){
-        Long user_id = userRegistrationRepository.findUserID(user);
-        userRegistrationRepository.deletePhoneNumber(user_id);
-        userRegistrationRepository.deleteUserLoginDetails(user_id);
-        userRegistrationRepository.deleteUserById(user_id);
+    private void updateDetail(User user, Long userId, BiFunction<User, Long, Integer> updateFunction, String errorMessage) throws SohoLightingException {
+        validateOperation(updateFunction.apply(user, userId), errorMessage);
     }
 
-    public List<User> usersList(){
-        return userRegistrationRepository.findAllUser();
+    public List<User> usersList() {
+        return findAll();
     }
 }

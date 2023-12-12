@@ -1,5 +1,6 @@
 package com.soholighting.sohoTeam8.repository.impl;
 
+import com.soholighting.sohoTeam8.exception.SohoLightingException;
 import com.soholighting.sohoTeam8.model.User;
 import com.soholighting.sohoTeam8.repository.UserRegistrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,9 +73,13 @@ public class UserRegistrationRepositoryImpl implements UserRegistrationRepositor
     }
 
     @Override
-    public long findLastInsertedUserID() {
-        String sqlQuery = "SELECT LAST_INSERT_ID()";
-        return jdbcTemplate.queryForObject(sqlQuery, Long.class);
+    public long findLastInsertedUserID() throws SohoLightingException {
+        try{
+            String sqlQuery = "SELECT LAST_INSERT_ID()";
+            return jdbcTemplate.queryForObject(sqlQuery, Long.class);
+        }catch(NullPointerException e){
+            throw new SohoLightingException("Data Not Found ");
+        }
     }
 
     @Override
