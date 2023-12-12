@@ -3,6 +3,7 @@ ALTER TABLE UserImageLikes
     FOREIGN KEY (img_id) REFERENCES KidsImage(img_id)
 
 CREATE TABLE UserImageLikes (
+PRIMARY KEY (user_id, img_id),
                                 user_id INT,
                                 img_id INT,
                                 liked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

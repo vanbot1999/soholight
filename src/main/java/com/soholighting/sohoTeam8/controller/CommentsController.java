@@ -141,5 +141,29 @@ public class CommentsController {
         }
     }
 
+    @DeleteMapping("/delete/{commentId}")
+    public ResponseEntity<?> deleteComment(@PathVariable("commentId") int commentId,
+                                           HttpServletRequest request) {
+        Integer userId = getCurrentUserId(request);
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No this user。");
+        }
 
+        try {
+            commentService.deleteComment(commentId, userId);
+            return ResponseEntity.ok("delete success。");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error for delete " + e.getMessage());
+        }
+    }
+    @GetMapping("/comments")
+    public ResponseEntity<List<Comments>> getAllComments() {
+        try {
+            List<Comments> comments = commentService.getAllComments();
+            return new ResponseEntity<>(comments, HttpStatus.OK);
+        } catch (Exception e) {
+
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
