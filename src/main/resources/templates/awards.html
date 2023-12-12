@@ -44,7 +44,7 @@
                         <!-- Create a new row for each category -->
                         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
                             <!-- Loop through each award within a category -->
-                            <div th:each="award : ${awardCategory.awards}" class="col mb-4">
+                            <div th:each="award : ${awardCategory.awards}" class="col-lg-6 col-md-12 mb-4">
                                 <!-- Each award is a card within a column -->
                                 <div class="card h-100">
                                     <img th:src="@{${award.winnerImage}}" alt="Winner Image" class="card-img-top award-image">
