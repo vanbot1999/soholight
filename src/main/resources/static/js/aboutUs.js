@@ -81,4 +81,29 @@ $(document).ready(function() {
     setInterval(fetchAndDisplayKids, 200);
 });
 
+// Get the #backToTopBtn element on the page.
+var mybutton = document.getElementById("backToTopBtn");
 
+// Execute the scrollFunction function when the window scrolls.
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+
+    // Show #backToTopBtn button if the page has scrolled down more than 30 pixels
+    if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+        mybutton.style.display = "block";
+    }
+    // Otherwise, hide the #backToTopBtn button.
+    else {
+        mybutton.style.display = "none";
+    }
+}
+
+// Execute the topFunction function when the #backToTopBtn button is clicked.
+mybutton.onclick = function () { topFunction() };
+
+function topFunction() {
+
+    // Smoothly scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
