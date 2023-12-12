@@ -1,15 +1,6 @@
-.container {
-    padding: 20px;
-}
-
 .container, .col {
     box-sizing: border-box;
 }
-
-body{
-   background-color: rgba(255, 213, 234, 0.4);
-}
-
 
 /* Styling for the back to top button */
 #backToTopBtn {

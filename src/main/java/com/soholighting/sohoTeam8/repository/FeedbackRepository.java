@@ -6,9 +6,9 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+// Repository class to handle database operations for Feedback
 public class FeedbackRepository {
-
+    // Method to find all feedback records from the database
     @Autowired
     private DataSource dataSource;
 
@@ -29,7 +29,7 @@ public class FeedbackRepository {
         }
         return feedbackList;
     }
-
+    // Method to save a feedback record to the database
     public void save(Feedback feedback) {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(

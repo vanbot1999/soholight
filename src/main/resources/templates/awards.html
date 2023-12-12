@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="awards.css">
 </head>
-<body>
+<body class="award-page">
 <div th:replace="~{fragments/header :: headerBlock}"></div>
 <div class="container">
     <div class="row justify-content-center">
-        <section class="col-md-10 text-center mt-5 mb-5">
+        <section class="col-md-10 text-center mt-5 mb-5 riba-intro">
             <h2>RIBA Awards</h2>
             <p>RIBA Learning is very excited to be the part of the Soho Kids Xmas Lights project. The project gives
                 children the opportunity to explore their local architecture, learn about lighting design,
@@ -30,11 +30,11 @@
                 joy and light to their community.</p>
         </section>
     </div>
-    <div class="container mt-4">
+    <div class="row justify-content-center">
         <!-- Loop through each year of awards -->
-        <section th:each="yearlyAwards : ${allYearlyAwards}">
+        <div th:each="yearlyAwards : ${allYearlyAwards}" class="each-year-award-area col-md-10 text-center">
             <div class="row justify-content-center">
-                <div class="col-md-10 offset-md-1">
+                <div class="col-md-10">
                     <h2 class="text-center mb-3" th:text="${yearlyAwards.year + ' RIBA WINNERS'}"></h2>
 
                     <!-- Loop through each award category -->
@@ -44,10 +44,11 @@
                         <!-- Create a new row for each category -->
                         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
                             <!-- Loop through each award within a category -->
-                            <div th:each="award : ${awardCategory.awards}" class="col mb-4">
+                            <div th:each="award : ${awardCategory.awards}" class="col-lg-6 col-md-12 mb-4">
                                 <!-- Each award is a card within a column -->
                                 <div class="card h-100">
-                                    <img th:src="@{${award.winnerImage}}" alt="Winner Image" class="card-img-top award-image">
+                                    <img th:src="@{${award.winnerImage}}" alt="Winner Image"
+                                         class="card-img-top award-image">
                                     <div class="card-body">
                                         <h4 class="card-title" th:text="${award.winnerName}"></h4>
                                         <p class="card-text" th:text="${award.winnerBackground}"></p>
@@ -59,9 +60,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
-
 </div>
 <div th:replace="~{fragments/footer :: footerBlock}"></div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
