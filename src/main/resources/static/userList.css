@@ -1,0 +1,30 @@
+@media print {
+    .print-hide {
+        display: none;
+    }
+    body{
+        background-image: url('/logo1.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+}
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/logo1.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.1;
+}
+
+body {
+    position: relative;
+}
