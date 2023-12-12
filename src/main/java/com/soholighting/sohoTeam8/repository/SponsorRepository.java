@@ -10,22 +10,23 @@ import java.util.List;
 public class SponsorRepository {
 
     private Connection getConnection() throws SQLException {
-        String url = "jdbc:mariadb://localhost:3306/Soholight";
+        //get connection
+        String url = "jdbc:mariadb://localhost:3306/Soholight";//jdbc url
         String username = "root";
         String password = "comsc";
         return DriverManager.getConnection(url, username, password);
     }
-    public List<Sponsors> findAllSponsors() {
+    public List<Sponsors> findAllSponsors() {//find all sponsors
         List<Sponsors> sponsorList = new ArrayList<>();
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM Sponsors")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM Sponsors")) {//sql query
             while (rs.next()) {
                 Sponsors sponsor = new Sponsors();
-                sponsor.setSponsor_id(rs.getInt("Sponsor_id"));
-                sponsor.setName(rs.getString("name"));
-                sponsor.setURL(rs.getString("Url"));
-                sponsor.setSponsor_logo(rs.getString("Sponsor_logo"));
+                sponsor.setSponsor_id(rs.getInt("Sponsor_id"));//set sponsor id
+                sponsor.setName(rs.getString("name"));//set sponsor name
+                sponsor.setURL(rs.getString("Url"));//set sponsor url
+                sponsor.setSponsor_logo(rs.getString("Sponsor_logo")); //set sponsor logo
                 sponsorList.add(sponsor);
             }
         } catch (SQLException e) {
@@ -34,6 +35,7 @@ public class SponsorRepository {
         return sponsorList;
     }
 
+   //find all sponsors by name
     public List<Sponsors> findAllBySponsorName(String name) {
         List<Sponsors> sponsorList = new ArrayList<>();
         try (Connection conn = getConnection();
@@ -54,10 +56,10 @@ public class SponsorRepository {
         return sponsorList;
     }
 
-    public Sponsors selectSponsorById(int id) {
+    public Sponsors findSponsorById(int id) {
         Sponsors sponsor = null;
         try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Sponsors WHERE Sponsor_id = ?")) {
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Sponsors WHERE Sponsor_id = ?")) {//sql
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
@@ -72,11 +74,11 @@ public class SponsorRepository {
         }
         return sponsor;
     }
-
+//insert sponsor
     public void insertSponsor(Sponsors sponsor) {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(
-                     "INSERT INTO Sponsors (Sponsor_id, name, Url, Sponsor_logo) VALUES (?, ?, ?, ?)")) {
+                     "INSERT INTO Sponsors (Sponsor_id, name, Url, Sponsor_logo) VALUES (?, ?, ?, ?)")) {//sql
             stmt.setInt(1, sponsor.getSponsor_id());
             stmt.setString(2, sponsor.getName());
             stmt.setString(3, sponsor.getURL());
@@ -86,7 +88,7 @@ public class SponsorRepository {
             e.printStackTrace();
         }
     }
-
+//remove sponsor by id
     public void removeSponsorById(int id) {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement("DELETE FROM Sponsors WHERE Sponsor_id = ?")) {
@@ -96,6 +98,7 @@ public class SponsorRepository {
             e.printStackTrace();
         }
     }
+    //remove sponsor by name
     public void removeSponsorByName(String name) {
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement("DELETE FROM Sponsors WHERE name = ?")) {
