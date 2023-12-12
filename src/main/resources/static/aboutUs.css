@@ -53,3 +53,12 @@
 .about-us-area{
     background-color: rgba(255, 213, 234, 0.3);
 }
+.card-text {
+    height: 200px; /* Adjust the height according to your needs */
+    overflow: hidden;
+    overflow-y: auto; /* Use this if you want a vertical scrollbar when content exceeds the height */
+}
+.card-img-top{
+    height:300px;
+
+}
