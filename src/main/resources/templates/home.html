@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" type="text/css" href="home.css">
     <link rel="stylesheet" type="text/css" href="paintingShow.css">
+
 </head>
 <body>
 
@@ -155,9 +156,9 @@
 
                             The Royal Institute of British Architects (RIBA Learning) every year distinguishes some of the pupils lighting designs with an award.</p>
 
-                        <div class="image-container">
-                            <img style="text-align: center" class="" src="https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/adna.3jwe247ow7s0.webp" alt="client photo" >
-                            <div class="speech-bubble">
+                        <div class="image-container" >
+                            <img style="text-align: center;transform: translateX(-100px);" class="" src="https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/adna.3jwe247ow7s0.webp" alt="client photo" >
+                            <div class="speech-bubble" >
                                 <p class="card-text">I was inspired by the children of Newburgh, Scotland as they have been designing the Christmas lighting for
                                     their high street for over 20 years now - with the agreement of Mrs Shona Gray (Head of Newburgh Action Group),
                                     I set up and managed the Soho Kids Xmas Lights project in Soho, London since 2021 in collaboration with the local
@@ -199,10 +200,23 @@
 <!-- Back to Top Button -->
 <button id="backToTopBtn" title="Go to top">Top</button>
 
+</head>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="/js/home.js"></script>
 <script src="/js/header.js"></script>
+<script src="/js/jq.snow.js"></script>
+<script>
+    $(function(){
+        $.fn.snow({
+
+            minSize: 2,
+            maxSize: 10,
+            newOn: 300
+
+        });
+    });
+</script>
 </body>
 </html>

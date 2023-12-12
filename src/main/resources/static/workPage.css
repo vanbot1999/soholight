@@ -39,7 +39,7 @@
     margin-bottom: 10px;
     border-radius: 5px;
 }
-/* 按钮本身没有背景色，所以默认是透明的 */
+
 .heart {
     position: relative;
     width: 30px;
@@ -50,7 +50,7 @@
     outline: none;
 }
 
-/* 伪元素创建心形，初始为粉色 */
+
 .heart:before,
 .heart:after {
     content: "";
@@ -74,14 +74,126 @@
     transform-origin: 100% 100%;
 }
 
-/* 当按钮被点击后，只改变伪元素的颜色 */
+
 .heart.liked:before,
 .heart.liked:after {
-    background: red; /* 心形变为红色 */
+    background: red;
 }
 
 
 
 .liked + .delete-like {
     display: inline-block;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.main-title {
+    color: #2B2A29;
+    font-size: 34px;
+    font-family: "Mark Pro", Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.highlight {
+    background: linear-gradient(to right, rgba(255, 0, 0, 1), rgba(0, 0, 255, 1));
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.highlight2 {
+    background: linear-gradient(to right, rgba(255, 192, 203, 1), rgba(0, 0, 139, 1));
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.main-text {
+    max-width: 800px;
+    margin-bottom: 20px;
+    padding: 20px;
+    font-family: 'Mark Pro',Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #333;
+    background-color: rgba(255, 213, 234, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: justify;
+}
+
+.highlight-text {
+    color: #fe0;
+    font-weight: 700;
+}
+
+.about-us-text{
+    background-color: rgba(255, 213, 234, 0.3);
+    margin-bottom:40px;
+}
+
+.about-us-area{
+    background-color: rgba(255, 213, 234, 0.3);
+}
+.image-details-container {
+
+
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: rgba(252,225,225,1);
+    border: 2px solid #FFC0CB;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.image-details-row {
+    margin: 0 -15px;
+}
+
+.image-card {
+    padding: 0 15px;
+    margin-bottom: 15px;
+}
+
+
+.card {
+
+    border: 2px solid #FFC0CB;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #FFC0CB;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 0;
+
+}
+.comments-container {
+
+    margin-top: 20px;
+}
+
+.comments-card {
+    background-color: rgba(252,225,225,1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 10px;
+}
+
+.comments-card .card-body {
+    background-color: snow;
+    padding: 20px;
 }

@@ -41,6 +41,14 @@ public class AdminLoginController {
             cookie.setPath("/");
             response.addCookie(cookie);
 
+
+            if ("Antonio".equals(username)) {
+                ModelAndView modelAndView = new ModelAndView("redirect:/Admin");
+                modelAndView.addObject("username", username);
+                return modelAndView;
+            }
+
+
             ModelAndView modelAndView = new ModelAndView("home");
             modelAndView.addObject("username", username);
             return modelAndView;
