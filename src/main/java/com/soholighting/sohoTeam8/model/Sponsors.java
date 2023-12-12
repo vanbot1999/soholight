@@ -1,10 +1,10 @@
 package com.soholighting.sohoTeam8.model;
 public class Sponsors {
-    private int Sponsor_id;
-    private String name;
-    private String URL;
-    private String sponsor_logo;
-
+    private int Sponsor_id;//id
+    private String name;//name
+    private String URL;//sponsor's website url
+    private String sponsor_logo; //sponsor logo
+//constructor
     public Sponsors(int sponsor_id,String name, String URL, String sponsor_logo) {
         this.Sponsor_id = sponsor_id;
         this.name = name;
@@ -12,11 +12,11 @@ public class Sponsors {
         this.sponsor_logo = sponsor_logo;
 
     }
-
+//empty constructor
     public Sponsors() {
 
     }
-
+//getters and setters
     public String getName() {
         return name;
     }

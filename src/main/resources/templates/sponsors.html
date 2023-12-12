@@ -15,8 +15,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+<!-- header -->
 <div th:replace="~{fragments/header :: headerBlock}"/>
-
+<!-- sponsors -->
 <div class="container">
     <section class="sponsors">
         <div class="row justify-content-center">
@@ -37,6 +38,7 @@
             </div>
         </div>
     </section>
+    <!-- special thanks -->
     <section class="special-thanks">
         <div class="row justify-content-center">
             <div class="col-md-10">
@@ -86,7 +88,7 @@
             </div>
         </div>
     </section>
-
+    <!-- chart about sponsors amount-->
     <section class="sponsors">
         <h2 class="home-titles text-center">Sponsorship Amount</h2>
         <div class="container mt-5">
@@ -94,8 +96,8 @@
         </div>
 
     </section>
+    <!-- support card about sponsors amount -->
     <section class="sponsors">
-
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <h2 class="home-titles text-center">HELP US</h2>
@@ -108,7 +110,7 @@
                             <a href="#" class="btn btn-primary see-more-button" data-increase="10000">Support us</a>
                         </div>
                     </div>
-                    <!-- Add similar blocks for other sponsorship levels -->
+
                     <div class="vision col-md-4">
                         <div class="card-body">
                             <h5 class="card-title">Level 2</h5>
@@ -134,9 +136,9 @@
 
     </section>
 </div>
+<!-- footer-->
 <div th:replace="~{fragments/footer :: footerBlock}"/>
-<!-- Back to Top Button -->
-<button id="backToTopBtn" title="Go to top">Top</button>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
