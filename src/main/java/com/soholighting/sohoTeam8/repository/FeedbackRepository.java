@@ -1,23 +1,20 @@
 package com.soholighting.sohoTeam8.repository;
 
 import com.soholighting.sohoTeam8.model.Feedback;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FeedbackRepository {
 
-    private Connection getConnection() throws SQLException {
-        String url = "jdbc:mariadb://localhost:3306/Soholight";
-        String username = "root";
-        String password = "comsc";
-        return DriverManager.getConnection(url, username, password);
-    }
+    @Autowired
+    private DataSource dataSource;
 
     public List<Feedback> findAll() {
         List<Feedback> feedbackList = new ArrayList<>();
-        try (Connection conn = getConnection();
+        try (Connection conn = dataSource.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT * FROM feedback")) {
             while (rs.next()) {
@@ -34,7 +31,7 @@ public class FeedbackRepository {
     }
 
     public void save(Feedback feedback) {
-        try (Connection conn = getConnection();
+        try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement(
                      "INSERT INTO feedback (username, email, message) VALUES (?, ?, ?)")) {
             stmt.setString(1, feedback.getUsername());
