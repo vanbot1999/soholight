@@ -14,18 +14,20 @@ window.onload = function() {
     let username = getCookie('user');
     let welcomeMessage = document.getElementById('welcomeMessage');
     let logoutButton = document.getElementById('logoutButton');
-    let loginLink = document.getElementById('loginLink');
+    let dropmenu = document.getElementById('dropmenu');
     let registerLink = document.getElementById('registerLink');
     if(username) {
         welcomeMessage.innerHTML = 'Welcome, ' + username;
         logoutButton.style.display = 'inline-block';
-        loginLink.style.display = 'none';
+        dropmenu.style.display = 'none';
         registerLink.style.display = 'none';
+
+
     } else {
 
         logoutButton.style.display = 'none';
-        loginLink.style.display = 'inline';
-        registerLink.style.display = 'inline';
+        dropdownmenu.style.display = 'inline';
+        dropmenu.style.display = 'inline';
     }
 };
 
@@ -34,7 +36,7 @@ $('#logoutButton').click(function() {
     $.post('/logout', function(data, status) {
         if (status === 'success') {
 
-            $('#welcomeMessage').html('Please Sign in');
+
             $('#logoutButton').hide();
             window.location = '/Adminlogin';
         } else {

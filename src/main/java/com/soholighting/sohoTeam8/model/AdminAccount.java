@@ -17,7 +17,7 @@ public class AdminAccount {
     public String getUsername(){
         return  username;
     }
-    public void setUsername(){
+    public void setUsername(String username){
         this.username=username;
     }
     public String getPassword() {
