@@ -1,16 +1,18 @@
-body {
-    background-color: #f8f9fa;
+.donate-page {
+    background-image: url('/images/donate-bg-img.png');
+    background-size: cover;
+    background-attachment: fixed;
 }
-
 .donate-container {
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
 .donate-form {
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 67, 117, 0.8);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 40px;
 }
 
 .rewards-list {
@@ -20,4 +22,13 @@ body {
 
 .reward-item {
     margin-bottom: 10px;
+}
+
+.donate-area{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+h3, h2{
+    margin: 20px;
 }
