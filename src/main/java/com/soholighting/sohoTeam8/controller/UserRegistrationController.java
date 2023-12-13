@@ -36,18 +36,20 @@ public class UserRegistrationController {
         } catch (SohoLightingException e) {
             ModelAndView registrationPage = new ModelAndView("registerUser");
             registrationPage.addObject("errorMsg", "Please try again.");
-            return "/register";
+            return "redirect:/register";
         }
     }
 
     @DeleteMapping("/deleteUser")
-    public void deleteUser(@ModelAttribute("user") User user) throws SohoLightingException {
+    public String deleteUser(@ModelAttribute("user") User user) throws SohoLightingException {
         userRegistrationService.deleteUser(user);
+        return "redirect:/admin_userList";
     }
 
     @PutMapping("/updateUser")
-    public void updateUser(@ModelAttribute("user") User user) throws SohoLightingException {
+    public String updateUser(@ModelAttribute("user") User user) throws SohoLightingException {
         userRegistrationService.updateUser(user);
+        return "redirect:/admin_userList";
     }
 
     @GetMapping("/admin_userList")
