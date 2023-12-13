@@ -11,7 +11,6 @@ import javax.sql.DataSource;
 @Configuration
 public class AppConfig {
 
-    @Bean
     // This method will be called by Spring to create and manage the FeedbackRepository instance
     public FeedbackRepository feedbackRepository() {
         return new FeedbackRepository();
