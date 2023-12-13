@@ -21,7 +21,7 @@
             <div class="card">
                 <img th:src="${kidsImage.sourceUrl}" alt="Child's Drawing" class="card-img-top" style="height: 300px; width: 100%; object-fit: cover;"/>
                 <div class="card-body">
-                    <p class="card-text">Some details about the child's drawing...</p>
+                    <p class="card-text showtest" >Original manuscript</p>
                 </div>
             </div>
         </div>
@@ -29,14 +29,14 @@
             <div class="card">
                 <img th:src="${kidsImage.url}" alt="Decorative Light" class="card-img-top" style="height: 300px; width: 100%; object-fit: cover;"/>
                 <div class="card-body">
-                    <p class="card-text">Some details about the decorative light...</p>
+                    <p class="card-text showtest" >The final light</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="info-text">
-                <p>Name: <span th:text="${kidsImage.name}">Sheena</span></p>
-                <p>Age: <span th:text="${kidsImage.age}">11</span></p>
+                <p class="showtest2">Name: <span th:text="${kidsImage.name}">Sheena</span></p>
+                <p class="showtest2">Age: <span th:text="${kidsImage.age}">11</span></p>
             </div>
             <div id="likeContainer">
                 <button style="margin-right: 15px" id="likeBtn" class="heart" th:data-image-id="${imageId}">Like</button>
@@ -76,6 +76,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="/js/header.js"></script>
     <script src="/js/workpage.js"></script>
+<script src="/js/jq.snow.js"></script>
 
+<script>
+    $(function(){
+        $.fn.snow({
+
+            minSize: 2,
+            maxSize: 10,
+            newOn: 300
+
+        });
+    });
+</script>
 </body>
 </html>

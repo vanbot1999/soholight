@@ -1,4 +1,4 @@
-package com.soholighting.sohoTeam8.test;
+package com.soholighting.sohoTeam8;
 
 import com.soholighting.sohoTeam8.model.Comments;
 import org.junit.jupiter.api.Test;

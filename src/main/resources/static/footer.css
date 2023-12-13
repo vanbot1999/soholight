@@ -1,5 +1,5 @@
 .footer-bg {
-    background-color: Darkblue;
+    background-color: rgba(48, 71, 94, 0.9);
     color: #ffffff;
     font-family: Arial, sans-serif;
     padding: 20px 0;
@@ -19,6 +19,8 @@
     align-items: flex-start;
     margin-left: 150px;
 }
-
+.footer-list ul li {
+    cursor: pointer;
+}
 
 

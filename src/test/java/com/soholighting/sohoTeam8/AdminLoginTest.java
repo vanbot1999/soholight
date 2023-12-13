@@ -1,4 +1,4 @@
-package com.soholighting.sohoTeam8.test;
+package com.soholighting.sohoTeam8;
 import com.soholighting.sohoTeam8.model.AdminAccount;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
