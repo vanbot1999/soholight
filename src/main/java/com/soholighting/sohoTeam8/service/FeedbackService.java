@@ -26,4 +26,15 @@ public class FeedbackService {
     public List<Feedback> findAllFeedback() {
         return feedbackRepository.findAll();
     }
+
+    // update feedback
+    public boolean updateFeedback(Feedback feedback) {
+        return feedbackRepository.update(feedback);
+    }
+
+    // delete feedback
+    public boolean deleteFeedback(String username) {
+        return feedbackRepository.delete(username);
+    }
+
 }
