@@ -1,4 +1,5 @@
 <header th:fragment="headerBlock">
+    <link rel="stylesheet" href="music.css">
     <nav class="navbar navbar-expand-lg navbar-light custom-bg">
         <div class="container">
             <div class="headerBrand">
@@ -58,10 +59,20 @@
                         </div>
                     </li>
                     <li>
-                        <label id="welcomeMessage" style="color:darkred;margin-left: 40px;margin-top: 8px;"></label>
+                        <label id="welcomeMessage" style="color:darkred;margin-left: 20px;margin-top: 8px;"></label>
                     </li>
                     <li>
-                        <button id="logoutButton" style="display: none;margin-left: 40px;margin-top: 8px;">Logout</button>
+                        <button id="logoutButton" style="display: none;margin-left: 10px;margin-top: 5px;">Logout</button>
+                    </li>
+                    <li>
+                        <audio id="music" >
+                            <source src="/images/Jingle.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+
+                        <button id="musicButton" onclick="toggleMusic()" style="margin-left: 10px;">
+                            <img src="/images/hat.png" alt="Play/Pause" id="cdIcon"/>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -70,4 +81,5 @@
 
 
     </nav>
+    <script src="/js/music.js"></script>
 </header>
