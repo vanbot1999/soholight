@@ -8,19 +8,36 @@
 
 .footer-top {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     border-bottom: 1px solid #ffffff;
 }
 
 .footer-top ul {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    margin-left: 150px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    list-style-type: none;
+
 }
 .footer-list ul li {
     cursor: pointer;
+    padding: 0 5px;
 }
 
-
+@media (max-width: 768px) {
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-top ul {
+        margin-left: 0;
+        margin-bottom: 10px; /* 在ul之间添加垂直间距 */
+    }
+    .footer-list ul li {
+        padding: 0;
+    }
+}
