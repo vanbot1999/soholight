@@ -17,7 +17,7 @@
 <div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8 text-center">
+            <div class="col-md-10 text-center">
                 <form th:action="@{/feedback}" th:object="${feedback}" method="post">
                     <div class="form-group">
                         <label for="username">Username:</label>
@@ -53,6 +53,8 @@
 </div>
 <div th:replace="~{fragments/footer :: footerBlock}"/>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="/js/jq.snow.js"></script>
 <script src="/js/aboutUs.js"></script>
 <script>
