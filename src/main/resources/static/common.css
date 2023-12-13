@@ -1,7 +1,3 @@
-.container, .col {
-    box-sizing: border-box;
-}
-
 /* Styling for the back to top button */
 #backToTopBtn {
     display: none;
