@@ -4,7 +4,7 @@ LOCK TABLES `sponsors` WRITE, `specialthanks` WRITE;
 /*!40000 ALTER TABLE `sponsors` DISABLE KEYS */;
 /*!40000 ALTER TABLE `specialthanks` DISABLE KEYS */;
 
--- 在这里插入数据到'sponsors'表，如果需要的话
+-- Insert data into the 'sponsors' table here, if needed
 
 INSERT INTO `sponsors` VALUES
     (1, 'fidelity energy', 'https://fidelity-energy.co.uk/', 'https://cdn.jsdelivr.net/gh/tantalulu/soho-pic@pic/xxx/5ac340da-ffed-465f-b384-db82c33e0023.1yqzgrgf3wio.webp'),

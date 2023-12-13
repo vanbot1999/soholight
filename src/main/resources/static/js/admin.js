@@ -42,17 +42,17 @@ function loadAllComments() {
 
 function deleteComment(commentId) {
 
-    if(confirm('确定要删除这条评论吗？')) {
+    if(confirm('Are you sure you want to delete this comment?')) {
 
         $.ajax({
             url: '/deletecomment/' + commentId,
             type: 'POST',
             success: function(response) {
-                alert('评论已删除');
+                alert('Comment deleted');
                 loadAllComments();
             },
             error: function(xhr) {
-                alert('删除失败: ' + xhr.responseText);
+                alert('failed to delete: ' + xhr.responseText);
             }
         });
     }
