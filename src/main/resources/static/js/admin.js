@@ -10,8 +10,14 @@ function loadAllComments() {
             data.forEach(function(comment) {
                 var date = new Date(comment.create_time);
                 var formattedDate = date.toLocaleDateString('zh-CN');
-
+                var sendEmailButton = $('<button>')
+                    .addClass('noticeBtn')
+                    .text('send precautions')
+                    .click(function () {
+                        sendEmail(comment.userId, this);
+                    });
                 var commentRow = $('<tr>').append(
+                    $('<td>').text(comment.id),
                     $('<td>').text(comment.userId),
                     $('<td>').text(comment.content),
                     $('<td>').text(formattedDate),
@@ -19,12 +25,11 @@ function loadAllComments() {
                         .addClass('deleteBtn')
                         .text('delete')
                         .click(function() {
-                            deleteComment(comment.id);
+                            deleteComment(comment.id,comment.userId);
                         }),
 
-                        $('<button>')
-                            .addClass('noticeBtn')
-                            .text('send precautions')
+
+                        sendEmailButton
                             )
 
 
@@ -40,19 +45,35 @@ function loadAllComments() {
     });
 }
 
-function deleteComment(commentId) {
-
-    if(confirm('Are you sure you want to delete this comment?')) {
+function deleteComment(commentId,userId) {
+    if (confirm('Are you sure you want to delete this comment?')) {
 
         $.ajax({
-            url: '/deletecomment/' + commentId,
-            type: 'POST',
+            url: '/delete2/' + commentId + '/' + userId,
+            type: 'DELETE',
             success: function(response) {
                 alert('Comment deleted');
                 loadAllComments();
             },
             error: function(xhr) {
-                alert('failed to delete: ' + xhr.responseText);
+
+                alert('Failed to delete: ' + xhr.responseText);
+            }
+        });
+    }
+}
+function sendEmail(userId, button) {
+    if (confirm('Are you sure you want to send an email to this user?')) {
+        $(button).prop('disabled', true).text('Sending...');
+        $.ajax({
+            url: '/sendEmail/' + userId,
+            type: 'POST',
+            success: function (response) {
+                $(button).text('has sent');
+            },
+            error: function (xhr) {
+                $(button).prop('disabled', false).text('send precautions');
+                alert('Failed to send email: ' + xhr.responseText);
             }
         });
     }
