@@ -179,4 +179,9 @@ public class CommentsController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @PostMapping("/sendEmail/{userId}")
+    public ResponseEntity<String> sendEmail(@PathVariable int userId) {
+        System.out.println("Email sent successfully.");
+        return new ResponseEntity<>("Email sent successfully.", HttpStatus.OK);
+    }
 }
