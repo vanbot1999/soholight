@@ -1,0 +1,43 @@
+.feedback-page {
+    background-image: url('/images/feedback-bg-img.png');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.feedback-list{
+    background-color: rgba(248, 255, 180, 0.6);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 40px;
+}
+
+.feedback-form{
+    background-color: rgba(248, 255, 180, 0.6);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 40px;
+}
+
+.card{
+    background-color: rgba(252, 255, 219, 1);
+}
+
+h2, h3{
+    padding-top: 20px;
+}
+
+.card-title{
+    padding: 20px 0 20px 20px;
+}
+
+p{
+    padding: 0 0 0 20px;
+}
+
+.form-group{
+    padding: 20px 0 20px 0;
+}
+
+label{
+    padding-bottom: 20px;
+}
