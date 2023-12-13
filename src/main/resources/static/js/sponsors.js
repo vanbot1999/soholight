@@ -107,4 +107,23 @@ function fetchDataAndUpdateChart(myChart, increaseAmount) {
             updateChart(myChart, newData);
         })
         .catch(error => console.error('Error fetching data:', error));
+
 }
+$(document).ready(function() {
+    // 找到 "Support" 按钮
+    var supportButton = $('.see-more-button');
+
+    // 给按钮添加点击事件监听器
+    supportButton.on('click', function(event) {
+        // 阻止默认行为，即阻止按钮的默认点击行为
+        event.preventDefault();
+
+        // 获取目标锚点的位置
+        var targetPosition = $('#chart').offset().top;
+
+        // 使用 jQuery 的 animate 方法实现平滑滚动
+        $('html, body').animate({
+            scrollTop: targetPosition
+        }, 100); // 1000 表示滚动所用时间，单位为毫秒
+    });
+});
