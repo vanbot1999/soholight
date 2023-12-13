@@ -12,6 +12,7 @@ function loadAllComments() {
                 var formattedDate = date.toLocaleDateString('zh-CN');
 
                 var commentRow = $('<tr>').append(
+                    $('<td>').text(comment.id),
                     $('<td>').text(comment.userId),
                     $('<td>').text(comment.content),
                     $('<td>').text(formattedDate),
@@ -19,7 +20,7 @@ function loadAllComments() {
                         .addClass('deleteBtn')
                         .text('delete')
                         .click(function() {
-                            deleteComment(comment.id);
+                            deleteComment(comment.id,comment.userId);
                         }),
 
                         $('<button>')
@@ -40,19 +41,18 @@ function loadAllComments() {
     });
 }
 
-function deleteComment(commentId) {
-
-    if(confirm('Are you sure you want to delete this comment?')) {
-
+function deleteComment(commentId,userId) {
+    if (confirm('Are you sure you want to delete this comment?')) {
         $.ajax({
-            url: '/deletecomment/' + commentId,
-            type: 'POST',
+            url: '/delete2/' + commentId + '/' + userId,
+            type: 'DELETE',
             success: function(response) {
                 alert('Comment deleted');
                 loadAllComments();
             },
             error: function(xhr) {
-                alert('failed to delete: ' + xhr.responseText);
+
+                alert('Failed to delete: ' + xhr.responseText);
             }
         });
     }

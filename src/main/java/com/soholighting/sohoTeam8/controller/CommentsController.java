@@ -150,6 +150,19 @@ public class CommentsController {
         }
 
         try {
+            System.out.println("HH");
+            commentService.deleteComment(commentId, userId);
+            return ResponseEntity.ok("delete success。");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error for delete " + e.getMessage());
+        }
+    }
+    @DeleteMapping("/delete2/{commentId}/{userId}")
+    public ResponseEntity<?> deleteComment2(@PathVariable("commentId") int commentId,@PathVariable("userId") int userId,
+                                           HttpServletRequest request) {
+
+        try {
+            System.out.println("HH");
             commentService.deleteComment(commentId, userId);
             return ResponseEntity.ok("delete success。");
         } catch (Exception e) {
