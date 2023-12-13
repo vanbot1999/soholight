@@ -25,7 +25,7 @@
                 <h2 class="text-center">Sponsors</h2>
                 <div class="row justify-content-center col-md-12">
                     <div th:each="sponsor : ${sponsors}" class="col-md-2">
-                        <div class="card sponsor-card">
+                        <div class="card sponsor-card text-center mx-auto">
                             <div class="card">
                                 <!-- Make the image a clickable link -->
                                 <a th:href="${sponsor.URL}" target="_blank">
@@ -46,8 +46,8 @@
                 <div class="row justify-content-center col-md-12">
                     <!-- Iterate over special thanks and display them -->
                     <div th:each="Thanks: ${specialThanks}" class="col-md-2">
-                        <div class="card sponsor-card">
-                            <div class="card">
+                        <div class="card sponsor-card text-center mx-auto">
+                            <div class="card ">
                                 <!-- Make the image a clickable link -->
                                 <a th:href="${Thanks.URL}" target="_blank">
                                     <img th:src="@{${Thanks.thanks_logo}}" class="card-img-top" th:alt="${Thanks.URL}">
@@ -102,8 +102,9 @@
             <div class="col-md-10">
                 <h2 class="home-titles text-center">HELP US</h2>
                 <div class="col-md-12 row justify-content-center">
-                    <div class="vision col-md-4">
-                        <div class="card-body">
+
+                    <div class="vision col-md-4 mb-4">
+                        <div class="card-body text-center">
                             <h5 class="card-title">Level 1</h5>
                             <p class="sponsor-amount">$10000</p>
                             <p class="card-text">Cover the cost for the production and installation of 6 street light panels. We will promote your sponsorship by using your logo in all our promotional materials: banners, press releases, websites, and social media posts. Your logo will also be displayed on the lamp posts where the lighting panels are installed (with QR code).</p>
@@ -111,8 +112,8 @@
                         </div>
                     </div>
 
-                    <div class="vision col-md-4">
-                        <div class="card-body">
+                    <div class="vision col-md-4 mb-4">
+                        <div class="card-body text-center">
                             <h5 class="card-title">Level 2</h5>
                             <p class="sponsor-amount">$5000</p>
                             <p class="card-text">Cover the cost for the production and installation of 3 street light panels
@@ -120,8 +121,8 @@
                             <a href="#" class="btn btn-primary see-more-button" data-increase="5000">Support us</a>
                         </div>
                     </div>
-                    <div class="vision col-md-4">
-                        <div class="card-body">
+                    <div class="vision col-md-4  mb-4">
+                        <div class="card-body text-center">
                             <h5 class="card-title">Level 3</h5>
                             <p class="sponsor-amount">$2500</p>
                             <p class="card-text">
