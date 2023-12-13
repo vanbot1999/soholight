@@ -1,22 +1,22 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    var music = document.getElementById('music');
+    var buttonImg = document.getElementById('musicButton').querySelector('img');
+
+    if (music.autoplay && music.readyState >= 3) {
+        buttonImg.classList.add("playing");
+    }
+});
+
 function toggleMusic() {
     var music = document.getElementById('music');
-    var button = document.getElementById('musicButton');
+    var buttonImg = document.getElementById('musicButton').querySelector('img');
 
     if (music.paused) {
         music.play();
-        button.classList.add("playing");
+        buttonImg.classList.add("playing");
     } else {
         music.pause();
-        button.classList.remove("playing");
+        buttonImg.classList.remove("playing");
     }
 }
 
-
-document.getElementById('music').addEventListener('canplaythrough', function() {
-    this.play();
-});
-
-
-document.getElementById('music').addEventListener('ended', function() {
-    document.getElementById("musicButton").classList.add("paused");
-});
