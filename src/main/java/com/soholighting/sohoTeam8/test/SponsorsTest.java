@@ -1,7 +1,8 @@
 package com.soholighting.sohoTeam8.test;
 
 import com.soholighting.sohoTeam8.model.Sponsors;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
