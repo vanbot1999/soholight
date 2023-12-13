@@ -11,7 +11,7 @@ $(document).ready(function() {
         let username = getCookie('user');
         var currentUserId = getCookie('user');
         if (!currentUserId) {
-            alert('您还没有登录。');
+            alert('U have not login。');
             return;
         }
         $.ajax({
@@ -48,7 +48,7 @@ $(document).ready(function() {
     var deleteLikeButton = $('#deleteLikeBtn');
     var currentUserId = getCookie('user');
     if (!currentUserId) {
-        alert('您还没有登录。');
+        alert('U have not login。');
         return;
     }
 
@@ -78,7 +78,7 @@ $(document).ready(function() {
     deleteLikeButton.on('click', function() {
         var currentUserId = getCookie('user');
         if (!currentUserId) {
-            alert('您还没有登录。');
+            alert('U have not login。');
             return;
         }
         $.ajax({
@@ -125,7 +125,7 @@ $(document).ready(function() {
 function updateLikeCount(imageId) {
     var currentUserId = getCookie('user');
     if (!currentUserId) {
-        alert('您还没有登录。');
+        alert('U have not login。');
         return;
     }
     var urlParams = new URLSearchParams(window.location.search);
@@ -162,9 +162,10 @@ function updateLikeCount(imageId) {
 
                         var date = new Date(comment.create_time);
                         var formattedDate = date.toLocaleDateString('zh-CN');
-                        var commentHtml =  '<h3>' + comment.username + '</h3>' +
-                            '<h5>UserID: ' + comment.userId + '</h5>' +
-                            '<p> ' + formattedDate + '</p>' +
+                        var commentHtml =  '<h3 class="username">' + comment.username + '</h3>' +
+                            '<div class="row">'+
+                            '<label style="margin-left: 15px " class="userinfor">UserID: ' + comment.userId + '</label>' +
+                            '<p style="margin-left: 25px " class="userinfor"> Time:' + formattedDate + '</p>' +'</div>'+
                             '<div class="comment-box">' +
                             '<p>' + comment.content + '</p>' +
                             '</div>'
@@ -207,7 +208,7 @@ function confirmDelete(commentId, username) {
 function deleteComment(commentId) {
     var currentUserId = getCookie('user');
     if (!currentUserId) {
-        alert('您还没有登录。');
+        alert('U have not login。');
         return;
     }
     $.ajax({
