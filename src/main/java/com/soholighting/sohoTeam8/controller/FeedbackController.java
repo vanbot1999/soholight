@@ -35,4 +35,19 @@ public class FeedbackController {
         // Redirect to the feedback page
         return "redirect:/feedback";
     }
+
+    // update feedback
+    @PutMapping("/feedback")
+    public String updateFeedback(@ModelAttribute Feedback feedback) {
+        feedbackService.updateFeedback(feedback);
+        return "redirect:/feedback";
+    }
+
+    // delete feedback
+    @DeleteMapping("/feedback/{username}")
+    public String deleteFeedback(@PathVariable String username) {
+        feedbackService.deleteFeedback(username);
+        return "redirect:/feedback";
+    }
+
 }

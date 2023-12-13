@@ -45,4 +45,33 @@ public class FeedbackRepository {
             e.printStackTrace();
         }
     }
+
+    // Method to update a feedback record
+    public boolean update(Feedback feedback) {
+        String sql = "UPDATE feedback SET email = ?, message = ? WHERE username = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, feedback.getEmail());
+            stmt.setString(2, feedback.getMessage());
+            stmt.setString(3, feedback.getUsername());
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Method to delete a feedback record
+    public boolean delete(String username) {
+        String sql = "DELETE FROM feedback WHERE username = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, username);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }
