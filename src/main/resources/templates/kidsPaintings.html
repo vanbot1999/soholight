@@ -28,7 +28,7 @@
             <div class="card mb-4 shadow-sm">
                 <a th:href="@{/workpage(imageId=${kidsPainting.id})}">
                     <img th:src="${kidsPainting.url}"
-                         th:alt="${kidsPainting.name}" class="card-img-top img-fluid">
+                         th:alt="${kidsPainting.name}" class="card-img-top img-fluid" style="width:405px; height:340px;">
                     <div class="card-body">
                         <p>Name : <span th:text="${kidsPainting.name}" class="card-text"></span></p>
                         <p>Age : <span th:text="${kidsPainting.age}" class="card-text"></span></p>

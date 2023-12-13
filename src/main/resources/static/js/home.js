@@ -13,13 +13,13 @@ function fetchAndDisplayKids() {
                         var imageElement = $('<img />', {
                             src: kid.url,
                             alt: "Kid Image",
-                            class: "img-fluid img-hover-zoom loaded", // 已加载类直接添加
-                            style: "width:100px; height:auto;",
+                            class: "img-fluid img-hover-zoom loaded",
+                            style: "width:100px; height:112px;",
                             'data-id': kid.id
                         });
 
                         var kidElement = $('<div />', {
-                            class: "col-md-4 text-center mb-3 kid flipping-in", // 添加翻入动画类
+                            class: "col-md-4 text-center mb-3 kid flipping-in",
                             click: function () {
                                 window.location.href = '/workpage?imageId=' + kid.id;
                             }
@@ -30,7 +30,7 @@ function fetchAndDisplayKids() {
 
                         kidsList.append(kidElement);
                     });
-                }, 500); // 这里的延时应与翻出动画的时间一致
+                }, 500);
             },
             error: function (error) {
                 console.error('Error fetching kids for year ' + year + ':', error);

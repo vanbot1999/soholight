@@ -22,7 +22,5 @@
 .footer-list ul li {
     cursor: pointer;
 }
-.footer-list ul li:hover {
-    background-color: pink;
-}
+
 
