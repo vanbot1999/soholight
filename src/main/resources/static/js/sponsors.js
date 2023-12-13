@@ -1,5 +1,6 @@
 // script.js
-// 在文件的顶部定义全局变量
+//
+// Define global variables at the top of the file
 let myChart;
 function showContent(year) {
     var contents = document.getElementsByClassName('content');
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// 一个示例函数，根据增加的金额更新图表数据
+// An example function that updates chart data based on increasing amounts
 function updateChartDataWithIncrease(chartData, increaseAmount) {
     chartData[2] += increaseAmount;
     return chartData;
@@ -88,42 +89,47 @@ function fetchDataAndUpdateChart(myChart, increaseAmount) {
             // Assuming newData is an array of sponsorship amounts
             var datasets = myChart.data.datasets;
 
-            // 确保数据集存在
+            // Make sure the dataset exists
             if (!datasets || datasets.length === 0) {
-                // 如果不存在，初始化一个数据集
+                // If it does not exist, initialize a data set
                 myChart.data.datasets = [{
-                    data: [],  // 你可以根据实际需求设置初始数据
-                    // 其他数据集的属性也可以在这里设置
+                    data: [],
+                    // Properties of other datasets can also be set here
                 }];
             }
 
-            // 获取当前图表的数据
+            // Get the data of the current chart
             var currentData = myChart.data.datasets[0].data;
 
-            // 更新数据
+            // update data
             var newData = updateChartDataWithIncrease(currentData, increaseAmount);
 
-            // 调用 updateChart 函数来更新图表
+            // Call the updateChart function to update the chart
             updateChart(myChart, newData);
         })
         .catch(error => console.error('Error fetching data:', error));
 
 }
 $(document).ready(function() {
-    // 找到 "Support" 按钮
+    //
+    // Find the "Support" button
     var supportButton = $('.see-more-button');
 
-    // 给按钮添加点击事件监听器
+    //
+    // Add a click event listener to the button
     supportButton.on('click', function(event) {
-        // 阻止默认行为，即阻止按钮的默认点击行为
+        // Prevent the default behavior, that is, prevent the default click behavior of the button
         event.preventDefault();
 
-        // 获取目标锚点的位置
+        //
+        // Get the position of the target anchor point
         var targetPosition = $('#chart').offset().top;
 
-        // 使用 jQuery 的 animate 方法实现平滑滚动
+        //
+        // Smooth scrolling using jQuery’s animate method
         $('html, body').animate({
             scrollTop: targetPosition
-        }, 100); // 1000 表示滚动所用时间，单位为毫秒
+        }, 100);
+        //100 represents the scrolling time in milliseconds
     });
 });
