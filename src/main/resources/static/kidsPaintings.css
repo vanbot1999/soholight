@@ -47,3 +47,7 @@ body {
     position: relative;
     z-index:1;
 }
+body footer{
+    position: relative;
+    z-index:1;
+}
