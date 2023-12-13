@@ -1,85 +1,76 @@
-//package com.soholighting.sohoTeam8;
-//
-//import com.soholighting.sohoTeam8.model.Sponsors;
-//import org.testng.annotations.Test;
-//
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//
-//public class SponsorsTest {
-//
-//    @Test
-//    public void testGetName() {
-//        // Create a new instance of Sponsors
-//        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://example.com", "logo1");
-//
-//        // Verify the name is retrieved correctly
-//        assertEquals("Sponsor 1", sponsors.getName());
-//    }
-//
-//    @Test
-//    public void testSetName() {
-//        // Create a new instance of Sponsors
-//        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://example.com", "logo1");
-//
-//        // Set a new name and verify if it is updated correctly
-//        sponsors.setName("Sponsor 2");
-//        assertEquals("Sponsor 2", sponsors.getName());
-//    }
-//
-//    @Test
-//    public void testGetURL() {
-//        // Create a new instance of Sponsors
-//        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://example.com", "logo1");
-//
-//        // Verify the URL is retrieved correctly
-//        assertEquals("https://example.com", sponsors.getURL());
-//    }
-//
-//    @Test
-//    public void testSetURL() {
-//        // Create a new instance of Sponsors
-//        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://example.com", "logo1");
-//
-//        // Set a new URL and verify if it is updated correctly
-//        sponsors.setURL("https://example.org");
-//        assertEquals("https://example.org", sponsors.getURL());
-//    }
-//
-//    @Test
-//    public void testGetSponsor_logo() {
-//        // Create a new instance of Sponsors
-//        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://example.com", "logo1");
-//
-//        // Verify the sponsor_logo is retrieved correctly
-//        assertEquals("logo1", sponsors.getSponsor_logo());
-//    }
-//
-//    @Test
-//    public void testSetSponsor_logo() {
-//        // Create a new instance of Sponsors
-//        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://example.com", "logo1");
-//
-//        // Set a new sponsor_logo and verify if it is updated correctly
-//        sponsors.setSponsor_logo("logo2");
-//        assertEquals("logo2", sponsors.getSponsor_logo());
-//    }
-//
-//    @Test
-//    public void testGetSponsor_id() {
-//        // Create a new instance of Sponsors
-//        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://example.com", "logo1");
-//
-//        // Verify the sponsor_id is retrieved correctly
-//        assertEquals(1, sponsors.getSponsor_id());
-//    }
-//
-//    @Test
-//    public void testSetSponsor_id() {
-//        // Create a new instance of Sponsors
-//        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://example.com", "logo1");
-//
-//        // Set a new sponsor_id and verify if it is updated correctly
-//        sponsors.setSponsor_id(2);
-//        assertEquals(2, sponsors.getSponsor_id());
-//    }
-//}
+package com.soholighting.sohoTeam8;
+
+import com.soholighting.sohoTeam8.model.Sponsors;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class SponsorsTest {
+
+    @Test
+    public void testGetName() {
+        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://www.sponsor1.com", "logo1.png");
+        String expected = "Sponsor 1";
+        String actual = sponsors.getName();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetName() {
+        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://www.sponsor1.com", "logo1.png");
+        String name = "Sponsor 2";
+        sponsors.setName(name);
+        String actual = sponsors.getName();
+        Assertions.assertEquals(name, actual);
+    }
+
+    @Test
+    public void testGetURL() {
+        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://www.sponsor1.com", "logo1.png");
+        String expected = "https://www.sponsor1.com";
+        String actual = sponsors.getURL();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetURL() {
+        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://www.sponsor1.com", "logo1.png");
+        String url = "https://www.sponsor2.com";
+        sponsors.setURL(url);
+        String actual = sponsors.getURL();
+        Assertions.assertEquals(url, actual);
+    }
+
+    @Test
+    public void testGetSponsor_logo() {
+        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://www.sponsor1.com", "logo1.png");
+        String expected = "logo1.png";
+        String actual = sponsors.getSponsor_logo();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetSponsor_logo() {
+        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://www.sponsor1.com", "logo1.png");
+        String logo = "logo2.png";
+        sponsors.setSponsor_logo(logo);
+        String actual = sponsors.getSponsor_logo();
+        Assertions.assertEquals(logo, actual);
+    }
+
+    @Test
+    public void testGetSponsor_id() {
+        Sponsors sponsors = new Sponsors(1, "Sponsor 1", "https://www.sponsor1.com", "logo1.png");
+        int expected = 1;
+        int actual = sponsors.getSponsor_id();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testSetSponsor_id() {
+        Sponsors sponsors = new Sponsors();
+        int sponsorId = 2;
+        sponsors.setSponsor_id(sponsorId);
+        int actual = sponsors.getSponsor_id();
+        Assertions.assertEquals(sponsorId, actual);
+    }
+}
