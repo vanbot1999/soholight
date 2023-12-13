@@ -56,7 +56,7 @@ window.onload = function() {
     let logoutButton = document.getElementById('logoutButton');
     let dropmenu = document.getElementById('dropmenu');
     if(userId) {
-        welcomeMessage.innerHTML = 'Welcome, ' + userId;
+        welcomeMessage.innerHTML = ' Admin:' + userId;
         logoutButton.style.display = 'inline-block';
         dropmenu.style.display = 'none';
     } else {
