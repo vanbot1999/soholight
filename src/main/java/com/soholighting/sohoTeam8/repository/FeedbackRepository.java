@@ -2,11 +2,14 @@ package com.soholighting.sohoTeam8.repository;
 
 import com.soholighting.sohoTeam8.model.Feedback;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 // Repository class to handle database operations for Feedback
+@Repository
 public class FeedbackRepository {
     // Method to find all feedback records from the database
     @Autowired
