@@ -16,19 +16,22 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * REST controller for managing comments and likes related to images.
+ */
 @RestController
 public class CommentsController {
     @Autowired
     private CommentService commentService;
 
-
+    // Method to handle the 'comment' action on an image
     @GetMapping("/getcomments")
     public List<Comments> getComments(@RequestParam("imageId") Integer imageId) {
         System.out.println(commentService.getCommentsByImageId(imageId));
         return commentService.getCommentsByImageId(imageId);
 
     }
+    // Method to handle the 'like' action on an image
     @PostMapping("/{imageId}/like")
     public ResponseEntity<?> likeImage(@PathVariable("imageId") int imageId, HttpServletRequest request) {
         Integer userId = getCurrentUserId(request);
@@ -43,7 +46,7 @@ public class CommentsController {
         commentService.likeImage(userId, imageId);
         return ResponseEntity.ok().build();
     }
-
+    // Method to handle the 'unlike' action on an image
     @DeleteMapping("/{imageId}/unlike")
     public ResponseEntity<?> unlikeImage(@PathVariable("imageId") int imageId, HttpServletRequest request) {
         Integer userId = getCurrentUserId(request);
@@ -58,6 +61,7 @@ public class CommentsController {
         commentService.unlikeImage(userId, imageId);
         return ResponseEntity.ok().build();
     }
+    // Method to check if a user has liked a specific image
     @GetMapping("/{imageId}/check-like")
     public ResponseEntity<Boolean> checkLike(@PathVariable("imageId") int imageId, HttpServletRequest request) {
 
@@ -70,7 +74,7 @@ public class CommentsController {
         boolean hasLiked = commentService.hasLiked(userId, imageId);
         return ResponseEntity.ok(hasLiked);
     }
-
+    // Helper method to retrieve the current user's ID based on request cookies
     private Integer getCurrentUserId(HttpServletRequest request) {
 
         String username = null;
@@ -94,7 +98,7 @@ public class CommentsController {
         return userId;
     }
 
-
+    // Method to add a comment to an image
     @PostMapping("/addcomment")
     public ResponseEntity<?> addComment(@RequestParam("image_id") Integer image_id,
                                         HttpServletRequest request,
@@ -130,6 +134,7 @@ public class CommentsController {
 
         return ResponseEntity.ok("Comment added successfully.");
     }
+    // Method to get the number of likes for a specific image
     @GetMapping("/{imageId}/like-count")
     public ResponseEntity<?> getLikesCount(@PathVariable("imageId") int imageId) {
         try {
@@ -140,7 +145,7 @@ public class CommentsController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    // Alternative method to delete a comment with specified user ID
     @DeleteMapping("/delete/{commentId}")
     public ResponseEntity<?> deleteComment(@PathVariable("commentId") int commentId,
                                            HttpServletRequest request) {
@@ -157,6 +162,7 @@ public class CommentsController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error for delete " + e.getMessage());
         }
     }
+    // Alternative method to delete a comment with specified user ID
     @DeleteMapping("/delete2/{commentId}/{userId}")
     public ResponseEntity<?> deleteComment2(@PathVariable("commentId") int commentId,@PathVariable("userId") int userId,
                                            HttpServletRequest request) {
@@ -169,6 +175,7 @@ public class CommentsController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("error for delete " + e.getMessage());
         }
     }
+    // Method to get all comments
     @GetMapping("/comments")
     public ResponseEntity<List<Comments>> getAllComments() {
         try {
@@ -178,7 +185,7 @@ public class CommentsController {
 
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
+    }// Method to send an email to a user (for example, a notification)
     @PostMapping("/sendEmail/{userId}")
     public ResponseEntity<String> sendEmail(@PathVariable int userId) {
         System.out.println("Email sent successfully.");

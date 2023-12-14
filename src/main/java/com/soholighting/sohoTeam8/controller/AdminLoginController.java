@@ -15,11 +15,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
 import java.util.List;
+/**
+ * Using @RestController annotation to denote this as a RESTful controller.
+ */
 @RestController
 public class AdminLoginController {
 
     @Autowired
     private AdminAccountService adminAccountService;
+
+    /**
+     * Method to handle logout requests, mapped to "/logout" URL.
+     */
     @PostMapping("/logout")
     public ModelAndView logout(HttpServletResponse response) {
         System.out.println("ning");
@@ -30,7 +37,9 @@ public class AdminLoginController {
         ModelAndView modelAndView = new ModelAndView("redirect:/Adminlogin");
         return modelAndView;
     }
-
+    /**
+     * Method to handle login requests, mapped to "/home" URL.
+     */
     @PostMapping("/home")
     public ModelAndView login(@RequestParam String username, @RequestParam String password, HttpServletResponse response) {
         AdminAccount adminAccount = adminAccountService.login(username, password);
