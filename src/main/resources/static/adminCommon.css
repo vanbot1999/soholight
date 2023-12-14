@@ -28,3 +28,7 @@ body button{
     position:relative;
     z-index: 1;
 }
+body header{
+    position:relative;
+    z-index: 1;
+}

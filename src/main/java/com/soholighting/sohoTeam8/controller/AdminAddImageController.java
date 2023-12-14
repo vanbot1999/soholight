@@ -20,7 +20,7 @@ public class AdminAddImageController {
     @Autowired
     private AdminAddImageService adminAddImageService;
 
-    @GetMapping("addImage")
+    @GetMapping("/admin_addMotif")
     public ModelAndView addImageDetailsForm() {
         return new ModelAndView("addImage");
     }
