@@ -58,4 +58,21 @@ public class UserRegistrationController {
         userListMV.addObject("users", userRegistrationService.findAll());
         return userListMV;
     }
+
+    @GetMapping("/admin_add_user")
+    public String AdminAddUserForm() {
+        return "adminAddUser";
+    }
+
+    @PostMapping("/admin_add_user")
+    public String AdminAddUserForm(@ModelAttribute("user") User user) {
+        try {
+            userRegistrationService.insertUser(user);
+            return "redirect:/admin_userList";
+        } catch (SohoLightingException e) {
+            ModelAndView registrationPage = new ModelAndView("adminAddUser");
+            registrationPage.addObject("errorMsg", "Please try again.");
+            return "adminAddUser";
+        }
+    }
 }
