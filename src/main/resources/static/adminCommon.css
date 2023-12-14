@@ -21,14 +21,8 @@ body::before {
     opacity: 0.1;
 }
 
-body {
+body, body button, body header, body footer, body section{
     position: relative;
-}
-body button{
-    position:relative;
     z-index: 1;
 }
-body header{
-    position:relative;
-    z-index: 1;
-}
+
