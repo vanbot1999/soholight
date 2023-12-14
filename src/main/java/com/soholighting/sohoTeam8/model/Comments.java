@@ -1,77 +1,90 @@
 package com.soholighting.sohoTeam8.model;
 
 
+import java.util.Date;
+
 
 public class Comments {
+
     private Integer id;
 
 
-    private Integer imageId;
+    private Integer image_id;
 
 
-    private String commentText;
+    private String content;
 
 
-    private String createdAt;
+    private Date create_time;
 
-    private int userId=12138;
+
+    private int user_id;
+    private String username;
 
     public Comments() {
-
+        // Default constructor
     }
+
+    // Getters and Setters
 
     public Integer getId() {
         return id;
     }
 
-
-
-
-    public int getUserID() {
-        return userId;
-    }
-
-
-    public void setUserID(int UserID) {
-        this.userId = UserID;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getImageId() {
-
-        return imageId;
+        return image_id;
     }
 
-    public void setImageId(Integer imageId) {
-
-        this.imageId = imageId;
-
+    public void setImageId(Integer image_id) {
+        this.image_id = image_id;
     }
 
-    public String getCommentText() {
-        return commentText;
+    public String getContent() {
+        return content;
     }
 
-    public void setCommentText(String commentText) {
-        this.commentText = commentText;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-
-    public String getCreatedAt() {
-        return createdAt;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
+
+    public int getUserId() {
+        return user_id;
+    }
+
+    public void setUserId(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+// toString Method
+
     @Override
     public String toString() {
         return "Comments{" +
                 "id=" + id +
-                ", imageId=" + imageId +
-                ", commentText='" + commentText + '\'' +
-                ", createdAt='" + createdAt + '\'' +
-                ", userId=" + userId +
+                ", imageId=" + image_id +
+                ", commentText='" + content + '\'' +
+                ", createdAt=" + create_time +
+                ", userId=" + user_id +
+                ", username=" + username +
                 '}';
     }
-
 }

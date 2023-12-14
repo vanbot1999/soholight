@@ -1,0 +1,21 @@
+ALTER TABLE Comment DROP COLUMN hasLiked;
+ALTER TABLE KidsImage ADD COLUMN Likes INT DEFAULT 0;
+ALTER TABLE UserLogin
+ADD PRIMARY KEY (user_id);
+INSERT INTO UserLogin (user_id, username, password) VALUES
+(1, 'Tian', '12345'),
+(2, 'Doinb', '3321'),
+(3, 'Antonio', 'zcx233666');
+CREATE TABLE UserImageLikes (
+  user_id INT,
+  img_id INT,
+  liked_at TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES UserLogin(user_id),
+  FOREIGN KEY (img_id) REFERENCES KidsImage(img_id),
+  PRIMARY KEY (user_id, img_id)
+);
+CREATE TABLE UserLogin (
+  user_id INT PRIMARY KEY,
+  username VARCHAR(255),
+  password VARCHAR(255)
+);

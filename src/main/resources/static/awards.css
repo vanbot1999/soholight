@@ -1,0 +1,33 @@
+.award-page {
+    background-image: url('/images/award-bg-img.png');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.riba-intro{
+    background-color: rgba(155, 0, 0, 1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 40px;
+}
+
+.each-year-award-area{
+    background-color: rgba(155, 0, 0, 1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 40px;
+}
+
+h2, h3{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+p, .card-title{
+    color: wheat;
+}
+
+.card{
+    background-color: rgba(165, 0, 0, 1);
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soholighting.sohoTeam8.mapper.KidsImageMapper">
+    <select id="getUserLogin" resultType="com.soholighting.sohoTeam8.model.AdminAccount">
+        SELECT *
+        FROM UserLogin
+        WHERE username = #{username} AND password = #{password}
+    </select>
+    <select id="getUserIdByUsername" resultType="java.lang.Integer">
+        SELECT user_id
+        FROM UserLogin
+        WHERE username = #{username}
+    </select>
+</mapper>

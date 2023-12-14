@@ -6,16 +6,30 @@ public class KidsImage {
     private int age;
     private String description;
 
-    private  String url;
-    private  String sourceUrl;
-    private  String issueDate;
+    private String url;
+    private String sourceUrl;
+    private String issueDate;
+    private int likes;
+
+    public KidsImage() {
+    }
+
+    public KidsImage(int id, String name, int age, String description, String url, String sourceUrl, String issueDate, int likes) {
+        this.img_id = id;
+        this.name = name;
+        this.age = age;
+        this.description = description;
+        this.url = url;
+        this.sourceUrl = sourceUrl;
+        this.issueDate = issueDate;
+        this.likes = likes;
+    }
 
     public KidsImage(int id, String name, int age, String description, String url, String sourceUrl, String issueDate) {
         this.img_id = id;
         this.name = name;
         this.age = age;
         this.description = description;
-
         this.url = url;
         this.sourceUrl = sourceUrl;
         this.issueDate = issueDate;
@@ -77,5 +91,28 @@ public class KidsImage {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+
+    @Override
+    public String toString() {
+        return "KidsImage{" +
+                "img_id=" + img_id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
+                ", sourceUrl='" + sourceUrl + '\'' +
+                ", issueDate='" + issueDate + '\'' +
+                ", likes=" + likes +
+                '}';
     }
 }

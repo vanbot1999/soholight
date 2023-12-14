@@ -1,0 +1,75 @@
+.custom-box {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 75%;
+}
+
+@media only screen and (min-width: 768px) {
+    .custom-box {
+        width: 75%;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .custom-box {
+        width: 50%;
+    }
+}
+
+.register-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.login-button {
+    width: calc(100% - 20px);
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    background-color:rgb(132 179 225 / 42%);
+    color: black;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-button:hover {
+    background-color: rgb(33 128 223 / 51%);
+    color: black;
+}
+
+.center-box {
+    top: 50%;
+    left: 50%;
+}
+
+.display-element {
+    display: block;
+}
+
+.hide-element {
+    display: none;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/registrationformBG.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+body {
+    position: relative;
+}

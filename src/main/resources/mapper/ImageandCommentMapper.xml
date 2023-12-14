@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soholighting.sohoTeam8.mapper.KidsImageMapper">
+    <select id="findAll" resultType="com.soholighting.sohoTeam8.model.KidsImage">
+        SELECT * FROM KidsImage
+    </select>
+    <select id="findComment" resultType="com.soholighting.sohoTeam8.model.Comments">
+        SELECT * FROM Comment
+    </select>
+    <select id="findAllByYear" parameterType="java.lang.String" resultType="com.soholighting.sohoTeam8.model.KidsImage">
+        SELECT * FROM KidsImage WHERE issueDate LIKE CONCAT(#{year}, '%')
+    </select>
+    <select id="selectImageById" resultType="com.soholighting.sohoTeam8.model.KidsImage">
+        SELECT * FROM KidsImage WHERE img_id = #{id}
+    </select>
+    <insert id="insertComment" parameterType="com.soholighting.sohoTeam8.model.Comments">
+        INSERT INTO Comment (image_id, content, create_time, UserID)
+        VALUES (#{comment.image_id}, #{comment.content}, #{comment.create_time}, #{comment.userId})
+    </insert>
+    <select id="findCommentsByImageId" parameterType="java.lang.Integer" resultMap="commentResultMap">
+        SELECT c.id, c.image_id, c.content, c.create_time, c.UserID, u.username
+        FROM Comment c
+                 JOIN UserLogin u ON c.UserID = u.user_id
+        WHERE c.image_id = #{image_id}
+    </select>
+    <resultMap id="commentResultMap" type="com.soholighting.sohoTeam8.model.Comments">
+        <id property="id" column="id" />
+        <result property="image_id" column="image_id" />
+        <result property="content" column="content" />
+        <result property="create_time" column="create_time" />
+        <result property="user_id" column="user_id" />
+        <result property="username" column="username" />
+    </resultMap>
+    <select id="insertKidsImage" resultType="com.soholighting.sohoTeam8.model.KidsImage">
+        INSERT INTO KidsImage (img_id, name, age, description,url,sourceUrl,issueDate)
+        VALUES (#{kidsImage.img_id}, #{kidsImage.name}, #{kidsImage.age},#{kidsImage.description},#{kidsImage.url},#{kidsImage.sourceUrl},#{kidsImage.issueDate})
+    </select>
+    <insert id="insertLike" parameterType="map">
+        INSERT INTO UserImageLikes (user_id, img_id) VALUES (#{userId}, #{imgId})
+    </insert>
+
+    <delete id="deleteLike" parameterType="map">
+        DELETE FROM UserImageLikes WHERE user_id = #{userId} AND img_id = #{imgId}
+    </delete>
+
+    <select id="checkLike" resultType="int">
+        SELECT COUNT(*)
+        FROM UserImageLikes
+        WHERE user_id = #{userId}
+          AND img_id = #{imgId}
+    </select>
+
+    <update id="incrementImageLikes" parameterType="int">
+        UPDATE KidsImage
+        SET likes = likes + 1
+        WHERE img_id = #{imgId}
+    </update>
+
+    <update id="decrementImageLikes" parameterType="int">
+        UPDATE KidsImage
+        SET likes = likes - 1
+        WHERE img_id = #{imgId}
+    </update>
+    <select id="countLikes" resultType="int">
+        SELECT COUNT(*) FROM UserImageLikes WHERE img_id = #{imgId}
+    </select>
+    <delete id="deleteComment" parameterType="map">
+        DELETE FROM Comment WHERE  UserID = #{userId}
+    </delete>
+</mapper>
