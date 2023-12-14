@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author EnochRibin 23089855
@@ -50,6 +49,14 @@ public class KidsPaintingsController {
     private ModelAndView getModelAndViewAllPaintings() throws SohoLightingException {
         List<KidsImage> kidsPaintingsList = kidsPaintingsService.getAllPaintings();
         ModelAndView kidsPaintingsMV = new ModelAndView("kidsPaintings");
+        kidsPaintingsMV.addObject("kidsPaintings", kidsPaintingsList);
+        return kidsPaintingsMV;
+    }
+
+    @GetMapping("/admin_motif_list")
+    public ModelAndView getModelAndViewAllPaintingsAdmin() throws SohoLightingException {
+        List<KidsImage> kidsPaintingsList = kidsPaintingsService.getAllPaintings();
+        ModelAndView kidsPaintingsMV = new ModelAndView("motifList");
         kidsPaintingsMV.addObject("kidsPaintings", kidsPaintingsList);
         return kidsPaintingsMV;
     }
