@@ -1,42 +1,7 @@
--- MariaDB dump 10.19-11.1.3-MariaDB, for osx10.19 (x86_64)
---
--- Host: localhost    Database: Soholight
--- ------------------------------------------------------
--- Server version	11.1.3-MariaDB
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Current Database: `Soholight`
---
-
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `Soholight` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
-
 USE `Soholight`;
-
---
--- Dumping data for table `Comment`
---
-
 LOCK TABLES `Comment` WRITE;
-/*!40000 ALTER TABLE `Comment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Comment` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping data for table `KidsImage`
---
-
 LOCK TABLES `KidsImage` WRITE;
-/*!40000 ALTER TABLE `KidsImage` DISABLE KEYS */;
 INSERT INTO `KidsImage` VALUES
 (2131,'Sofia',7,NULL,'https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image-(1).70lk7katga00.webp','https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image.36scqvy5epi0.webp','2023'),
 (3323,'Milana',9,NULL,'https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image-(2).2vx5mxqzc480.webp','https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image.36scqvy5epi0.webp','2023'),
@@ -53,15 +18,4 @@ INSERT INTO `KidsImage` VALUES
 (53542,'Safa',5,NULL,'https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image-(9).6gs6ttsbuik0.webp','https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image-(10).3iavy8y893m0.webp','2021'),
 (57392,'Umar',6,NULL,'https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image-(12).3ck42lz27ey0.webp','https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image-(13).5i6boqedtsk0.webp','2022'),
 (63234,'Sereen',6,NULL,'https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image-(13).5i6boqedtsk0.webp','https://cdn.statically.io/gh/chenxuzhou1/fastapi@main/xxx/image-(14).4uv0mmzpgza0.webp','2021');
-/*!40000 ALTER TABLE `KidsImage` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-12-05 12:24:05

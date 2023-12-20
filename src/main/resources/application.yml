@@ -2,10 +2,10 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:mariadb://localhost:3306/Soholight
+    url: jdbc:mysql://127.0.0.1:3306/Soholight
     username: root
-    password: comsc
-    driver-class-name: org.mariadb.jdbc.Driver
+    password: 990816
+    driver-class-name: com.mysql.cj.jdbc.Driver
     sql:
       init:
         mode: always

@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
 	implementation 'commons-io:commons-io:2.8.0'
-	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+	implementation 'mysql:mysql-connector-java:8.0.33'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -42,4 +42,3 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
-

@@ -14,4 +14,3 @@ VALUES (1, 'enoch', 'password123'),
 /*!40000 ALTER TABLE `userlogin`
     ENABLE KEYS */;
 UNLOCK TABLES;
-
